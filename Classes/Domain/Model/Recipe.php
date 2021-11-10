@@ -29,11 +29,25 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     protected $title = '';
 
     /**
+     * teaser
+     *
+     * @var string
+     */
+    protected $teaser = '';
+
+    /**
      * preparation
      *
      * @var string
      */
     protected $preparation = '';
+
+    /**
+     * publishDate
+     *
+     * @var \DateTime
+     */
+    protected $publishDate = null;
 
     /**
      * images
@@ -42,6 +56,13 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $images = null;
+
+    /**
+     * slug
+     *
+     * @var string
+     */
+    protected $slug = '';
 
     /**
      * ingredients
@@ -201,5 +222,68 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     public function setIngredients(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ingredients)
     {
         $this->ingredients = $ingredients;
+    }
+
+    /**
+     * Returns the slug
+     *
+     * @return string $slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Sets the slug
+     *
+     * @param string $slug
+     * @return void
+     */
+    public function setSlug(string $slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Returns the publishDate
+     *
+     * @return \DateTime $publishDate
+     */
+    public function getPublishDate()
+    {
+        return $this->publishDate;
+    }
+
+    /**
+     * Sets the publishDate
+     *
+     * @param \DateTime $publishDate
+     * @return void
+     */
+    public function setPublishDate(\DateTime $publishDate)
+    {
+        $this->publishDate = $publishDate;
+    }
+
+    /**
+     * Returns the teaser
+     *
+     * @return string $teaser
+     */
+    public function getTeaser()
+    {
+        return $this->teaser;
+    }
+
+    /**
+     * Sets the teaser
+     *
+     * @param string $teaser
+     * @return void
+     */
+    public function setTeaser(string $teaser)
+    {
+        $this->teaser = $teaser;
     }
 }

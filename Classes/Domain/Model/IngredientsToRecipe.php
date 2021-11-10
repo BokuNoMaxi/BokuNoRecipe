@@ -37,6 +37,13 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $alternativeMeasurement = 0;
 
     /**
+     * customGroup
+     *
+     * @var string
+     */
+    protected $customGroup = '';
+
+    /**
      * ingredient
      *
      * @var \BokuNo\Bokunorecipe\Domain\Model\Ingredients
@@ -104,5 +111,26 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setIngredient(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredient)
     {
         $this->ingredient = $ingredient;
+    }
+
+    /**
+     * Returns the customGroup
+     *
+     * @return string customGroup
+     */
+    public function getCustomGroup()
+    {
+        return $this->customGroup;
+    }
+
+    /**
+     * Sets the customGroup
+     *
+     * @param string $customGroup
+     * @return void
+     */
+    public function setCustomGroup(string $customGroup)
+    {
+        $this->customGroup = $customGroup;
     }
 }

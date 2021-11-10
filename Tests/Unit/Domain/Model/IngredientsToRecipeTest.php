@@ -81,6 +81,31 @@ class IngredientsToRecipeTest extends UnitTestCase
     /**
      * @test
      */
+    public function getCustomGroupReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCustomGroup()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCustomGroupForStringSetsCustomGroup()
+    {
+        $this->subject->setCustomGroup('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'customGroup',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getIngredientReturnsInitialValueForIngredients()
     {
         self::assertEquals(

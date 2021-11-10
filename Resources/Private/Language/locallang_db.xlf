@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_db" date="2021-11-10T09:25:07Z" product-name="bokunorecipe">
+	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_db" date="2021-11-10T14:14:30Z" product-name="bokunorecipe">
 		<header/>
 		<body>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe" resname="tx_bokunorecipe_domain_model_recipe">
@@ -9,11 +9,20 @@
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.title" resname="tx_bokunorecipe_domain_model_recipe.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.teaser" resname="tx_bokunorecipe_domain_model_recipe.teaser">
+				<source>Teaser</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.preparation" resname="tx_bokunorecipe_domain_model_recipe.preparation">
 				<source>Preparation</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.publish_date" resname="tx_bokunorecipe_domain_model_recipe.publish_date">
+				<source>Publish Date</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.images" resname="tx_bokunorecipe_domain_model_recipe.images">
 				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.slug" resname="tx_bokunorecipe_domain_model_recipe.slug">
+				<source>Slug</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.ingredients" resname="tx_bokunorecipe_domain_model_recipe.ingredients">
 				<source>Ingredients</source>
@@ -42,6 +51,9 @@
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.alternative_measurement" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.alternative_measurement">
 				<source>Alternative Measurement</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.custom_group" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.custom_group">
+				<source>Custom Group</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient">
 				<source>Ingredient</source>
 			</trans-unit>
@@ -58,23 +70,18 @@
 				<source></source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon">
-				<target>Teelöffel</target>
 				<source>Teaspoon</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.tablespoon" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.tablespoon">
-				<target>Esslöffel</target>
 				<source>Tablespoon</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint">
-				<target>Messerspitze</target>
 				<source>Knifepoint</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.package" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.package">
-				<target>Bund</target>
 				<source>package</source>
 			</trans-unit>
-			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.need" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.package">
-				<target>nach tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint</target>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.need" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.need">
 				<source>upon need</source>
 			</trans-unit>
 		</body>

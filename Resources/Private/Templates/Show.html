@@ -1,0 +1,57 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<div class="bokunorecipe__detail">
+    <div class="bokunorecipe__detail__carousel carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <f:for each="{recipe.images}" as="image" iteration="i">
+                <div class="carousel-item active">
+                    <f:if condition="{image.originalResource.type} == 2">
+                        <f:image 
+                            class="d-block w-100"
+                            image="{image}" 
+                            title="{image.originalResource.title}"
+                            alt="{image.originalResource.alternative}" />
+                    </f:if>
+                    <f:if condition="{image.originalResource.type} == 4">
+                        <f:render 
+                            partial="Detail/MediaVideo" 
+                            arguments="{mediaElement: image}" />
+                    </f:if>
+                    <f:if condition="{image.originalResource.type} == 5">
+                        <f:image 	
+                            image="{image}" 
+                            title="{image.originalResource.title}"
+                            alt="{image.originalResource.alternative}" />
+                    </f:if>
+                </div>
+            </f:for>
+        </div>
+    </div>
+    <h1 class="pt-3">{recipe.title}</h1>
+    <p class="bokunorecipe__detail__teaser">{recipe.teaser}</p>
+    <table class="bokunorecipe__detail__ingredients col-12 table table-striped table-hover">
+        <f:for each="{recipe.ingredients}" as="ingredient" iteration="i">
+            <tr>
+                <td class="col-3">{ingredient.quantity}<f:if condition="{ingredient.alternativeMeasurement}">
+                    <f:then>
+                        <f:switch expression="{ingredient.alternativeMeasurement}">
+                            <f:case value="1"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon.unit" /></f:case>
+                            <f:case value="2"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.tablespoon.unit" /></f:case>
+                            <f:case value="3"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint.unit" /></f:case>
+                            <f:case value="4"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.package.unit" /></f:case>
+                            <f:case value="5"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit" /></f:case>
+                        </f:switch>
+                    </f:then>
+                    <f:else>
+                        {ingredient.ingredient.unit} 
+                    </f:else>
+                </f:if></td>
+                <td>{ingredient.ingredient.title}</td>
+            </tr>
+        </f:for>
+    </table>
+    <div class="bokunorecipe__detail__perparation pt-3">
+        <f:format.html>{recipe.preparation}</f:format.html>
+    </div>
+</div>
+</html>

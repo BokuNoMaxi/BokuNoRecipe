@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<f:layout name="General" />
+
+<f:section name="content">
+	<f:if condition="{recipes}">
+		<f:then>
+			<div class="bokunorecipe__list">
+                <f:for each="{recipes}" as="recipe" iteration="i">
+				    <f:render partial="Item" arguments="{recipe:recipe,settings:settings}" />
+                </f:for>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="bokunorecipe__list__no-recipe-found">
+				<f:translate key="list_nonewsfound" />
+			</div>
+		</f:else>
+	</f:if>
+</f:section>
+</html>

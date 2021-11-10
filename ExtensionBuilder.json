@@ -48,6 +48,18 @@
                         },
                         {
                             "allowedFileTypes": "",
+                            "maxItems": "5",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "teaser",
+                            "propertyType": "RichText",
+                            "uid": "185988799857"
+                        },
+                        {
+                            "allowedFileTypes": "",
                             "maxItems": "1",
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
@@ -66,9 +78,33 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "publishDate",
+                            "propertyType": "NativeDate",
+                            "uid": "1203288499008"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "5",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "images",
                             "propertyType": "Image",
                             "uid": "664333019594"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "5",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "slug",
+                            "propertyType": "String",
+                            "uid": "1526115678506"
                         }
                     ]
                 },
@@ -235,6 +271,18 @@
                             "propertyName": "alternativeMeasurement",
                             "propertyType": "Select",
                             "uid": "1633008440388"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "customGroup",
+                            "propertyType": "String",
+                            "uid": "1438311222844"
                         }
                     ]
                 },
@@ -333,7 +381,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2021-11-10 10:03",
+        "last_modified": "2021-11-10 02:14",
         "extension_builder_version": "10.0.1",
         "be_user": " (2)"
     }

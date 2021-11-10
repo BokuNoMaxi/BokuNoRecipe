@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_csh" date="2021-11-10T10:03:30Z" product-name="bokunorecipe">
+	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_csh" date="2021-11-10T14:14:30Z" product-name="bokunorecipe">
 		<header/>
 		<body>
 			<trans-unit id="quantity.description" resname="quantity.description">
@@ -8,6 +8,9 @@
 			</trans-unit>
 			<trans-unit id="alternative_measurement.description" resname="alternative_measurement.description">
 				<source>alternativeMeasurement</source>
+			</trans-unit>
+			<trans-unit id="custom_group.description" resname="custom_group.description">
+				<source>customGroup</source>
 			</trans-unit>
 			<trans-unit id="ingredient.description" resname="ingredient.description">
 				<source>ingredient</source>

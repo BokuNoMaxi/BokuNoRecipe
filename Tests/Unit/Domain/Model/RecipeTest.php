@@ -56,6 +56,31 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
+    public function getTeaserReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getTeaser()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setTeaserForStringSetsTeaser()
+    {
+        $this->subject->setTeaser('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'teaser',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getPreparationReturnsInitialValueForString()
     {
         self::assertSame(
@@ -74,6 +99,32 @@ class RecipeTest extends UnitTestCase
         self::assertAttributeEquals(
             'Conceived at T3CON10',
             'preparation',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getPublishDateReturnsInitialValueForDateTime()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getPublishDate()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPublishDateForDateTimeSetsPublishDate()
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setPublishDate($dateTimeFixture);
+
+        self::assertAttributeEquals(
+            $dateTimeFixture,
+            'publishDate',
             $this->subject
         );
     }
@@ -139,6 +190,31 @@ class RecipeTest extends UnitTestCase
         $this->inject($this->subject, 'images', $imagesObjectStorageMock);
 
         $this->subject->removeImage($image);
+    }
+
+    /**
+     * @test
+     */
+    public function getSlugReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getSlug()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setSlugForStringSetsSlug()
+    {
+        $this->subject->setSlug('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'slug',
+            $this->subject
+        );
     }
 
     /**

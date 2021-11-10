@@ -51,7 +51,7 @@ overwriteSettings:
 
   Resources:
     Private:
-      #Language: merge
+      Language: merge
       #Layouts: keep
       #Partials: keep
       #Templates: keep

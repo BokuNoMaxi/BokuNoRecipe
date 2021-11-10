@@ -1,7 +1,10 @@
 CREATE TABLE tx_bokunorecipe_domain_model_recipe (
 	title varchar(255) NOT NULL DEFAULT '',
+	teaser text,
 	preparation text,
+	publish_date date DEFAULT NULL,
 	images int(11) unsigned NOT NULL DEFAULT '0',
+	slug varchar(255) NOT NULL DEFAULT '',
 	ingredients int(11) unsigned NOT NULL DEFAULT '0'
 );
 
@@ -16,6 +19,7 @@ CREATE TABLE tx_bokunorecipe_domain_model_ingredientstorecipe (
 	recipe int(11) unsigned DEFAULT '0' NOT NULL,
 	quantity varchar(255) NOT NULL DEFAULT '',
 	alternative_measurement int(11) DEFAULT '0' NOT NULL,
+	custom_group varchar(255) NOT NULL DEFAULT '',
 	ingredient int(11) unsigned DEFAULT '0'
 );
 
