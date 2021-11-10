@@ -185,7 +185,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Returns the ingredients
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe> ingredients
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
      */
     public function getIngredients()
     {

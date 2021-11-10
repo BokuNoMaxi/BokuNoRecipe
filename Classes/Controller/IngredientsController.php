@@ -23,14 +23,14 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * ingredientsRepository
      *
-     * @var \BokuNoRecipe\Bokunorecipe\Domain\Repository\IngredientsRepository
+     * @var \BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository
      */
     protected $ingredientsRepository = null;
 
     /**
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Repository\IngredientsRepository $ingredientsRepository
+     * @param \BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository $ingredientsRepository
      */
-    public function injectIngredientsRepository(\BokuNoRecipe\Bokunorecipe\Domain\Repository\IngredientsRepository $ingredientsRepository)
+    public function injectIngredientsRepository(\BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository $ingredientsRepository)
     {
         $this->ingredientsRepository = $ingredientsRepository;
     }
@@ -49,10 +49,10 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action show
      *
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredients
+     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
      * @return string|object|null|void
      */
-    public function showAction(\BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredients)
+    public function showAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients)
     {
         $this->view->assign('ingredients', $ingredients);
     }
@@ -69,10 +69,10 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action create
      *
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $newIngredients
+     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $newIngredients
      * @return string|object|null|void
      */
-    public function createAction(\BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $newIngredients)
+    public function createAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $newIngredients)
     {
         $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->ingredientsRepository->add($newIngredients);
@@ -82,11 +82,11 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action edit
      *
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredients
+     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ingredients")
      * @return string|object|null|void
      */
-    public function editAction(\BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredients)
+    public function editAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients)
     {
         $this->view->assign('ingredients', $ingredients);
     }
@@ -94,10 +94,10 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action update
      *
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredients
+     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
      * @return string|object|null|void
      */
-    public function updateAction(\BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredients)
+    public function updateAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients)
     {
         $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->ingredientsRepository->update($ingredients);
@@ -107,10 +107,10 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action delete
      *
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredients
+     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
      * @return string|object|null|void
      */
-    public function deleteAction(\BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredients)
+    public function deleteAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients)
     {
         $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->ingredientsRepository->remove($ingredients);

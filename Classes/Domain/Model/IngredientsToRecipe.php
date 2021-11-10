@@ -34,7 +34,7 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $alternativeMeasurement = false;
+    protected $alternativeMeasurement = 0;
 
     /**
      * ingredient
@@ -67,7 +67,7 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the alternativeMeasurement
      *
-     * @return int alternativeMeasurement
+     * @return int $alternativeMeasurement
      */
     public function getAlternativeMeasurement()
     {
@@ -77,10 +77,10 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the alternativeMeasurement
      *
-     * @param bool $alternativeMeasurement
+     * @param int $alternativeMeasurement
      * @return void
      */
-    public function setAlternativeMeasurement(bool $alternativeMeasurement)
+    public function setAlternativeMeasurement(int $alternativeMeasurement)
     {
         $this->alternativeMeasurement = $alternativeMeasurement;
     }
@@ -88,7 +88,7 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the ingredient
      *
-     * @return \BokuNo\Bokunorecipe\Domain\Model\Ingredients ingredient
+     * @return \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredient
      */
     public function getIngredient()
     {
