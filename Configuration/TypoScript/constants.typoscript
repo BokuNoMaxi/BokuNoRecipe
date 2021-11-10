@@ -1,0 +1,28 @@
+plugin.tx_bokunorecipe_bokunorecipe {
+    view {
+        # cat=plugin.tx_bokunorecipe_bokunorecipe/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:bokunorecipe/Resources/Private/Templates/
+        # cat=plugin.tx_bokunorecipe_bokunorecipe/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:bokunorecipe/Resources/Private/Partials/
+        # cat=plugin.tx_bokunorecipe_bokunorecipe/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:bokunorecipe/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_bokunorecipe_bokunorecipe//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}
+plugin.tx_bokunorecipe_bokunoingredients {
+    view {
+        # cat=plugin.tx_bokunorecipe_bokunoingredients/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:bokunorecipe/Resources/Private/Templates/
+        # cat=plugin.tx_bokunorecipe_bokunoingredients/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:bokunorecipe/Resources/Private/Partials/
+        # cat=plugin.tx_bokunorecipe_bokunoingredients/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:bokunorecipe/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_bokunorecipe_bokunoingredients//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

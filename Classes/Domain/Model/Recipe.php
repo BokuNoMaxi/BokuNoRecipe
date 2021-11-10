@@ -1,0 +1,205 @@
+<?php
+
+declare(strict_types=1);
+
+namespace BokuNoRecipe\Bokunorecipe\Domain\Model;
+
+
+/**
+ * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
+ */
+
+/**
+ * Recipe
+ */
+class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
+{
+
+    /**
+     * title
+     *
+     * @var string
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     */
+    protected $title = '';
+
+    /**
+     * preparation
+     *
+     * @var string
+     */
+    protected $preparation = '';
+
+    /**
+     * images
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $images = null;
+
+    /**
+     * ingredients
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $ingredients = null;
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+
+        // Do not remove the next line: It would break the functionality
+        $this->initializeObject();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties when model is reconstructed from DB (where __construct is not called)
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    public function initializeObject()
+    {
+        $this->images = $this->images ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->ingredients = $this->ingredients ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Returns the preparation
+     *
+     * @return string $preparation
+     */
+    public function getPreparation()
+    {
+        return $this->preparation;
+    }
+
+    /**
+     * Sets the preparation
+     *
+     * @param string $preparation
+     * @return void
+     */
+    public function setPreparation(string $preparation)
+    {
+        $this->preparation = $preparation;
+    }
+
+    /**
+     * Adds a FileReference
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return void
+     */
+    public function addImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
+    {
+        $this->images->attach($image);
+    }
+
+    /**
+     * Removes a FileReference
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
+     * @return void
+     */
+    public function removeImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove)
+    {
+        $this->images->detach($imageToRemove);
+    }
+
+    /**
+     * Returns the images
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Sets the images
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
+     * @return void
+     */
+    public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
+    {
+        $this->images = $images;
+    }
+
+    /**
+     * Adds a IngredientsToRecipe
+     *
+     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient
+     * @return void
+     */
+    public function addIngredient(\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient)
+    {
+        $this->ingredients->attach($ingredient);
+    }
+
+    /**
+     * Removes a IngredientsToRecipe
+     *
+     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove The IngredientsToRecipe to be removed
+     * @return void
+     */
+    public function removeIngredient(\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove)
+    {
+        $this->ingredients->detach($ingredientToRemove);
+    }
+
+    /**
+     * Returns the ingredients
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * Sets the ingredients
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
+     * @return void
+     */
+    public function setIngredients(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ingredients)
+    {
+        $this->ingredients = $ingredients;
+    }
+}

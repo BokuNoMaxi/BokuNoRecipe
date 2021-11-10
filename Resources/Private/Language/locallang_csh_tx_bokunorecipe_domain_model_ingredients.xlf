@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_csh" date="2021-11-10T09:41:18Z" product-name="bokunorecipe">
+		<header/>
+		<body>
+			<trans-unit id="title.description" resname="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="unit.description" resname="unit.description">
+				<source>unit</source>
+			</trans-unit>
+			<trans-unit id="gluten.description" resname="gluten.description">
+				<source>gluten</source>
+			</trans-unit>
+			<trans-unit id="lactose.description" resname="lactose.description">
+				<source>lactose</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,340 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    784,
+                    113
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_index": false,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
+                    "customActions": []
+                },
+                "name": "Recipe",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": true,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "ValueObject",
+                    "uid": "1339710566669"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "title",
+                            "propertyType": "String",
+                            "uid": "777622232600"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "preparation",
+                            "propertyType": "RichText",
+                            "uid": "1619803017119"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "5",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "images",
+                            "propertyType": "Image",
+                            "uid": "664333019594"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "ingredients",
+                            "relationType": "zeroToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "inline",
+                            "uid": "358268232644"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    169,
+                    419
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_index": false,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
+                    "customActions": []
+                },
+                "name": "Ingredients",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": true,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "ValueObject",
+                    "uid": "1596836532207"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": false,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "title",
+                            "propertyType": "String",
+                            "uid": "992626200922"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "unit",
+                            "propertyType": "String",
+                            "uid": "306682515393"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "gluten",
+                            "propertyType": "Boolean",
+                            "uid": "848667747266"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lactose",
+                            "propertyType": "Boolean",
+                            "uid": "600073896972"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    504,
+                    253
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_index": false,
+                    "_default1_list": false,
+                    "_default2_show": false,
+                    "_default3_new_create": false,
+                    "_default4_edit_update": false,
+                    "_default5_delete": false,
+                    "customActions": []
+                },
+                "name": "IngredientsToRecipe",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": false,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "29832255454"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "quantity",
+                            "propertyType": "String",
+                            "uid": "276904642878"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "alternativeMeasurement",
+                            "propertyType": "Select",
+                            "uid": "1633008440388"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "ingredient",
+                            "relationType": "manyToOne",
+                            "relationWire": "[wired]",
+                            "renderType": "selectSingle",
+                            "uid": "609734427096"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "This extension is for storing recipes in Typo3",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 10.4.0-10.4.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "generateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "10.4.0-10.4.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "bokunorecipe",
+        "name": "BokuNoRecipe",
+        "originalExtensionKey": "bokunorecipe",
+        "originalVendorName": "BokuNoRecipe",
+        "persons": [
+            {
+                "company": "",
+                "email": "ketterer.markus@gmx.at",
+                "name": "Markus Ketterer",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Recipe => list,show,new,create,edit,update",
+                    "noncacheableActions": ""
+                },
+                "description": "",
+                "key": "bokunorecipe",
+                "name": "bokunorecipe"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "Ingredients =>list,show,new,create,edit,update",
+                    "noncacheableActions": ""
+                },
+                "description": "",
+                "key": "bokunoingredients",
+                "name": "bokunoingredients"
+            }
+        ],
+        "vendorName": "BokuNoRecipe"
+    },
+    "wires": [
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_0",
+                "uid": "358268232644"
+            },
+            "tgt": {
+                "moduleId": 2,
+                "terminal": "SOURCES",
+                "uid": "29832255454"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 2,
+                "terminal": "relationWire_0",
+                "uid": "609734427096"
+            },
+            "tgt": {
+                "moduleId": 1,
+                "terminal": "SOURCES",
+                "uid": "1596836532207"
+            }
+        }
+    ],
+    "storagePath": "\/home\/pi\/Projects\/typo3-10-fresh\/packages\/",
+    "log": {
+        "last_modified": "2021-11-10 09:41",
+        "extension_builder_version": "10.0.1",
+        "be_user": " (2)"
+    }
+}
