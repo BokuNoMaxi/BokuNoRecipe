@@ -1,5 +1,5 @@
 {
-    "name": "boku-no-recipe/bokunorecipe",
+    "name": "boku-no/bokunorecipe",
     "type": "typo3-cms-extension",
     "description": "This extension is for storing recipes in Typo3",
     "authors": [
@@ -17,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BokuNoRecipe\\Bokunorecipe\\": "Classes"
+            "BokuNo\\Bokunorecipe\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BokuNoRecipe\\Bokunorecipe\\Tests\\": "Tests"
+            "BokuNo\\Bokunorecipe\\Tests\\": "Tests"
         }
     },
     "replace": {

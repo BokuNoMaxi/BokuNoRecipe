@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BokuNoRecipe\Bokunorecipe\Controller;
+namespace BokuNo\Bokunorecipe\Controller;
 
 
 /**

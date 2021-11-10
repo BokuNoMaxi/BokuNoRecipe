@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BokuNoRecipe\Bokunorecipe\Domain\Model;
+namespace BokuNo\Bokunorecipe\Domain\Model;
 
 
 /**
@@ -39,7 +39,7 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * ingredient
      *
-     * @var \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients
+     * @var \BokuNo\Bokunorecipe\Domain\Model\Ingredients
      */
     protected $ingredient = null;
 
@@ -65,27 +65,6 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the ingredient
-     *
-     * @return \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredient
-     */
-    public function getIngredient()
-    {
-        return $this->ingredient;
-    }
-
-    /**
-     * Sets the ingredient
-     *
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredient
-     * @return void
-     */
-    public function setIngredient(\BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients $ingredient)
-    {
-        $this->ingredient = $ingredient;
-    }
-
-    /**
      * Returns the alternativeMeasurement
      *
      * @return int alternativeMeasurement
@@ -104,5 +83,26 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setAlternativeMeasurement(bool $alternativeMeasurement)
     {
         $this->alternativeMeasurement = $alternativeMeasurement;
+    }
+
+    /**
+     * Returns the ingredient
+     *
+     * @return \BokuNo\Bokunorecipe\Domain\Model\Ingredients ingredient
+     */
+    public function getIngredient()
+    {
+        return $this->ingredient;
+    }
+
+    /**
+     * Sets the ingredient
+     *
+     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredient
+     * @return void
+     */
+    public function setIngredient(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredient)
+    {
+        $this->ingredient = $ingredient;
     }
 }

@@ -122,11 +122,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
-                    ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon', 1],
-                    ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.tablespoon', 2],
-                    ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint', 3],
-                    ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.package', 4],
+                    ['-- Label --', 0],
                 ],
                 'size' => 1,
                 'maxitems' => 1,

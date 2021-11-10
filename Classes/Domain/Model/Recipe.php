@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BokuNoRecipe\Bokunorecipe\Domain\Model;
+namespace BokuNo\Bokunorecipe\Domain\Model;
 
 
 /**
@@ -46,7 +46,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * ingredients
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $ingredients = null;
@@ -163,10 +163,10 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Adds a IngredientsToRecipe
      *
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient
+     * @param \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient
      * @return void
      */
-    public function addIngredient(\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient)
+    public function addIngredient(\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient)
     {
         $this->ingredients->attach($ingredient);
     }
@@ -174,10 +174,10 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Removes a IngredientsToRecipe
      *
-     * @param \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove The IngredientsToRecipe to be removed
+     * @param \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove The IngredientsToRecipe to be removed
      * @return void
      */
-    public function removeIngredient(\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove)
+    public function removeIngredient(\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove)
     {
         $this->ingredients->detach($ingredientToRemove);
     }
@@ -185,7 +185,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Returns the ingredients
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe> ingredients
      */
     public function getIngredients()
     {
@@ -195,7 +195,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Sets the ingredients
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
      * @return void
      */
     public function setIngredients(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ingredients)

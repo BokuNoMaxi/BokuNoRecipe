@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace BokuNoRecipe\Bokunorecipe\Tests\Unit\Controller;
+namespace BokuNo\Bokunorecipe\Tests\Unit\Controller;
 
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -13,14 +13,14 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class IngredientsControllerTest extends UnitTestCase
 {
     /**
-     * @var \BokuNoRecipe\Bokunorecipe\Controller\IngredientsController
+     * @var \BokuNo\Bokunorecipe\Controller\IngredientsController
      */
     protected $subject;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Controller\IngredientsController::class)
+        $this->subject = $this->getMockBuilder(\BokuNo\Bokunorecipe\Controller\IngredientsController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -40,7 +40,7 @@ class IngredientsControllerTest extends UnitTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $ingredientsRepository = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Domain\Repository\IngredientsRepository::class)
+        $ingredientsRepository = $this->getMockBuilder(\BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository::class)
             ->setMethods(['findAll'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -59,7 +59,7 @@ class IngredientsControllerTest extends UnitTestCase
      */
     public function showActionAssignsTheGivenIngredientsToView()
     {
-        $ingredients = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients();
+        $ingredients = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
 
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
@@ -73,9 +73,9 @@ class IngredientsControllerTest extends UnitTestCase
      */
     public function createActionAddsTheGivenIngredientsToIngredientsRepository()
     {
-        $ingredients = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients();
+        $ingredients = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
 
-        $ingredientsRepository = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Domain\Repository\IngredientsRepository::class)
+        $ingredientsRepository = $this->getMockBuilder(\BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository::class)
             ->setMethods(['add'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -91,7 +91,7 @@ class IngredientsControllerTest extends UnitTestCase
      */
     public function editActionAssignsTheGivenIngredientsToView()
     {
-        $ingredients = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients();
+        $ingredients = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
 
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
@@ -105,9 +105,9 @@ class IngredientsControllerTest extends UnitTestCase
      */
     public function updateActionUpdatesTheGivenIngredientsInIngredientsRepository()
     {
-        $ingredients = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients();
+        $ingredients = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
 
-        $ingredientsRepository = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Domain\Repository\IngredientsRepository::class)
+        $ingredientsRepository = $this->getMockBuilder(\BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository::class)
             ->setMethods(['update'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -123,9 +123,9 @@ class IngredientsControllerTest extends UnitTestCase
      */
     public function deleteActionRemovesTheGivenIngredientsFromIngredientsRepository()
     {
-        $ingredients = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients();
+        $ingredients = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
 
-        $ingredientsRepository = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Domain\Repository\IngredientsRepository::class)
+        $ingredientsRepository = $this->getMockBuilder(\BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository::class)
             ->setMethods(['remove'])
             ->disableOriginalConstructor()
             ->getMock();

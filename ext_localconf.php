@@ -6,12 +6,12 @@ call_user_func(static function() {
         'Bokunorecipe',
         'Bokunorecipe',
         [
-            \BokuNoRecipe\Bokunorecipe\Controller\RecipeController::class => 'list, show, new, create, edit, update'
+            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'list, show, new, create, edit, update'
         ],
         // non-cacheable actions
         [
-            \BokuNoRecipe\Bokunorecipe\Controller\RecipeController::class => 'create, update, delete',
-            \BokuNoRecipe\Bokunorecipe\Controller\IngredientsController::class => 'create, update, delete'
+            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'create, update, delete',
+            \BokuNo\Bokunorecipe\Controller\IngredientsController::class => 'create, update, delete'
         ]
     );
 
@@ -19,12 +19,12 @@ call_user_func(static function() {
         'Bokunorecipe',
         'Bokunoingredients',
         [
-            \BokuNoRecipe\Bokunorecipe\Controller\IngredientsController::class => 'list, show, new, create, edit, update'
+            \BokuNo\Bokunorecipe\Controller\IngredientsController::class => 'list, show, new, create, edit, update'
         ],
         // non-cacheable actions
         [
-            \BokuNoRecipe\Bokunorecipe\Controller\RecipeController::class => 'create, update, delete',
-            \BokuNoRecipe\Bokunorecipe\Controller\IngredientsController::class => 'create, update, delete'
+            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'create, update, delete',
+            \BokuNo\Bokunorecipe\Controller\IngredientsController::class => 'create, update, delete'
         ]
     );
 

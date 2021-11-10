@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace BokuNoRecipe\Bokunorecipe\Tests\Unit\Domain\Model;
+namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -13,14 +13,14 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class IngredientsToRecipeTest extends UnitTestCase
 {
     /**
-     * @var \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe
+     * @var \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe
      */
     protected $subject;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe();
+        $this->subject = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
     }
 
     protected function tearDown()
@@ -94,7 +94,7 @@ class IngredientsToRecipeTest extends UnitTestCase
      */
     public function setIngredientForIngredientsSetsIngredient()
     {
-        $ingredientFixture = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Ingredients();
+        $ingredientFixture = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
         $this->subject->setIngredient($ingredientFixture);
 
         self::assertAttributeEquals(

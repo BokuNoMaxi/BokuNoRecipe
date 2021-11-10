@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace BokuNoRecipe\Bokunorecipe\Tests\Unit\Controller;
+namespace BokuNo\Bokunorecipe\Tests\Unit\Controller;
 
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -13,14 +13,14 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class RecipeControllerTest extends UnitTestCase
 {
     /**
-     * @var \BokuNoRecipe\Bokunorecipe\Controller\RecipeController
+     * @var \BokuNo\Bokunorecipe\Controller\RecipeController
      */
     protected $subject;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Controller\RecipeController::class)
+        $this->subject = $this->getMockBuilder(\BokuNo\Bokunorecipe\Controller\RecipeController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -40,7 +40,7 @@ class RecipeControllerTest extends UnitTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $recipeRepository = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Domain\Repository\RecipeRepository::class)
+        $recipeRepository = $this->getMockBuilder(\BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository::class)
             ->setMethods(['findAll'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -59,7 +59,7 @@ class RecipeControllerTest extends UnitTestCase
      */
     public function showActionAssignsTheGivenRecipeToView()
     {
-        $recipe = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Recipe();
+        $recipe = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
 
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
@@ -73,9 +73,9 @@ class RecipeControllerTest extends UnitTestCase
      */
     public function createActionAddsTheGivenRecipeToRecipeRepository()
     {
-        $recipe = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Recipe();
+        $recipe = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
 
-        $recipeRepository = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Domain\Repository\RecipeRepository::class)
+        $recipeRepository = $this->getMockBuilder(\BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository::class)
             ->setMethods(['add'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -91,7 +91,7 @@ class RecipeControllerTest extends UnitTestCase
      */
     public function editActionAssignsTheGivenRecipeToView()
     {
-        $recipe = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Recipe();
+        $recipe = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
 
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
@@ -105,9 +105,9 @@ class RecipeControllerTest extends UnitTestCase
      */
     public function updateActionUpdatesTheGivenRecipeInRecipeRepository()
     {
-        $recipe = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Recipe();
+        $recipe = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
 
-        $recipeRepository = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Domain\Repository\RecipeRepository::class)
+        $recipeRepository = $this->getMockBuilder(\BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository::class)
             ->setMethods(['update'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -123,9 +123,9 @@ class RecipeControllerTest extends UnitTestCase
      */
     public function deleteActionRemovesTheGivenRecipeFromRecipeRepository()
     {
-        $recipe = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Recipe();
+        $recipe = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
 
-        $recipeRepository = $this->getMockBuilder(\BokuNoRecipe\Bokunorecipe\Domain\Repository\RecipeRepository::class)
+        $recipeRepository = $this->getMockBuilder(\BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository::class)
             ->setMethods(['remove'])
             ->disableOriginalConstructor()
             ->getMock();

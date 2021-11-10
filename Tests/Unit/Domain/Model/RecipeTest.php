@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace BokuNoRecipe\Bokunorecipe\Tests\Unit\Domain\Model;
+namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -13,14 +13,14 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class RecipeTest extends UnitTestCase
 {
     /**
-     * @var \BokuNoRecipe\Bokunorecipe\Domain\Model\Recipe
+     * @var \BokuNo\Bokunorecipe\Domain\Model\Recipe
      */
     protected $subject;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \BokuNoRecipe\Bokunorecipe\Domain\Model\Recipe();
+        $this->subject = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
     }
 
     protected function tearDown()
@@ -158,7 +158,7 @@ class RecipeTest extends UnitTestCase
      */
     public function setIngredientsForObjectStorageContainingIngredientsToRecipeSetsIngredients()
     {
-        $ingredient = new \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe();
+        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
         $objectStorageHoldingExactlyOneIngredients = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneIngredients->attach($ingredient);
         $this->subject->setIngredients($objectStorageHoldingExactlyOneIngredients);
@@ -175,7 +175,7 @@ class RecipeTest extends UnitTestCase
      */
     public function addIngredientToObjectStorageHoldingIngredients()
     {
-        $ingredient = new \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe();
+        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
         $ingredientsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
@@ -192,7 +192,7 @@ class RecipeTest extends UnitTestCase
      */
     public function removeIngredientFromObjectStorageHoldingIngredients()
     {
-        $ingredient = new \BokuNoRecipe\Bokunorecipe\Domain\Model\IngredientsToRecipe();
+        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
         $ingredientsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
