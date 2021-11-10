@@ -73,6 +73,10 @@
 				<target>Bund</target>
 				<source>package</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.need" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.package">
+				<target>nach tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint</target>
+				<source>upon need</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
