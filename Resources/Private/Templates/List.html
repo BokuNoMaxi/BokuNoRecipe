@@ -6,7 +6,7 @@
 <f:section name="content">
 	<f:if condition="{recipes}">
 		<f:then>
-			<div class="bokunorecipe__list">
+			<div class="bokunorecipe__list row">
                 <f:for each="{recipes}" as="recipe" iteration="i">
 				    <f:render partial="Item" arguments="{recipe:recipe,settings:settings}" />
                 </f:for>

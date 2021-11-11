@@ -1,9 +1,16 @@
-.bokunorecipe__detail{
-    .bokunorecipe__detail__ingredients{
-        td{
-            &:nth-child(2n){
+.bokunorecipe__detail {
+    .bokunorecipe__detail__ingredients {
+        td {
+            &:nth-child(2n) {
                 border-left: solid 1px #dedede;
             }
         }
+    }
+}
+.bokunorecipe__list {
+    .card {
+        width: 32%;
+        height: fit-content;
+        height: -moz-fit-content;
     }
 }
