@@ -9,7 +9,7 @@ CREATE TABLE tx_bokunorecipe_domain_model_recipe (
 );
 
 CREATE TABLE tx_bokunorecipe_domain_model_ingredients (
-	title varchar(255) NOT NULL DEFAULT '',
+	title varchar(255) NOT NULL DEFAULT '' UNIQUE,
 	unit varchar(255) NOT NULL DEFAULT '',
 	gluten smallint(1) unsigned NOT NULL DEFAULT '0',
 	lactose smallint(1) unsigned NOT NULL DEFAULT '0'
