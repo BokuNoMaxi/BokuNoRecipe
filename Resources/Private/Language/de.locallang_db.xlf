@@ -89,6 +89,14 @@
 				<target>nach bedarf</target>
 				<source>upon need</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch">
+				<source>pinch</source>
+				<target>Prise</target>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.handful" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.handful">
+				<source>handful</source>
+				<target>Handvol</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

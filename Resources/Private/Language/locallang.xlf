@@ -75,6 +75,14 @@
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit">
 				<source>upon need</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch.unit">
+				<source>pinch</source>
+				<target>Prise</target>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.handful.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.handful.unit">
+				<source>handful</source>
+				<target>Handvol</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -8,5 +8,7 @@ $GLOBALS['TCA']['tx_bokunorecipe_domain_model_ingredientstorecipe']['columns']['
         ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint', 3],
         ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.package', 4],
         ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.need', 5],
+        ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch', 6],
+        ['LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.handful', 7],
 ];
 
