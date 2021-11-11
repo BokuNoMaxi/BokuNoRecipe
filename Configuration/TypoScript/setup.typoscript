@@ -83,3 +83,12 @@ plugin.tx_bokunorecipe._CSS_DEFAULT_STYLE (
         color:green;
     }
 )
+
+plugin.tx_bokunorecipe_bokunorecipe.persistence.classes {
+	BokuNo\Bokunorecipe\Domain\Model\Category {
+		mapping {
+			recordType = 0
+			tableName = sys_category
+		}
+	}
+}

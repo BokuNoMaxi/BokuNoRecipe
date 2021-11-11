@@ -36,6 +36,21 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     }
 
     /**
+     * @var \BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository
+     */
+    protected $categoryRepository;
+
+    /**
+     * Inject a category repository to enable DI
+     *
+     * @param \BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository $categoryRepository
+     */
+    public function injectCategoryRepository(\BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
+    /**
      * action list
      *
      * @return string|object|null|void

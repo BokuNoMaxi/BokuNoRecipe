@@ -80,6 +80,8 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
 
         // Do not remove the next line: It would break the functionality
         $this->initializeObject();
+        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+
     }
 
     /**
@@ -286,6 +288,62 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     {
         $this->teaser = $teaser;
     }
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Category>
+     */
+    protected $categories;
+
+    /**
+     * Get categories
+     *
+     * @return \BokuNo\Bokunorecipe\Domain\Model\Category[]
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Get first category
+     *
+     * @return Category
+     */
+    public function getFirstCategory()
+    {
+        $categories = $this->getCategories();
+        if (!is_null($categories)) {
+            $categories->rewind();
+            return $categories->current();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Set categories
+     *
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * Adds a category to this categories.
+     *
+     * @param Category $category
+     */
+    public function addCategory(Category $category)
+    {
+        $this->getCategories()->attach($category);
+    }
+
+    /**
+     * Returns Ingredients in a group seperated array
+     * @return array
+     */
     public function getIngredientsInGroups()
     {
         $ingredients = $this->getIngredients();

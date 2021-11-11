@@ -1,6 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 	  data-namespace-typo3-fluid="true">
-      <f:debug>{recipe.IngredientsInGroups}</f:debug>
 <div class="bokunorecipe__detail">
     <div class="bokunorecipe__detail__carousel carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -29,6 +28,11 @@
         </div>
     </div>
     <h1 class="pt-3">{recipe.title}</h1>
+    <p class="bokunorecipe__detail__badges">
+        <f:for each="{recipe.categories}" as="category" iteration="i">
+            <span class="badge bg-info">{category.title}</span>
+        </f:for>
+    </p>
     <p class="bokunorecipe__detail__teaser"><f:format.html>{recipe.teaser}</f:format.html></p>
     <f:for each="{recipe.IngredientsInGroups}" as="ingredientGroup" key="group" iteration="i">
         <f:if condition="{group} == 'no-group'">

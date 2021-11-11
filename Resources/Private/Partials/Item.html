@@ -27,7 +27,7 @@
 				<span itemprop="headline">{recipe.title}</span>
 			</f:link.action>
 		</h3>
-		<span class="news-list-date">
+		<span class="card-body__publish-date">
 			<time itemprop="datePublished" datetime="{f:format.date(date:recipe.publishDate, format:'Y-m-d')}">
 				<f:format.date format="{f:translate(key:'dateFormat')}">{recipe.publishDate}</f:format.date>
 			</time>
@@ -49,8 +49,10 @@
 		</p>
 		<f:if condition="1=0">
 			<!-- first category -->
-			<p class="news-list-category">
-				<span class="badge bg-info"></span>
+			<p class="card-body__category">
+				<f:for each="{recipe.categories}" as="category" iteration="i">
+					<span class="badge bg-info">{category.title}</span>
+				</f:for>
 			</p>
 		</f:if>
 
