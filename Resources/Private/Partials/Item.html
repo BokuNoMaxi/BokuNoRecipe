@@ -35,7 +35,7 @@
 		
 		<p class="card-text">
 			<n:removeMediaTags>
-				<f:if condition="{teaser}">
+				<f:if condition="{recipe.teaser}">
 					<f:then>
 						<div itemprop="description">{recipe.teaser -> f:format.crop(maxCharacters:
 							'{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}</div>
