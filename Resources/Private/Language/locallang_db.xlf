@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_db" date="2021-11-10T14:14:30Z" product-name="bokunorecipe">
+	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_db" date="2021-11-11T06:03:11Z" product-name="bokunorecipe">
 		<header/>
 		<body>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe" resname="tx_bokunorecipe_domain_model_recipe">
@@ -56,6 +56,9 @@
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient">
 				<source>Ingredient</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_category" resname="tx_bokunorecipe_domain_model_category">
+				<source>Category</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunorecipe.name" resname="tx_bokunorecipe_bokunorecipe.name">
 				<source>bokunorecipe</source>

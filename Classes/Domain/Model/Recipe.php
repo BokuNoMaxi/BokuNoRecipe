@@ -286,23 +286,22 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     {
         $this->teaser = $teaser;
     }
-
-    public function getIngredientsInGroups(){
+    public function getIngredientsInGroups()
+    {
         $ingredients = $this->getIngredients();
         $return = [];
         foreach ($ingredients as $key => $ingredient) {
-            $ingredientGroup=$ingredient->getCustomGroup();
-            if($ingredientGroup){
-                if(! $return[$ingredientGroup]){
+            $ingredientGroup = $ingredient->getCustomGroup();
+            if ($ingredientGroup) {
+                if (!$return[$ingredientGroup]) {
                     $return[$ingredientGroup] = [];
                 }
-                array_push($return[$ingredientGroup],$ingredient); 
-            }
-            else{
-                if(! $return['no-group']){
+                array_push($return[$ingredientGroup], $ingredient);
+            } else {
+                if (!$return['no-group']) {
                     $return['no-group'] = [];
                 }
-                array_push($return['no-group'],$ingredient); 
+                array_push($return['no-group'], $ingredient);
             }
         }
         return $return;

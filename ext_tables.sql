@@ -9,7 +9,7 @@ CREATE TABLE tx_bokunorecipe_domain_model_recipe (
 );
 
 CREATE TABLE tx_bokunorecipe_domain_model_ingredients (
-	title varchar(255) NOT NULL DEFAULT '' UNIQUE,
+	title varchar(255) NOT NULL DEFAULT '',
 	unit varchar(255) NOT NULL DEFAULT '',
 	gluten smallint(1) unsigned NOT NULL DEFAULT '0',
 	lactose smallint(1) unsigned NOT NULL DEFAULT '0'
@@ -29,4 +29,10 @@ CREATE TABLE tx_bokunorecipe_domain_model_recipe (
 
 CREATE TABLE tx_bokunorecipe_domain_model_ingredients (
 	categories int(11) unsigned DEFAULT '0' NOT NULL
+);
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+CREATE TABLE tx_bokunorecipe_domain_model_ingredients (
+	title varchar(255) NOT NULL DEFAULT '' UNIQUE
 );

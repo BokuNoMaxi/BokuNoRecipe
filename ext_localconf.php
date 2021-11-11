@@ -69,3 +69,4 @@ call_user_func(static function() {
         ['source' => 'EXT:bokunorecipe/Resources/Public/Icons/user_plugin_bokunoingredients.svg']
     );
 });
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
