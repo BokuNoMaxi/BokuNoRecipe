@@ -111,6 +111,9 @@
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.handful" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.handful">
 				<source>handful</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.optional" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.optional">
+				<source>optional</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
