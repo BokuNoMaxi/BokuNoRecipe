@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_csh" date="2021-11-11T06:03:11Z" product-name="bokunorecipe">
+	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_csh" date="2021-11-11T08:06:08Z" product-name="bokunorecipe">
 		<header/>
 		<body>
 			<trans-unit id="title.description" resname="title.description">

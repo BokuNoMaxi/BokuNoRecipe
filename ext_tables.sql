@@ -1,5 +1,8 @@
 CREATE TABLE tx_bokunorecipe_domain_model_recipe (
 	title varchar(255) NOT NULL DEFAULT '',
+	portions varchar(255) NOT NULL DEFAULT '',
+	max_time varchar(255) NOT NULL DEFAULT '',
+	prep_time varchar(255) NOT NULL DEFAULT '',
 	teaser text,
 	preparation text,
 	publish_date date DEFAULT NULL,
@@ -21,6 +24,10 @@ CREATE TABLE tx_bokunorecipe_domain_model_ingredientstorecipe (
 	alternative_measurement int(11) DEFAULT '0' NOT NULL,
 	custom_group varchar(255) NOT NULL DEFAULT '',
 	ingredient int(11) unsigned DEFAULT '0'
+);
+
+CREATE TABLE sys_category (
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE tx_bokunorecipe_domain_model_recipe (

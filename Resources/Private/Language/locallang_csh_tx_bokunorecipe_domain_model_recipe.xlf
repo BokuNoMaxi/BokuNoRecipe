@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_csh" date="2021-11-11T06:03:11Z" product-name="bokunorecipe">
+	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_csh" date="2021-11-11T08:06:08Z" product-name="bokunorecipe">
 		<header/>
 		<body>
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
+			</trans-unit>
+			<trans-unit id="portions.description" resname="portions.description">
+				<source>portions</source>
+			</trans-unit>
+			<trans-unit id="max_time.description" resname="max_time.description">
+				<source>maxTime</source>
+			</trans-unit>
+			<trans-unit id="prep_time.description" resname="prep_time.description">
+				<source>prepTime</source>
 			</trans-unit>
 			<trans-unit id="teaser.description" resname="teaser.description">
 				<source>teaser</source>
@@ -23,6 +32,9 @@
 			</trans-unit>
 			<trans-unit id="ingredients.description" resname="ingredients.description">
 				<source>ingredients</source>
+			</trans-unit>
+			<trans-unit id="portionen.description" resname="portionen.description">
+				<source>portionen</source>
 			</trans-unit>
 		</body>
 	</file>

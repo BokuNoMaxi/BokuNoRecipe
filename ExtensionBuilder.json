@@ -54,6 +54,42 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "portions",
+                            "propertyType": "String",
+                            "uid": "958629811265"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "5",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "maxTime",
+                            "propertyType": "String",
+                            "uid": "1270119497911"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "5",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "prepTime",
+                            "propertyType": "String",
+                            "uid": "1186359719568"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "5",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "teaser",
                             "propertyType": "RichText",
                             "uid": "185988799857"
@@ -330,7 +366,7 @@
                     "categorizable": false,
                     "description": "",
                     "mapToTable": "",
-                    "parentClass": "",
+                    "parentClass": "\\TYPO3\\CMS\\Extbase\\Domain\\Model\\Category",
                     "sorting": false,
                     "type": "Entity",
                     "uid": "549050425339"
@@ -421,7 +457,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2021-11-11 06:03",
+        "last_modified": "2021-11-11 08:06",
         "extension_builder_version": "10.0.1",
         "be_user": " (2)"
     }

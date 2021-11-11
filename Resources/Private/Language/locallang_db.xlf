@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_db" date="2021-11-11T06:03:11Z" product-name="bokunorecipe">
+	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_db" date="2021-11-11T08:06:08Z" product-name="bokunorecipe">
 		<header/>
 		<body>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe" resname="tx_bokunorecipe_domain_model_recipe">
@@ -8,6 +8,15 @@
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.title" resname="tx_bokunorecipe_domain_model_recipe.title">
 				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.portions" resname="tx_bokunorecipe_domain_model_recipe.portions">
+				<source>Portions</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.max_time" resname="tx_bokunorecipe_domain_model_recipe.max_time">
+				<source>Max Time</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.prep_time" resname="tx_bokunorecipe_domain_model_recipe.prep_time">
+				<source>Prep Time</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.teaser" resname="tx_bokunorecipe_domain_model_recipe.teaser">
 				<source>Teaser</source>
@@ -60,6 +69,12 @@
 			<trans-unit id="tx_bokunorecipe_domain_model_category" resname="tx_bokunorecipe_domain_model_category">
 				<source>Category</source>
 			</trans-unit>
+			<trans-unit id="sys_category.tx_extbase_type.Tx_Bokunorecipe_Category" resname="sys_category.tx_extbase_type.Tx_Bokunorecipe_Category">
+				<source>BokuNoRecipe Category</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe.tx_extbase_type" resname="tx_bokunorecipe.tx_extbase_type">
+				<source>Record Type</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunorecipe.name" resname="tx_bokunorecipe_bokunorecipe.name">
 				<source>bokunorecipe</source>
 			</trans-unit>
@@ -71,6 +86,9 @@
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.description" resname="tx_bokunorecipe_bokunoingredients.description">
 				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.portionen" resname="tx_bokunorecipe_domain_model_recipe.portionen">
+				<source>Portionen</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon">
 				<source>Teaspoon</source>

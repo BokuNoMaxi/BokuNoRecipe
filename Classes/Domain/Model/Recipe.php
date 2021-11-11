@@ -21,12 +21,38 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
 {
 
     /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Category>
+     */
+    protected $categories = null;
+
+    /**
      * title
      *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $title = '';
+
+    /**
+     * portions
+     *
+     * @var string
+     */
+    protected $portions = '';
+
+    /**
+     * maxTime
+     *
+     * @var string
+     */
+    protected $maxTime = '';
+
+    /**
+     * prepTime
+     *
+     * @var string
+     */
+    protected $prepTime = '';
 
     /**
      * teaser
@@ -81,7 +107,6 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
         // Do not remove the next line: It would break the functionality
         $this->initializeObject();
         $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-
     }
 
     /**
@@ -290,11 +315,6 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     }
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Category>
-     */
-    protected $categories;
-
-    /**
      * Get categories
      *
      * @return \BokuNo\Bokunorecipe\Domain\Model\Category[]
@@ -323,7 +343,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Set categories
      *
-     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories
      */
     public function setCategories($categories)
     {
@@ -342,6 +362,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
 
     /**
      * Returns Ingredients in a group seperated array
+     *
      * @return array
      */
     public function getIngredientsInGroups()
@@ -363,5 +384,68 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
             }
         }
         return $return;
+    }
+
+    /**
+     * Returns the portions
+     *
+     * @return string portions
+     */
+    public function getPortions()
+    {
+        return $this->portions;
+    }
+
+    /**
+     * Sets the portions
+     *
+     * @param string $portions
+     * @return void
+     */
+    public function setPortions(string $portions)
+    {
+        $this->portions = $portions;
+    }
+
+    /**
+     * Returns the maxTime
+     *
+     * @return string $maxTime
+     */
+    public function getMaxTime()
+    {
+        return $this->maxTime;
+    }
+
+    /**
+     * Sets the maxTime
+     *
+     * @param string $maxTime
+     * @return void
+     */
+    public function setMaxTime(string $maxTime)
+    {
+        $this->maxTime = $maxTime;
+    }
+
+    /**
+     * Returns the prepTime
+     *
+     * @return string $prepTime
+     */
+    public function getPrepTime()
+    {
+        return $this->prepTime;
+    }
+
+    /**
+     * Sets the prepTime
+     *
+     * @param string $prepTime
+     * @return void
+     */
+    public function setPrepTime(string $prepTime)
+    {
+        $this->prepTime = $prepTime;
     }
 }

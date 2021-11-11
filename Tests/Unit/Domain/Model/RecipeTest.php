@@ -56,6 +56,81 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
+    public function getPortionsReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getPortions()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPortionsForStringSetsPortions()
+    {
+        $this->subject->setPortions('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'portions',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getMaxTimeReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getMaxTime()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setMaxTimeForStringSetsMaxTime()
+    {
+        $this->subject->setMaxTime('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'maxTime',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getPrepTimeReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getPrepTime()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPrepTimeForStringSetsPrepTime()
+    {
+        $this->subject->setPrepTime('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'prepTime',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getTeaserReturnsInitialValueForString()
     {
         self::assertSame(

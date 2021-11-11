@@ -17,11 +17,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,teaser,preparation,slug',
+        'searchFields' => 'title,portions,max_time,prep_time,teaser,preparation,slug',
         'iconfile' => 'EXT:bokunorecipe/Resources/Public/Icons/tx_bokunorecipe_domain_model_recipe.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, teaser, preparation, publish_date, images, slug, ingredients, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, portions, max_time, prep_time, teaser, preparation, publish_date, images, slug, ingredients, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -112,6 +112,36 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required',
+                'default' => ''
+            ],
+        ],
+        'portions' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_recipe.portions',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'default' => ''
+            ],
+        ],
+        'max_time' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_recipe.max_time',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'default' => ''
+            ],
+        ],
+        'prep_time' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_recipe.prep_time',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
                 'default' => ''
             ],
         ],

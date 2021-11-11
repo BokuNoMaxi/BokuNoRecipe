@@ -28,17 +28,17 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected $recipeRepository = null;
 
     /**
+     * @var \BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository
+     */
+    protected $categoryRepository = null;
+
+    /**
      * @param \BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository $recipeRepository
      */
     public function injectRecipeRepository(\BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository $recipeRepository)
     {
         $this->recipeRepository = $recipeRepository;
     }
-
-    /**
-     * @var \BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository
-     */
-    protected $categoryRepository;
 
     /**
      * Inject a category repository to enable DI
