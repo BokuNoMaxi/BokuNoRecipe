@@ -1,4 +1,9 @@
+$badge-margin-right: .25em;
+
 .bokunorecipe__detail {
+    .badge {
+        margin-right: $badge-margin-right    
+    }
     .bokunorecipe__detail__ingredients {
         td {
             &:nth-child(2n) {
@@ -8,6 +13,9 @@
     }
 }
 .bokunorecipe__list {
+    .badge {
+        margin-right: $badge-margin-right;
+    }
     .card {
         width: 32%;
         height: fit-content;
