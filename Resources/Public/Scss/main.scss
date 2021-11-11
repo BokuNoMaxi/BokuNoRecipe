@@ -17,8 +17,14 @@ $badge-margin-right: .25em;
         margin-right: $badge-margin-right;
     }
     .card {
-        width: 32%;
+        width: 99%;
         height: fit-content;
         height: -moz-fit-content;
+        @media (min-width: 576px) {
+            width: 48%;
+        }
+        @media (min-width: 768px) {
+            width: 32%;
+        }
     }
 }
