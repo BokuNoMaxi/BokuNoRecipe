@@ -84,8 +84,11 @@
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint.unit">
 				<source>KP</source>
 			</trans-unit>
-			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.package.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.package.unit">
-				<source>package</source>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.bunch.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.bunch.unit">
+				<source>bunch</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.pack.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.pack.unit">
+				<source>pack</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit">
 				<source>upon need</source>

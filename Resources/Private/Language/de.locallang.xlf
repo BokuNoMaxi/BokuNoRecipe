@@ -87,9 +87,13 @@
 				<target>MSP</target>
 				<source>KP</source>
 			</trans-unit>
-			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.package.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.package.unit">
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.bunch.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.bunch.unit">
 				<target>Bund</target>
-				<source>package</source>
+				<source>bunch</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.pack.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.pack.unit">
+				<target>Packung</target>
+				<source>pack</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.package.unit">
 				<target>nach Bedarf</target>
