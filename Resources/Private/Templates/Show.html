@@ -1,16 +1,27 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-	  data-namespace-typo3-fluid="true">
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 <div class="bokunorecipe__detail">
     <div class="bokunorecipe__detail__carousel carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <f:for each="{recipe.images}" as="image" iteration="i">
                 <div class="carousel-item active">
                     <f:if condition="{image.originalResource.type} == 2">
-                        <f:image 
+                        <v:media.image 
                             class="d-block w-100"
-                            image="{image}" 
-                            title="{image.originalResource.title}"
-                            alt="{image.originalResource.alternative}" />
+                            src="{f:uri.image(image: image)}"
+                            alt="{image.originalResource.alternative}"
+                            treatIdAsReference="1"
+                            additionalAttributes="{
+                                srcset: '{f:uri.image(image: image, maxWidth: 100)} 150w,
+                                        {f:uri.image(image: image, maxWidth: 200)} 350w,
+                                        {f:uri.image(image: image, maxWidth: 350)} 500w,
+                                        {f:uri.image(image: image, maxWidth: 550)} 700w,
+                                        {f:uri.image(image: image, maxWidth: 850)} 1000w,
+                                        {f:uri.image(image: image, maxWidth: 1000)} 1300w',
+                                sizes: '(min-width: 150px) 50vw, 100vw'
+                            }"
+                        />
                     </f:if>
                     <f:if condition="{image.originalResource.type} == 4">
                         <f:render 
@@ -18,10 +29,17 @@
                             arguments="{mediaElement: image}" />
                     </f:if>
                     <f:if condition="{image.originalResource.type} == 5">
-                        <f:image 	
-                            image="{image}" 
-                            title="{image.originalResource.title}"
-                            alt="{image.originalResource.alternative}" />
+                        <v:media.image 
+                            class="d-block w-100"
+                            src="{f:uri.image(image: image)}"
+                            alt="{image.originalResource.alternative}"
+                            treatIdAsReference="1"
+                            additionalAttributes="{
+                                srcset: '{f:uri.image(image: image, maxWidth: 100)} 150w,
+                                        {f:uri.image(image: image, maxWidth: 200)} 350w,
+                                        {f:uri.image(image: image, maxWidth: 350)} 500w',
+                                sizes: '(min-width: 150px) 50vw, 100vw'}"
+                        />
                     </f:if>
                 </div>
             </f:for>
