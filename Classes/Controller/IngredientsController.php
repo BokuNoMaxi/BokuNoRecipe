@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Controller;
 
-
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository;
+use Psr\Http\Message\ResponseInterface;
+use BokuNo\Bokunorecipe\Domain\Model\Ingredients;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -13,11 +17,10 @@ namespace BokuNo\Bokunorecipe\Controller;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
-
 /**
  * IngredientsController
  */
-class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class IngredientsController extends ActionController
 {
 
     /**
@@ -30,7 +33,7 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * @param \BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository $ingredientsRepository
      */
-    public function injectIngredientsRepository(\BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository $ingredientsRepository)
+    public function injectIngredientsRepository(IngredientsRepository $ingredientsRepository)
     {
         $this->ingredientsRepository = $ingredientsRepository;
     }
@@ -40,10 +43,11 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      *
      * @return string|object|null|void
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $ingredients = $this->ingredientsRepository->findAll();
         $this->view->assign('ingredients', $ingredients);
+        return $this->htmlResponse();
     }
 
     /**
@@ -52,9 +56,10 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
      * @return string|object|null|void
      */
-    public function showAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients)
+    public function showAction(Ingredients $ingredients): ResponseInterface
     {
         $this->view->assign('ingredients', $ingredients);
+        return $this->htmlResponse();
     }
 
     /**
@@ -62,8 +67,9 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      *
      * @return string|object|null|void
      */
-    public function newAction()
+    public function newAction(): ResponseInterface
     {
+        return $this->htmlResponse();
     }
 
     /**
@@ -72,9 +78,9 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $newIngredients
      * @return string|object|null|void
      */
-    public function createAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $newIngredients)
+    public function createAction(Ingredients $newIngredients)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
         $this->ingredientsRepository->add($newIngredients);
         $this->redirect('list');
     }
@@ -86,9 +92,10 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ingredients")
      * @return string|object|null|void
      */
-    public function editAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients)
+    public function editAction(Ingredients $ingredients): ResponseInterface
     {
         $this->view->assign('ingredients', $ingredients);
+        return $this->htmlResponse();
     }
 
     /**
@@ -97,9 +104,9 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
      * @return string|object|null|void
      */
-    public function updateAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients)
+    public function updateAction(Ingredients $ingredients)
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
         $this->ingredientsRepository->update($ingredients);
         $this->redirect('list');
     }
@@ -110,9 +117,9 @@ class IngredientsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
      * @return string|object|null|void
      */
-    public function deleteAction(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients)
+    public function deleteAction(Ingredients $ingredients)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
         $this->ingredientsRepository->remove($ingredients);
         $this->redirect('list');
     }

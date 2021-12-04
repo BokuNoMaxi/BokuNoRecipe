@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
+use BokuNo\Bokunorecipe\Domain\Model\Ingredients;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -20,7 +21,7 @@ class IngredientsTest extends UnitTestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
+        $this->subject = new Ingredients();
     }
 
     protected function tearDown()

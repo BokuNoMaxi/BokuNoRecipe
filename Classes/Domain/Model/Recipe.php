@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Domain\Model;
 
-
+use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -13,11 +15,10 @@ namespace BokuNo\Bokunorecipe\Domain\Model;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
-
 /**
  * Recipe
  */
-class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
+class Recipe extends AbstractValueObject
 {
 
     /**
@@ -106,7 +107,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
 
         // Do not remove the next line: It would break the functionality
         $this->initializeObject();
-        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->categories = new ObjectStorage();
     }
 
     /**
@@ -119,8 +120,8 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      */
     public function initializeObject()
     {
-        $this->images = $this->images ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->ingredients = $this->ingredients ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->images = $this->images ?: new ObjectStorage();
+        $this->ingredients = $this->ingredients ?: new ObjectStorage();
     }
 
     /**
@@ -171,7 +172,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      * @return void
      */
-    public function addImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
+    public function addImage(FileReference $image)
     {
         $this->images->attach($image);
     }
@@ -182,7 +183,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
      * @return void
      */
-    public function removeImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove)
+    public function removeImage(FileReference $imageToRemove)
     {
         $this->images->detach($imageToRemove);
     }
@@ -203,7 +204,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
      * @return void
      */
-    public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
+    public function setImages(ObjectStorage $images)
     {
         $this->images = $images;
     }
@@ -214,7 +215,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @param \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient
      * @return void
      */
-    public function addIngredient(\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient)
+    public function addIngredient(IngredientsToRecipe $ingredient)
     {
         $this->ingredients->attach($ingredient);
     }
@@ -225,7 +226,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @param \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove The IngredientsToRecipe to be removed
      * @return void
      */
-    public function removeIngredient(\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove)
+    public function removeIngredient(IngredientsToRecipe $ingredientToRemove)
     {
         $this->ingredients->detach($ingredientToRemove);
     }
@@ -246,7 +247,7 @@ class Recipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
      * @return void
      */
-    public function setIngredients(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ingredients)
+    public function setIngredients(ObjectStorage $ingredients)
     {
         $this->ingredients = $ingredients;
     }

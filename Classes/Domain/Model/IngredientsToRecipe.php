@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Domain\Model;
 
-
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -13,11 +13,10 @@ namespace BokuNo\Bokunorecipe\Domain\Model;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
-
 /**
  * IngredientsToRecipe
  */
-class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class IngredientsToRecipe extends AbstractEntity
 {
 
     /**
@@ -108,7 +107,7 @@ class IngredientsToRecipe extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredient
      * @return void
      */
-    public function setIngredient(\BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredient)
+    public function setIngredient(Ingredients $ingredient)
     {
         $this->ingredient = $ingredient;
     }

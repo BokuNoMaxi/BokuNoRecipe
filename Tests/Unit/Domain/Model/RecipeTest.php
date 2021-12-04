@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
+use BokuNo\Bokunorecipe\Domain\Model\Recipe;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -20,7 +24,7 @@ class RecipeTest extends UnitTestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
+        $this->subject = new Recipe();
     }
 
     protected function tearDown()
@@ -209,7 +213,7 @@ class RecipeTest extends UnitTestCase
      */
     public function getImagesReturnsInitialValueForFileReference()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $newObjectStorage = new ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getImages()
@@ -221,8 +225,8 @@ class RecipeTest extends UnitTestCase
      */
     public function setImagesForFileReferenceSetsImages()
     {
-        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $objectStorageHoldingExactlyOneImages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $image = new FileReference();
+        $objectStorageHoldingExactlyOneImages = new ObjectStorage();
         $objectStorageHoldingExactlyOneImages->attach($image);
         $this->subject->setImages($objectStorageHoldingExactlyOneImages);
 
@@ -238,8 +242,8 @@ class RecipeTest extends UnitTestCase
      */
     public function addImageToObjectStorageHoldingImages()
     {
-        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $imagesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $image = new FileReference();
+        $imagesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -255,8 +259,8 @@ class RecipeTest extends UnitTestCase
      */
     public function removeImageFromObjectStorageHoldingImages()
     {
-        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $imagesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $image = new FileReference();
+        $imagesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -297,7 +301,7 @@ class RecipeTest extends UnitTestCase
      */
     public function getIngredientsReturnsInitialValueForIngredientsToRecipe()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $newObjectStorage = new ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getIngredients()
@@ -309,8 +313,8 @@ class RecipeTest extends UnitTestCase
      */
     public function setIngredientsForObjectStorageContainingIngredientsToRecipeSetsIngredients()
     {
-        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
-        $objectStorageHoldingExactlyOneIngredients = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $ingredient = new IngredientsToRecipe();
+        $objectStorageHoldingExactlyOneIngredients = new ObjectStorage();
         $objectStorageHoldingExactlyOneIngredients->attach($ingredient);
         $this->subject->setIngredients($objectStorageHoldingExactlyOneIngredients);
 
@@ -326,8 +330,8 @@ class RecipeTest extends UnitTestCase
      */
     public function addIngredientToObjectStorageHoldingIngredients()
     {
-        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
-        $ingredientsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $ingredient = new IngredientsToRecipe();
+        $ingredientsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -343,8 +347,8 @@ class RecipeTest extends UnitTestCase
      */
     public function removeIngredientFromObjectStorageHoldingIngredients()
     {
-        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
-        $ingredientsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $ingredient = new IngredientsToRecipe();
+        $ingredientsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();

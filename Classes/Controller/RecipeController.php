@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Controller;
 
-
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository;
+use BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository;
+use Psr\Http\Message\ResponseInterface;
+use BokuNo\Bokunorecipe\Domain\Model\Recipe;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -13,11 +18,10 @@ namespace BokuNo\Bokunorecipe\Controller;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
-
 /**
  * RecipeController
  */
-class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class RecipeController extends ActionController
 {
 
     /**
@@ -35,7 +39,7 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     /**
      * @param \BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository $recipeRepository
      */
-    public function injectRecipeRepository(\BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository $recipeRepository)
+    public function injectRecipeRepository(RecipeRepository $recipeRepository)
     {
         $this->recipeRepository = $recipeRepository;
     }
@@ -45,7 +49,7 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      *
      * @param \BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository $categoryRepository
      */
-    public function injectCategoryRepository(\BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository $categoryRepository)
+    public function injectCategoryRepository(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }
@@ -55,10 +59,11 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      *
      * @return string|object|null|void
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $recipes = $this->recipeRepository->findAll();
         $this->view->assign('recipes', $recipes);
+        return $this->htmlResponse();
     }
 
     /**
@@ -67,9 +72,10 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
      * @return string|object|null|void
      */
-    public function showAction(\BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe)
+    public function showAction(Recipe $recipe): ResponseInterface
     {
         $this->view->assign('recipe', $recipe);
+        return $this->htmlResponse();
     }
 
     /**
@@ -77,8 +83,9 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      *
      * @return string|object|null|void
      */
-    public function newAction()
+    public function newAction(): ResponseInterface
     {
+        return $this->htmlResponse();
     }
 
     /**
@@ -87,9 +94,9 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $newRecipe
      * @return string|object|null|void
      */
-    public function createAction(\BokuNo\Bokunorecipe\Domain\Model\Recipe $newRecipe)
+    public function createAction(Recipe $newRecipe)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
         $this->recipeRepository->add($newRecipe);
         $this->redirect('list');
     }
@@ -101,9 +108,10 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("recipe")
      * @return string|object|null|void
      */
-    public function editAction(\BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe)
+    public function editAction(Recipe $recipe): ResponseInterface
     {
         $this->view->assign('recipe', $recipe);
+        return $this->htmlResponse();
     }
 
     /**
@@ -112,9 +120,9 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
      * @return string|object|null|void
      */
-    public function updateAction(\BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe)
+    public function updateAction(Recipe $recipe)
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
         $this->recipeRepository->update($recipe);
         $this->redirect('list');
     }
@@ -125,9 +133,9 @@ class RecipeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
      * @return string|object|null|void
      */
-    public function deleteAction(\BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe)
+    public function deleteAction(Recipe $recipe)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
         $this->recipeRepository->remove($recipe);
         $this->redirect('list');
     }

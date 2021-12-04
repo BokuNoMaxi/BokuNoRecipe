@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
 
 $GLOBALS['TCA']['tx_bokunorecipe_domain_model_ingredientstorecipe']['columns']['alternative_measurement']['config']['items']=[
         ['---', 0],

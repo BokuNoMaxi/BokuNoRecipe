@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
 
 call_user_func(static function() {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_bokunorecipe_domain_model_recipe', 'EXT:bokunorecipe/Resources/Private/Language/locallang_csh_tx_bokunorecipe_domain_model_recipe.xlf');
