@@ -4,16 +4,15 @@
 <div class="card m-1 p-0">
 	<f:link.action action="show" pageUid="10" title="{recipe.title}" arguments="{recipe:recipe}">
 		<f:if condition="{recipe.images.0.originalResource.type} == 2">
-			<v:media.image 
+			<f:variable name="mediaElement">{recipe.images.0}</f:variable>
+			<f:image 
 				class="card-img-top"
-				src="{f:uri.image(image: recipe.images.0)}"
-				alt="{recipe.images.0.originalResource.alternative}"
-				treatIdAsReference="1"
-				additionalAttributes="{
-					srcset: '{f:uri.image(image: recipe.images.0, maxWidth: 100)} 150w,
-							{f:uri.image(image: recipe.images.0, maxWidth: 200)} 350w,
-							{f:uri.image(image: recipe.images.0, maxWidth: 350)} 500w',
-					sizes: '(min-width: 150px) 50vw, 100vw'}"
+				image="{mediaElement}" 
+				title="{mediaElement.originalResource.title}" 
+				alt="{mediaElement.originalResource.alternative}" 
+				loading="{settings.list.media.image.lazyLoading}"
+				maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}" 
+				maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
 			/>
 		</f:if>
 		<f:if condition="{images.0.originalResource.type} == 4">
@@ -22,16 +21,15 @@
 				arguments="{mediaElement: recipe.images.0}" />
 		</f:if>
 		<f:if condition="{recipe.images.0.originalResource.type} == 5">
-			<v:media.image 
+			<f:variable name="mediaElement">{recipe.images.0}</f:variable>
+			<f:image 
 				class="card-img-top"
-				src="{f:uri.image(image: recipe.images.0)}"
-				alt="{recipe.images.0.originalResource.alternative}"
-				treatIdAsReference="1"
-				additionalAttributes="{
-					srcset: '{f:uri.image(image: recipe.images.0, maxWidth: 100)} 150w,
-							{f:uri.image(image: recipe.images.0, maxWidth: 200)} 350w,
-							{f:uri.image(image: recipe.images.0, maxWidth: 350)} 500w',
-					sizes: '(min-width: 150px) 50vw, 100vw'}"
+				image="{mediaElement}" 
+				title="{mediaElement.originalResource.title}" 
+				alt="{mediaElement.originalResource.alternative}" 
+				loading="{settings.list.media.image.lazyLoading}"
+				maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}" 
+				maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
 			/>
 		</f:if>
 	</f:link.action>
