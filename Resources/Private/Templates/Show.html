@@ -1,87 +1,114 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
-    data-namespace-typo3-fluid="true">
-<div class="bokunorecipe__detail">
+<html
+  xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+  data-namespace-typo3-fluid="true"
+>
+  <div class="bokunorecipe__detail">
     <div class="bokunorecipe__detail__carousel carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <f:for each="{recipe.images}" as="mediaElement" iteration="i">
-                <div class="carousel-item active">
-                    <f:if condition="{mediaElement.originalResource.type} == 2">
-                        <f:image 
-                            class="d-block w-100"
-                            image="{mediaElement}" 
-                            title="{mediaElement.originalResource.title}" 
-                            alt="{mediaElement.originalResource.alternative}" 
-                            loading="{settings.list.media.image.lazyLoading}"
-                            maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}" 
-                            maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
-                        />
-                    </f:if>
-                    <f:if condition="{mediaElement.originalResource.type} == 4">
-                        <f:render 
-                            partial="Detail/MediaVideo" 
-                            arguments="{mediaElement: image}" />
-                    </f:if>
-                    <f:if condition="{mediaElement.originalResource.type} == 5">
-                        <f:image 
-                            class="d-block w-100"
-                            image="{mediaElement}" 
-                            title="{mediaElement.originalResource.title}" 
-                            alt="{mediaElement.originalResource.alternative}" 
-                            loading="{settings.list.media.image.lazyLoading}"
-                            maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}" 
-                            maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
-                        />
-                    </f:if>
-                </div>
-            </f:for>
-        </div>
+      <div class="carousel-inner">
+        <f:for each="{recipe.images}" as="mediaElement" iteration="i">
+          <div class="carousel-item active">
+            <f:if condition="{mediaElement.originalResource.type} == 2">
+              <f:image
+                class="d-block w-100"
+                image="{mediaElement}"
+                title="{mediaElement.originalResource.title}"
+                alt="{mediaElement.originalResource.alternative}"
+                loading="{settings.list.media.image.lazyLoading}"
+                maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
+                maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
+              />
+            </f:if>
+            <f:if condition="{mediaElement.originalResource.type} == 4">
+              <f:render partial="Detail/MediaVideo" arguments="{mediaElement: image}" />
+            </f:if>
+            <f:if condition="{mediaElement.originalResource.type} == 5">
+              <f:image
+                class="d-block w-100"
+                image="{mediaElement}"
+                title="{mediaElement.originalResource.title}"
+                alt="{mediaElement.originalResource.alternative}"
+                loading="{settings.list.media.image.lazyLoading}"
+                maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
+                maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
+              />
+            </f:if>
+          </div>
+        </f:for>
+      </div>
     </div>
     <h1 class="pt-3">{recipe.title}</h1>
     <p class="bokunorecipe__detail__badges">
-        <f:for each="{recipe.categories}" as="category" iteration="i">
-            <span class="badge bg-info">{category.title}</span>
-        </f:for>
+      <f:for each="{recipe.categories}" as="category" iteration="i">
+        <span class="badge bg-info">{category.title}</span>
+      </f:for>
     </p>
     <p class="bokunorecipe__detail__teaser"><f:format.html>{recipe.teaser}</f:format.html></p>
     <f:for each="{recipe.IngredientsInGroups}" as="ingredientGroup" key="group" iteration="i">
-        <f:if condition="{group} == 'no-group'">
-            <f:then>
-                <h2>Zutaten:</h2>
-            </f:then>
-            <f:else>
-                <h2>{group}</h2>
-            </f:else>
-        </f:if>
-        <table class="bokunorecipe__detail__ingredients col-12 table table-striped table-hover">
+      <f:if condition="{group} == 'no-group'">
+        <f:then>
+          <h2>Zutaten:</h2>
+        </f:then>
+        <f:else>
+          <h2>{group}</h2>
+        </f:else>
+      </f:if>
+      <table class="bokunorecipe__detail__ingredients col-12 table table-striped table-hover">
         <f:for each="{ingredientGroup}" as="ingredient" iteration="i">
-            <tr>
-                <td class="col-3">{ingredient.quantity}<f:if condition="{ingredient.alternativeMeasurement}">
-                    <f:then>
-                        <f:switch expression="{ingredient.alternativeMeasurement}">
-                            <f:case value="1"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon.unit" /></f:case>
-                            <f:case value="2"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.tablespoon.unit" /></f:case>
-                            <f:case value="3"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint.unit" /></f:case>
-                            <f:case value="4"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.bunch.unit" /></f:case>
-                            <f:case value="5"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit" /></f:case>
-                            <f:case value="6"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch.unit" /></f:case>
-                            <f:case value="7"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.handful.unit" /></f:case>
-                            <f:case value="8"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.optional.unit" /></f:case>
-                            <f:case value="9"><f:translate key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pack.unit" /></f:case>
-                        </f:switch>
-                    </f:then>
-                    <f:else>
-                        {ingredient.ingredient.unit} 
-                    </f:else>
-                </f:if></td>
-                <td>{ingredient.ingredient.title}</td>
-            </tr>
+          <tr>
+            <td class="col-3">
+              {ingredient.quantity}<f:if condition="{ingredient.alternativeMeasurement}">
+                <f:then>
+                  <f:switch expression="{ingredient.alternativeMeasurement}">
+                    <f:case value="1"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon.unit"
+                    /></f:case>
+                    <f:case value="2"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.tablespoon.unit"
+                    /></f:case>
+                    <f:case value="3"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint.unit"
+                    /></f:case>
+                    <f:case value="4"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.bunch.unit"
+                    /></f:case>
+                    <f:case value="5"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit"
+                    /></f:case>
+                    <f:case value="6"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch.unit"
+                    /></f:case>
+                    <f:case value="7"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.handful.unit"
+                    /></f:case>
+                    <f:case value="8"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.optional.unit"
+                    /></f:case>
+                    <f:case value="9"
+                      ><f:translate
+                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pack.unit"
+                    /></f:case>
+                  </f:switch>
+                </f:then>
+                <f:else> {ingredient.ingredient.unit} </f:else>
+              </f:if>
+            </td>
+            <td>{ingredient.ingredient.title}</td>
+          </tr>
         </f:for>
-        </table>
+      </table>
     </f:for>
     <div class="bokunorecipe__detail__perparation pt-3">
-        <h2>Zubereitung</h2>
-        <f:format.html>{recipe.preparation}</f:format.html>
+      <h2>Zubereitung</h2>
+      <f:format.html>{recipe.preparation}</f:format.html>
     </div>
-</div>
+  </div>
 </html>
