@@ -7,8 +7,9 @@ $badge-margin-right: 0.25em;
 
   .bokunorecipe__detail__carousel {
     img {
-      height: 30em;
-      width: fit-content!important;
+      height: auto;
+      width: 100%;
+      max-width: 20em;
     }
   }
 
