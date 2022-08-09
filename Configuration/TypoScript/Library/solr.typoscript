@@ -1,0 +1,34 @@
+plugin.tx_solr.index.queue {
+    bokunorecipe = 1
+    bokunorecipe {
+        table = tx_bokunorecipe_domain_model_recipe
+        fields {
+            abstract = teaser
+            title = title
+            content = SOLR_CONTENT
+            content {
+                cObject = COA
+                cObject {
+                    10 = TEXT
+                    10 {
+                        field = teaser
+                        noTrimWrap = || |
+                    }
+                }
+            }
+
+            url = TEXT
+            url {
+                typolink.parameter = {$plugin.tx_bokunorecipe_bokunorecipe.settings.detailPid}
+				        typolink.additionalParams = &tx_bokunorecipe_bokunorecipe[controller]=Recipe&tx_bokunorecipe_bokunorecipe[action]=show&tx_bokunorecipe_bokunorecipe[recipe]={field:uid}
+                typolink.additionalParams.insertData = 1
+                typolink.useCacheHash = 1
+                typolink.returnLast = url
+            }
+        }
+
+        attachments {
+            fields = images
+        }
+    }
+}
