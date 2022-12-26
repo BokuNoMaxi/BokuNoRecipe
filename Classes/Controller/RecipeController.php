@@ -10,6 +10,9 @@ use BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository;
 use Psr\Http\Message\ResponseInterface;
 use BokuNo\Bokunorecipe\Domain\Model\Recipe;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
+
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -59,10 +62,19 @@ class RecipeController extends ActionController
      *
      * @return string|object|null|void
      */
-    public function listAction(): ResponseInterface
+    public function listAction(int $currentPage = 1): ResponseInterface
     {
-        $recipes = $this->recipeRepository->findAll();
-        $this->view->assign('recipes', $recipes);
+        $recipes = $this->recipeRepository->findAll()->toArray();
+        $arrayPaginator = new ArrayPaginator($recipes, $currentPage, 9);
+        $paging = new SimplePagination($arrayPaginator);
+        $this->view->assignMultiple(
+            [
+                'recipes' => $recipes,
+                'paginator' => $arrayPaginator,
+                'paging' => $paging,
+                'pages' => range(1, $paging->getLastPageNumber()),
+            ]
+        );
         return $this->htmlResponse();
     }
 
