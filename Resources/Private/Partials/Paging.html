@@ -2,21 +2,14 @@
   <f:if
     condition="{paging.previousPageNumber} && {paging.previousPageNumber} >= {paging.firstPageNumber}"
   >
-    <f:then>
-      <li class="waves-effect">
-        <a
-          href="{f:uri.action(action:actionName, arguments:{currentPage: paging.previousPageNumber})}"
-          title="{f:translate(key:'paging.previous')}"
-        >
-          <i class="material-icons"><</i>
-        </a>
-      </li>
-    </f:then>
-    <f:else>
-      <li class="disabled">
-        <a href="#"><i class="material-icons">></i></a>
-      </li>
-    </f:else>
+    <li class="waves-effect">
+      <a
+        href="{f:uri.action(action:actionName, arguments:{currentPage: paging.previousPageNumber})}"
+        title="{f:translate(key:'paging.previous')}"
+      >
+        <i class="material-icons"><</i>
+      </a>
+    </li>
   </f:if>
   <f:for each="{pages}" as="page">
     <li
@@ -27,20 +20,13 @@
   </f:for>
 
   <f:if condition="{paging.nextPageNumber} && {paging.nextPageNumber} <= {paging.lastPageNumber}">
-    <f:then>
-      <li class="waves-effect">
-        <a
-          href="{f:uri.action(action:actionName, arguments:{currentPage: paging.nextPageNumber})}"
-          title="{f:translate(key:'paging.next')}"
-        >
-          <i class="material-icons">></i>
-        </a>
-      </li>
-    </f:then>
-    <f:else>
-      <li class="disabled">
-        <a href="#"><i class="material-icons">></i></a>
-      </li>
-    </f:else>
+    <li class="waves-effect">
+      <a
+        href="{f:uri.action(action:actionName, arguments:{currentPage: paging.nextPageNumber})}"
+        title="{f:translate(key:'paging.next')}"
+      >
+        <i class="material-icons">></i>
+      </a>
+    </li>
   </f:if>
 </ul>
