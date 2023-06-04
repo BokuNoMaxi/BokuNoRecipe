@@ -1,36 +1,41 @@
 <?php
-defined('TYPO3') || die();
+defined("TYPO3") || die();
+call_user_func(static function () {
+  \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    "Bokunorecipe",
+    "Bokunorecipe",
+    [
+      \BokuNo\Bokunorecipe\Controller\RecipeController::class =>
+        "list, show, new, create, edit, update",
+    ],
+    // non-cacheable actions
+    [
+      \BokuNo\Bokunorecipe\Controller\RecipeController::class =>
+        "create, update, delete",
+      \BokuNo\Bokunorecipe\Controller\IngredientsController::class =>
+        "create, update, delete",
+    ]
+  );
 
-call_user_func(static function() {
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'Bokunorecipe',
-        'Bokunorecipe',
-        [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'list, show, new, create, edit, update'
-        ],
-        // non-cacheable actions
-        [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'create, update, delete',
-            \BokuNo\Bokunorecipe\Controller\IngredientsController::class => 'create, update, delete'
-        ]
-    );
+  \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    "Bokunorecipe",
+    "Bokunoingredients",
+    [
+      \BokuNo\Bokunorecipe\Controller\IngredientsController::class =>
+        "list, show, new, create, edit, update",
+    ],
+    // non-cacheable actions
+    [
+      \BokuNo\Bokunorecipe\Controller\RecipeController::class =>
+        "create, update, delete",
+      \BokuNo\Bokunorecipe\Controller\IngredientsController::class =>
+        "create, update, delete",
+    ]
+  );
 
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'Bokunorecipe',
-        'Bokunoingredients',
-        [
-            \BokuNo\Bokunorecipe\Controller\IngredientsController::class => 'list, show, new, create, edit, update'
-        ],
-        // non-cacheable actions
-        [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'create, update, delete',
-            \BokuNo\Bokunorecipe\Controller\IngredientsController::class => 'create, update, delete'
-        ]
-    );
-
-    // wizards
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        'mod {
+  // wizards
+  \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+    'mod {
             wizards.newContentElement.wizardItems.plugins {
                 elements {
                     bokunorecipe {
@@ -55,18 +60,33 @@ call_user_func(static function() {
                 show = *
             }
        }'
-    );
+  );
 
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-    $iconRegistry->registerIcon(
-        'bokunorecipe-plugin-bokunorecipe',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:bokunorecipe/Resources/Public/Icons/user_plugin_bokunorecipe.svg']
-    );
-    $iconRegistry->registerIcon(
-        'bokunorecipe-plugin-bokunoingredients',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:bokunorecipe/Resources/Public/Icons/user_plugin_bokunoingredients.svg']
-    );
+  $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \TYPO3\CMS\Core\Imaging\IconRegistry::class
+  );
+  $iconRegistry->registerIcon(
+    "bokunorecipe-plugin-bokunorecipe",
+    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+    [
+      "source" =>
+        "EXT:bokunorecipe/Resources/Public/Icons/user_plugin_bokunorecipe.svg",
+    ]
+  );
+  $iconRegistry->registerIcon(
+    "bokunorecipe-plugin-bokunoingredients",
+    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+    [
+      "source" =>
+        "EXT:bokunorecipe/Resources/Public/Icons/user_plugin_bokunoingredients.svg",
+    ]
+  );
 });
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+use BokuNo\Bokunorecipe\Indexer\RecipeIndexer;
+
+$GLOBALS["TYPO3_CONF_VARS"]["EXTCONF"]["ke_search"][
+  "registerIndexerConfiguration"
+][] = RecipeIndexer::class;
+$GLOBALS["TYPO3_CONF_VARS"]["EXTCONF"]["ke_search"]["customIndexer"][] =
+  RecipeIndexer::class;
