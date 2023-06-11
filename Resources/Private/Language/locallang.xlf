@@ -177,6 +177,9 @@
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.helpme" resname="tx_bokunorecipe_bokunoingredients.helpme">
 				<source>Help me!!</source>
 			</trans-unit>
+			<trans-unit id="dateFormat" xml:space="preserve" approved="yes">
+				<source>%m/%d/%Y</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
