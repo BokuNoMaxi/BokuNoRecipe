@@ -22,7 +22,6 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
  */
 class IngredientsController extends ActionController
 {
-
     /**
      * ingredientsRepository
      *
@@ -33,8 +32,9 @@ class IngredientsController extends ActionController
     /**
      * @param \BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository $ingredientsRepository
      */
-    public function injectIngredientsRepository(IngredientsRepository $ingredientsRepository)
-    {
+    public function injectIngredientsRepository(
+        IngredientsRepository $ingredientsRepository
+    ) {
         $this->ingredientsRepository = $ingredientsRepository;
     }
 
@@ -46,7 +46,7 @@ class IngredientsController extends ActionController
     public function listAction(): ResponseInterface
     {
         $ingredients = $this->ingredientsRepository->findAll();
-        $this->view->assign('ingredients', $ingredients);
+        $this->view->assign("ingredients", $ingredients);
         return $this->htmlResponse();
     }
 
@@ -58,7 +58,7 @@ class IngredientsController extends ActionController
      */
     public function showAction(Ingredients $ingredients): ResponseInterface
     {
-        $this->view->assign('ingredients', $ingredients);
+        $this->view->assign("ingredients", $ingredients);
         return $this->htmlResponse();
     }
 
@@ -80,9 +80,13 @@ class IngredientsController extends ActionController
      */
     public function createAction(Ingredients $newIngredients)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
+        $this->addFlashMessage(
+            "The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
+            "",
+            AbstractMessage::WARNING
+        );
         $this->ingredientsRepository->add($newIngredients);
-        $this->redirect('list');
+        $this->redirect("list");
     }
 
     /**
@@ -94,7 +98,7 @@ class IngredientsController extends ActionController
      */
     public function editAction(Ingredients $ingredients): ResponseInterface
     {
-        $this->view->assign('ingredients', $ingredients);
+        $this->view->assign("ingredients", $ingredients);
         return $this->htmlResponse();
     }
 
@@ -106,9 +110,13 @@ class IngredientsController extends ActionController
      */
     public function updateAction(Ingredients $ingredients)
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
+        $this->addFlashMessage(
+            "The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
+            "",
+            AbstractMessage::WARNING
+        );
         $this->ingredientsRepository->update($ingredients);
-        $this->redirect('list');
+        $this->redirect("list");
     }
 
     /**
@@ -119,8 +127,12 @@ class IngredientsController extends ActionController
      */
     public function deleteAction(Ingredients $ingredients)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
+        $this->addFlashMessage(
+            "The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
+            "",
+            AbstractMessage::WARNING
+        );
         $this->ingredientsRepository->remove($ingredients);
-        $this->redirect('list');
+        $this->redirect("list");
     }
 }

@@ -15,28 +15,7 @@
                     <f:translate key="tx_bokunorecipe_bokunoingredients.search" />
                 </button>
             </div>
-            <div class="bkr-category-group">
-                <f:for each="{categories}" as="category" iteration="i">
-                    <div class="bkr-category-item">
-                        <f:variable name="checked"
-                            ><f:spaceless>
-                                <f:for each="{selCategories}" as="fcategory" iteration="i">
-                                    <f:if condition="{fcategory} == {category.uid}">checked</f:if>
-                                </f:for>
-                            </f:spaceless></f:variable
-                        >
-                        <f:form.checkbox
-                            class="btn-check"
-                            id="btn-{category.slug}"
-                            name="category[]"
-                            value="{category.uid}"
-                            additionalAttributes="{autocomplete:'off'}"
-                            checked="{checked}"
-                        />
-                        <label class="btn btn-primary" for="btn-{category.slug}">{category.title}</label>
-                    </div>
-                </f:for>
-            </div>
+            <f:render partial="Filter/Categories" arguments="{_all}" />
         </f:form>
     </div>
 </html>

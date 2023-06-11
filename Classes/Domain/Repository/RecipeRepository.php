@@ -51,7 +51,6 @@ class RecipeRepository extends Repository
 
     public function findRecipe($sw = "", $categories = [])
     {
-        $dm = GeneralUtility::makeInstance(DataMapper::class);
         // Get database connection
         $connection = GeneralUtility::makeInstance(
             ConnectionPool::class
@@ -93,9 +92,49 @@ class RecipeRepository extends Repository
         return $recipes;
     }
 
+    public function helpMe($categories = [])
+    {
+        // Get database connection
+        $connection = GeneralUtility::makeInstance(
+            ConnectionPool::class
+        )->getConnectionForTable($this::TABLE);
+        $queryBuilder = $connection->createQueryBuilder();
+        $queryBuilder
+            ->select("recipe.*")
+            ->distinct()
+            ->from($this::TABLE, "recipe")
+            ->where(
+                $queryBuilder
+                    ->expr()
+                    ->like(
+                        "recipe.title",
+                        $queryBuilder->createNamedParameter("%curr%")
+                    )
+            );
+        if (count($categories)) {
+            $queryBuilder
+                ->join(
+                    "recipe",
+                    RecipeRepository::TABLE_CATEGORY_MAP,
+                    "category",
+                    $queryBuilder
+                        ->expr()
+                        ->eq(
+                            "category.uid_foreign",
+                            $queryBuilder->quoteIdentifier("recipe.uid")
+                        )
+                )
+                ->andWhere(
+                    $queryBuilder->expr()->in("category.uid_local", $categories)
+                );
+        }
+        $result = $queryBuilder->executeQuery()->fetchAllAssociative();
+        $recipes = $this->dataMapper->map(Recipe::class, $result);
+        return $recipes;
+    }
+
     public function getAllCategoriesFromPid($pid)
     {
-        $dm = GeneralUtility::makeInstance(DataMapper::class);
         $connection = GeneralUtility::makeInstance(
             ConnectionPool::class
         )->getConnectionForTable($this::TABLE_CATEGORY);

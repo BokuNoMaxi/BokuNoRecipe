@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Functional;
@@ -24,7 +25,7 @@ class BasicTest extends FunctionalTestCase
      *
      * @test
      */
-    public function dummy()
+    public function dummy(): void
     {
         $this->assertTrue(true);
     }

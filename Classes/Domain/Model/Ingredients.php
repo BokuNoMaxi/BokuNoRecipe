@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BokuNo\Bokunorecipe\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
+
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -13,6 +14,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
+
 /**
  * Ingredients
  */

@@ -21,24 +21,14 @@ return [
         'iconfile' => 'EXT:bokunorecipe/Resources/Public/Icons/tx_bokunorecipe_domain_model_ingredientstorecipe.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid,l10n_parent,l10n_diffsource,hidden,quantity,alternative_measurement,custom_group,ingredient,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime,endtime'],
+        '1' => ['showitem' => 'quantity, alternative_measurement, custom_group, ingredient, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
-                ],
-                'default' => 0,
+                'type' => 'language',
             ],
         ],
         'l10n_parent' => [
@@ -108,6 +98,7 @@ return [
         'quantity' => [
             'exclude' => true,
             'label' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_ingredientstorecipe.quantity',
+            'description' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_ingredientstorecipe.quantity.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -118,6 +109,7 @@ return [
         'alternative_measurement' => [
             'exclude' => true,
             'label' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_ingredientstorecipe.alternative_measurement',
+            'description' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_ingredientstorecipe.alternative_measurement.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -132,6 +124,7 @@ return [
         'custom_group' => [
             'exclude' => true,
             'label' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_ingredientstorecipe.custom_group',
+            'description' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_ingredientstorecipe.custom_group.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -142,6 +135,7 @@ return [
         'ingredient' => [
             'exclude' => true,
             'label' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient',
+            'description' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

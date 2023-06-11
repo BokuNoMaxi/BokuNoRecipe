@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
-use BokuNo\Bokunorecipe\Domain\Model\Category;
+use PHPUnit\Framework\MockObject\MockObject;
+use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -14,17 +16,21 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class CategoryTest extends UnitTestCase
 {
     /**
-     * @var \BokuNo\Bokunorecipe\Domain\Model\Category
+     * @var \BokuNo\Bokunorecipe\Domain\Model\Category|MockObject|AccessibleObjectInterface
      */
     protected $subject;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new Category();
+
+        $this->subject = $this->getAccessibleMock(
+            \BokuNo\Bokunorecipe\Domain\Model\Category::class,
+            ['dummy']
+        );
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
@@ -32,7 +38,7 @@ class CategoryTest extends UnitTestCase
     /**
      * @test
      */
-    public function dummyTestToNotLeaveThisFileEmpty()
+    public function dummyTestToNotLeaveThisFileEmpty(): void
     {
         self::markTestIncomplete();
     }

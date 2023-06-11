@@ -16,7 +16,9 @@
                     "_default3_new_create": true,
                     "_default4_edit_update": true,
                     "_default5_delete": true,
-                    "customActions": []
+                    "customActions": [
+                        "helper"
+                    ]
                 },
                 "name": "Recipe",
                 "objectsettings": {
@@ -390,9 +392,11 @@
             "disableLocalization": false,
             "disableVersioning": false,
             "generateDocumentationTemplate": false,
+            "generateEditorConfig": false,
+            "generateEmptyGitRepository": false,
             "sourceLanguage": "en",
             "state": "alpha",
-            "targetVersion": "10.4.0-10.4.99",
+            "targetVersion": "11.5.0-11.5.99",
             "version": "1.0.0"
         },
         "extensionKey": "bokunorecipe",
@@ -419,12 +423,12 @@
             },
             {
                 "actions": {
-                    "controllerActionCombinations": "Ingredients =>list,show,new,create,edit,update",
-                    "noncacheableActions": ""
+                    "controllerActionCombinations": "Recipe => helper",
+                    "noncacheableActions": "Recipe => helper"
                 },
                 "description": "",
-                "key": "bokunoingredients",
-                "name": "bokunoingredients"
+                "key": "bokunocookinghelper",
+                "name": "bokunocookinghelper"
             }
         ],
         "vendorName": "BokuNo"
@@ -457,8 +461,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2021-11-11 08:06",
-        "extension_builder_version": "10.0.1",
+        "last_modified": "2023-06-11 07:50",
+        "extension_builder_version": "v11.0.10",
         "be_user": " (2)"
     }
 }

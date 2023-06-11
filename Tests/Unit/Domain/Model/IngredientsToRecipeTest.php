@@ -1,10 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
-use BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe;
-use BokuNo\Bokunorecipe\Domain\Model\Ingredients;
+use PHPUnit\Framework\MockObject\MockObject;
+use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -15,17 +16,21 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class IngredientsToRecipeTest extends UnitTestCase
 {
     /**
-     * @var \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe
+     * @var \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe|MockObject|AccessibleObjectInterface
      */
     protected $subject;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new IngredientsToRecipe();
+
+        $this->subject = $this->getAccessibleMock(
+            \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe::class,
+            ['dummy']
+        );
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
@@ -33,7 +38,7 @@ class IngredientsToRecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function getQuantityReturnsInitialValueForString()
+    public function getQuantityReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -44,21 +49,17 @@ class IngredientsToRecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setQuantityForStringSetsQuantity()
+    public function setQuantityForStringSetsQuantity(): void
     {
         $this->subject->setQuantity('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'quantity',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('quantity'));
     }
 
     /**
      * @test
      */
-    public function getAlternativeMeasurementReturnsInitialValueForInt()
+    public function getAlternativeMeasurementReturnsInitialValueForInt(): void
     {
         self::assertSame(
             0,
@@ -69,21 +70,17 @@ class IngredientsToRecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setAlternativeMeasurementForIntSetsAlternativeMeasurement()
+    public function setAlternativeMeasurementForIntSetsAlternativeMeasurement(): void
     {
         $this->subject->setAlternativeMeasurement(12);
 
-        self::assertAttributeEquals(
-            12,
-            'alternativeMeasurement',
-            $this->subject
-        );
+        self::assertEquals(12, $this->subject->_get('alternativeMeasurement'));
     }
 
     /**
      * @test
      */
-    public function getCustomGroupReturnsInitialValueForString()
+    public function getCustomGroupReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -94,21 +91,17 @@ class IngredientsToRecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCustomGroupForStringSetsCustomGroup()
+    public function setCustomGroupForStringSetsCustomGroup(): void
     {
         $this->subject->setCustomGroup('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'customGroup',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('customGroup'));
     }
 
     /**
      * @test
      */
-    public function getIngredientReturnsInitialValueForIngredients()
+    public function getIngredientReturnsInitialValueForIngredients(): void
     {
         self::assertEquals(
             null,
@@ -119,15 +112,11 @@ class IngredientsToRecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setIngredientForIngredientsSetsIngredient()
+    public function setIngredientForIngredientsSetsIngredient(): void
     {
-        $ingredientFixture = new Ingredients();
+        $ingredientFixture = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
         $this->subject->setIngredient($ingredientFixture);
 
-        self::assertAttributeEquals(
-            $ingredientFixture,
-            'ingredient',
-            $this->subject
-        );
+        self::assertEquals($ingredientFixture, $this->subject->_get('ingredient'));
     }
 }

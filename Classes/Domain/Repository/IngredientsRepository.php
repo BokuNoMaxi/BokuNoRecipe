@@ -6,6 +6,7 @@ namespace BokuNo\Bokunorecipe\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -14,6 +15,7 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
+
 /**
  * The repository for Ingredients
  */

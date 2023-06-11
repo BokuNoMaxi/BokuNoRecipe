@@ -60,11 +60,10 @@ class RecipeController extends ActionController
     /**
      * action list
      *
-     * @return string|object|null|void
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function listAction(int $currentPage = 1): ResponseInterface
     {
-        $recipeCategoryUid = $this->settings["recipeCategoryUid"];
         $sw =
             $this->request->hasArgument("sw") &&
             $this->request->getArgument("sw")
@@ -80,10 +79,6 @@ class RecipeController extends ActionController
         } else {
             $recipes = $this->recipeRepository->findAll()->toArray();
         }
-        $categories = $this->recipeRepository->getAllCategoriesFromPid(
-            $recipeCategoryUid
-        );
-
         $arrayPaginator = new ArrayPaginator($recipes, $currentPage, 9);
         $paging = new SimplePagination($arrayPaginator);
         $this->view->assignMultiple([
@@ -91,7 +86,7 @@ class RecipeController extends ActionController
             "paginator" => $arrayPaginator,
             "paging" => $paging,
             "pages" => range(1, $paging->getLastPageNumber()),
-            "categories" => $categories,
+            "categories" => $this->getCategories(),
             "selCategories" => $selCategories,
         ]);
         return $this->htmlResponse();
@@ -101,7 +96,7 @@ class RecipeController extends ActionController
      * action show
      *
      * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
-     * @return string|object|null|void
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function showAction(Recipe $recipe): ResponseInterface
     {
@@ -123,7 +118,7 @@ class RecipeController extends ActionController
      * action create
      *
      * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $newRecipe
-     * @return string|object|null|void
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function createAction(Recipe $newRecipe)
     {
@@ -141,7 +136,7 @@ class RecipeController extends ActionController
      *
      * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("recipe")
-     * @return string|object|null|void
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function editAction(Recipe $recipe): ResponseInterface
     {
@@ -181,5 +176,40 @@ class RecipeController extends ActionController
         );
         $this->recipeRepository->remove($recipe);
         $this->redirect("list");
+    }
+
+    /**
+     * action helper
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function helperAction(): ResponseInterface
+    {
+        $withCategories =
+            $this->request->hasArgument("category") &&
+            $this->request->getArgument("category")
+                ? $this->request->getArgument("category")
+                : [];
+
+        $recipes = [];
+
+        if ($withCategories) {
+            $recipes = $this->recipeRepository->helpMe($withCategories);
+        }
+
+        $this->view->assignMultiple([
+            "recipes" => $recipes,
+            "categories" => $this->getCategories(),
+            "withCategories" => $withCategories,
+        ]);
+        return $this->htmlResponse();
+    }
+
+    private function getCategories()
+    {
+        $recipeCategoryUid = $this->settings["recipeCategoryUid"];
+        return $this->recipeRepository->getAllCategoriesFromPid(
+            $recipeCategoryUid
+        );
     }
 }

@@ -1,35 +1,29 @@
 <?php
-defined("TYPO3") || die();
-call_user_func(static function () {
+defined('TYPO3') || die();
+
+(static function() {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        "Bokunorecipe",
-        "Bokunorecipe",
+        'Bokunorecipe',
+        'Bokunorecipe',
         [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class =>
-                "list, show, new, create, edit, update",
+            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'list, show, new, create, edit, update'
         ],
         // non-cacheable actions
         [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class =>
-                "create, update, delete",
-            \BokuNo\Bokunorecipe\Controller\IngredientsController::class =>
-                "create, update, delete",
+            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'create, update, delete, ',
+            \BokuNo\Bokunorecipe\Controller\IngredientsController::class => 'create, update, delete'
         ]
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        "Bokunorecipe",
-        "Bokunoingredients",
+        'Bokunorecipe',
+        'Bokunocookinghelper',
         [
-            \BokuNo\Bokunorecipe\Controller\IngredientsController::class =>
-                "list, show, new, create, edit, update",
+            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'helper'
         ],
         // non-cacheable actions
         [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class =>
-                "create, update, delete",
-            \BokuNo\Bokunorecipe\Controller\IngredientsController::class =>
-                "create, update, delete",
+            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'helper'
         ]
     );
 
@@ -47,13 +41,13 @@ call_user_func(static function () {
                             list_type = bokunorecipe_bokunorecipe
                         }
                     }
-                    bokunoingredients {
-                        iconIdentifier = bokunorecipe-plugin-bokunoingredients
-                        title = LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.name
-                        description = LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunoingredients.description
+                    bokunocookinghelper {
+                        iconIdentifier = bokunorecipe-plugin-bokunorecipe
+                        title = LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunocookinghelper.name
+                        description = LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunocookinghelper.description
                         tt_content_defValues {
                             CType = list
-                            list_type = bokunorecipe_bokunoingredients
+                            list_type = bokunorecipe_bokunocookinghelper
                         }
                     }
                 }
@@ -61,27 +55,7 @@ call_user_func(static function () {
             }
        }'
     );
-
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-        \TYPO3\CMS\Core\Imaging\IconRegistry::class
-    );
-    $iconRegistry->registerIcon(
-        "bokunorecipe-plugin-bokunorecipe",
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        [
-            "source" =>
-                "EXT:bokunorecipe/Resources/Public/Icons/user_plugin_bokunorecipe.svg",
-        ]
-    );
-    $iconRegistry->registerIcon(
-        "bokunorecipe-plugin-bokunoingredients",
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        [
-            "source" =>
-                "EXT:bokunorecipe/Resources/Public/Icons/user_plugin_bokunoingredients.svg",
-        ]
-    );
-});
+})();
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 use BokuNo\Bokunorecipe\Indexer\RecipeIndexer;
 

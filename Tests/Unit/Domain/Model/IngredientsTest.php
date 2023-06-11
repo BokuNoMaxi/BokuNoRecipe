@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
-use BokuNo\Bokunorecipe\Domain\Model\Ingredients;
+use PHPUnit\Framework\MockObject\MockObject;
+use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -14,17 +16,21 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class IngredientsTest extends UnitTestCase
 {
     /**
-     * @var \BokuNo\Bokunorecipe\Domain\Model\Ingredients
+     * @var \BokuNo\Bokunorecipe\Domain\Model\Ingredients|MockObject|AccessibleObjectInterface
      */
     protected $subject;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new Ingredients();
+
+        $this->subject = $this->getAccessibleMock(
+            \BokuNo\Bokunorecipe\Domain\Model\Ingredients::class,
+            ['dummy']
+        );
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
@@ -32,7 +38,7 @@ class IngredientsTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleReturnsInitialValueForString()
+    public function getTitleReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -43,21 +49,17 @@ class IngredientsTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleForStringSetsTitle()
+    public function setTitleForStringSetsTitle(): void
     {
         $this->subject->setTitle('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'title',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('title'));
     }
 
     /**
      * @test
      */
-    public function getUnitReturnsInitialValueForString()
+    public function getUnitReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -68,64 +70,46 @@ class IngredientsTest extends UnitTestCase
     /**
      * @test
      */
-    public function setUnitForStringSetsUnit()
+    public function setUnitForStringSetsUnit(): void
     {
         $this->subject->setUnit('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'unit',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('unit'));
     }
 
     /**
      * @test
      */
-    public function getGlutenReturnsInitialValueForBool()
+    public function getGlutenReturnsInitialValueForBool(): void
     {
-        self::assertSame(
-            false,
-            $this->subject->getGluten()
-        );
+        self::assertFalse($this->subject->getGluten());
     }
 
     /**
      * @test
      */
-    public function setGlutenForBoolSetsGluten()
+    public function setGlutenForBoolSetsGluten(): void
     {
         $this->subject->setGluten(true);
 
-        self::assertAttributeEquals(
-            true,
-            'gluten',
-            $this->subject
-        );
+        self::assertEquals(true, $this->subject->_get('gluten'));
     }
 
     /**
      * @test
      */
-    public function getLactoseReturnsInitialValueForBool()
+    public function getLactoseReturnsInitialValueForBool(): void
     {
-        self::assertSame(
-            false,
-            $this->subject->getLactose()
-        );
+        self::assertFalse($this->subject->getLactose());
     }
 
     /**
      * @test
      */
-    public function setLactoseForBoolSetsLactose()
+    public function setLactoseForBoolSetsLactose(): void
     {
         $this->subject->setLactose(true);
 
-        self::assertAttributeEquals(
-            true,
-            'lactose',
-            $this->subject
-        );
+        self::assertEquals(true, $this->subject->_get('lactose'));
     }
 }

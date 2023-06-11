@@ -23,8 +23,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
      *
      * @var string
      */
-    protected $slug;
-
+    protected $slug = "";
     public function getSlug()
     {
         return $this->slug;

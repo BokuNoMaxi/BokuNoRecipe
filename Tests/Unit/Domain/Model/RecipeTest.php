@@ -1,12 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
-use BokuNo\Bokunorecipe\Domain\Model\Recipe;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Domain\Model\FileReference;
-use BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe;
+use PHPUnit\Framework\MockObject\MockObject;
+use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -17,17 +16,21 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class RecipeTest extends UnitTestCase
 {
     /**
-     * @var \BokuNo\Bokunorecipe\Domain\Model\Recipe
+     * @var \BokuNo\Bokunorecipe\Domain\Model\Recipe|MockObject|AccessibleObjectInterface
      */
     protected $subject;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new Recipe();
+
+        $this->subject = $this->getAccessibleMock(
+            \BokuNo\Bokunorecipe\Domain\Model\Recipe::class,
+            ['dummy']
+        );
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
@@ -35,7 +38,7 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleReturnsInitialValueForString()
+    public function getTitleReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -46,21 +49,17 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleForStringSetsTitle()
+    public function setTitleForStringSetsTitle(): void
     {
         $this->subject->setTitle('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'title',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('title'));
     }
 
     /**
      * @test
      */
-    public function getPortionsReturnsInitialValueForString()
+    public function getPortionsReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -71,21 +70,17 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setPortionsForStringSetsPortions()
+    public function setPortionsForStringSetsPortions(): void
     {
         $this->subject->setPortions('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'portions',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('portions'));
     }
 
     /**
      * @test
      */
-    public function getMaxTimeReturnsInitialValueForString()
+    public function getMaxTimeReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -96,21 +91,17 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setMaxTimeForStringSetsMaxTime()
+    public function setMaxTimeForStringSetsMaxTime(): void
     {
         $this->subject->setMaxTime('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'maxTime',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('maxTime'));
     }
 
     /**
      * @test
      */
-    public function getPrepTimeReturnsInitialValueForString()
+    public function getPrepTimeReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -121,21 +112,17 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setPrepTimeForStringSetsPrepTime()
+    public function setPrepTimeForStringSetsPrepTime(): void
     {
         $this->subject->setPrepTime('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'prepTime',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('prepTime'));
     }
 
     /**
      * @test
      */
-    public function getTeaserReturnsInitialValueForString()
+    public function getTeaserReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -146,21 +133,17 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTeaserForStringSetsTeaser()
+    public function setTeaserForStringSetsTeaser(): void
     {
         $this->subject->setTeaser('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'teaser',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('teaser'));
     }
 
     /**
      * @test
      */
-    public function getPreparationReturnsInitialValueForString()
+    public function getPreparationReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -171,21 +154,17 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setPreparationForStringSetsPreparation()
+    public function setPreparationForStringSetsPreparation(): void
     {
         $this->subject->setPreparation('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'preparation',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('preparation'));
     }
 
     /**
      * @test
      */
-    public function getPublishDateReturnsInitialValueForDateTime()
+    public function getPublishDateReturnsInitialValueForDateTime(): void
     {
         self::assertEquals(
             null,
@@ -196,24 +175,20 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setPublishDateForDateTimeSetsPublishDate()
+    public function setPublishDateForDateTimeSetsPublishDate(): void
     {
         $dateTimeFixture = new \DateTime();
         $this->subject->setPublishDate($dateTimeFixture);
 
-        self::assertAttributeEquals(
-            $dateTimeFixture,
-            'publishDate',
-            $this->subject
-        );
+        self::assertEquals($dateTimeFixture, $this->subject->_get('publishDate'));
     }
 
     /**
      * @test
      */
-    public function getImagesReturnsInitialValueForFileReference()
+    public function getImagesReturnsInitialValueForFileReference(): void
     {
-        $newObjectStorage = new ObjectStorage();
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getImages()
@@ -223,33 +198,29 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setImagesForFileReferenceSetsImages()
+    public function setImagesForFileReferenceSetsImages(): void
     {
-        $image = new FileReference();
-        $objectStorageHoldingExactlyOneImages = new ObjectStorage();
+        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $objectStorageHoldingExactlyOneImages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneImages->attach($image);
         $this->subject->setImages($objectStorageHoldingExactlyOneImages);
 
-        self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneImages,
-            'images',
-            $this->subject
-        );
+        self::assertEquals($objectStorageHoldingExactlyOneImages, $this->subject->_get('images'));
     }
 
     /**
      * @test
      */
-    public function addImageToObjectStorageHoldingImages()
+    public function addImageToObjectStorageHoldingImages(): void
     {
-        $image = new FileReference();
-        $imagesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['attach'])
+        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $imagesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $imagesObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($image));
-        $this->inject($this->subject, 'images', $imagesObjectStorageMock);
+        $this->subject->_set('images', $imagesObjectStorageMock);
 
         $this->subject->addImage($image);
     }
@@ -257,16 +228,16 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function removeImageFromObjectStorageHoldingImages()
+    public function removeImageFromObjectStorageHoldingImages(): void
     {
-        $image = new FileReference();
-        $imagesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['detach'])
+        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $imagesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $imagesObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($image));
-        $this->inject($this->subject, 'images', $imagesObjectStorageMock);
+        $this->subject->_set('images', $imagesObjectStorageMock);
 
         $this->subject->removeImage($image);
     }
@@ -274,7 +245,7 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSlugReturnsInitialValueForString()
+    public function getSlugReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -285,23 +256,19 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSlugForStringSetsSlug()
+    public function setSlugForStringSetsSlug(): void
     {
         $this->subject->setSlug('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'slug',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('slug'));
     }
 
     /**
      * @test
      */
-    public function getIngredientsReturnsInitialValueForIngredientsToRecipe()
+    public function getIngredientsReturnsInitialValueForIngredientsToRecipe(): void
     {
-        $newObjectStorage = new ObjectStorage();
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getIngredients()
@@ -311,33 +278,29 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setIngredientsForObjectStorageContainingIngredientsToRecipeSetsIngredients()
+    public function setIngredientsForObjectStorageContainingIngredientsToRecipeSetsIngredients(): void
     {
-        $ingredient = new IngredientsToRecipe();
-        $objectStorageHoldingExactlyOneIngredients = new ObjectStorage();
+        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
+        $objectStorageHoldingExactlyOneIngredients = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneIngredients->attach($ingredient);
         $this->subject->setIngredients($objectStorageHoldingExactlyOneIngredients);
 
-        self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneIngredients,
-            'ingredients',
-            $this->subject
-        );
+        self::assertEquals($objectStorageHoldingExactlyOneIngredients, $this->subject->_get('ingredients'));
     }
 
     /**
      * @test
      */
-    public function addIngredientToObjectStorageHoldingIngredients()
+    public function addIngredientToObjectStorageHoldingIngredients(): void
     {
-        $ingredient = new IngredientsToRecipe();
-        $ingredientsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['attach'])
+        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
+        $ingredientsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $ingredientsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($ingredient));
-        $this->inject($this->subject, 'ingredients', $ingredientsObjectStorageMock);
+        $this->subject->_set('ingredients', $ingredientsObjectStorageMock);
 
         $this->subject->addIngredient($ingredient);
     }
@@ -345,16 +308,16 @@ class RecipeTest extends UnitTestCase
     /**
      * @test
      */
-    public function removeIngredientFromObjectStorageHoldingIngredients()
+    public function removeIngredientFromObjectStorageHoldingIngredients(): void
     {
-        $ingredient = new IngredientsToRecipe();
-        $ingredientsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['detach'])
+        $ingredient = new \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe();
+        $ingredientsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $ingredientsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($ingredient));
-        $this->inject($this->subject, 'ingredients', $ingredientsObjectStorageMock);
+        $this->subject->_set('ingredients', $ingredientsObjectStorageMock);
 
         $this->subject->removeIngredient($ingredient);
     }

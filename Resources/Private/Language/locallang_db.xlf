@@ -1,72 +1,138 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_db" date="2021-11-11T08:06:08Z" product-name="bokunorecipe">
+	<file source-language="en" datatype="plaintext" original="EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf" date="2023-06-11T19:50:59Z" product-name="bokunorecipe">
 		<header/>
 		<body>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe" resname="tx_bokunorecipe_domain_model_recipe">
 				<source>Recipe</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.description" resname="tx_bokunorecipe_domain_model_recipe.description">
+				<source>Recipe</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.title" resname="tx_bokunorecipe_domain_model_recipe.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.title.description" resname="tx_bokunorecipe_domain_model_recipe.title.description">
 				<source>Title</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.portions" resname="tx_bokunorecipe_domain_model_recipe.portions">
 				<source>Portions</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.portions.description" resname="tx_bokunorecipe_domain_model_recipe.portions.description">
+				<source>Portions</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.max_time" resname="tx_bokunorecipe_domain_model_recipe.max_time">
+				<source>Max Time</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.max_time.description" resname="tx_bokunorecipe_domain_model_recipe.max_time.description">
 				<source>Max Time</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.prep_time" resname="tx_bokunorecipe_domain_model_recipe.prep_time">
 				<source>Prep Time</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.prep_time.description" resname="tx_bokunorecipe_domain_model_recipe.prep_time.description">
+				<source>Prep Time</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.teaser" resname="tx_bokunorecipe_domain_model_recipe.teaser">
+				<source>Teaser</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.teaser.description" resname="tx_bokunorecipe_domain_model_recipe.teaser.description">
 				<source>Teaser</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.preparation" resname="tx_bokunorecipe_domain_model_recipe.preparation">
 				<source>Preparation</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.preparation.description" resname="tx_bokunorecipe_domain_model_recipe.preparation.description">
+				<source>Preparation</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.publish_date" resname="tx_bokunorecipe_domain_model_recipe.publish_date">
+				<source>Publish Date</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.publish_date.description" resname="tx_bokunorecipe_domain_model_recipe.publish_date.description">
 				<source>Publish Date</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.images" resname="tx_bokunorecipe_domain_model_recipe.images">
 				<source>Images</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.images.description" resname="tx_bokunorecipe_domain_model_recipe.images.description">
+				<source>Images</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.slug" resname="tx_bokunorecipe_domain_model_recipe.slug">
+				<source>Slug</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.slug.description" resname="tx_bokunorecipe_domain_model_recipe.slug.description">
 				<source>Slug</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.ingredients" resname="tx_bokunorecipe_domain_model_recipe.ingredients">
 				<source>Ingredients</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.ingredients.description" resname="tx_bokunorecipe_domain_model_recipe.ingredients.description">
+				<source>Ingredients</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredients" resname="tx_bokunorecipe_domain_model_ingredients">
+				<source>Ingredients</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.description" resname="tx_bokunorecipe_domain_model_ingredients.description">
 				<source>Ingredients</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.title" resname="tx_bokunorecipe_domain_model_ingredients.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.title.description" resname="tx_bokunorecipe_domain_model_ingredients.title.description">
+				<source>Title</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.unit" resname="tx_bokunorecipe_domain_model_ingredients.unit">
+				<source>Unit</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.unit.description" resname="tx_bokunorecipe_domain_model_ingredients.unit.description">
 				<source>Unit</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.gluten" resname="tx_bokunorecipe_domain_model_ingredients.gluten">
 				<source>Gluten</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.gluten.description" resname="tx_bokunorecipe_domain_model_ingredients.gluten.description">
+				<source>Gluten</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.lactose" resname="tx_bokunorecipe_domain_model_ingredients.lactose">
+				<source>Lactose</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredients.lactose.description" resname="tx_bokunorecipe_domain_model_ingredients.lactose.description">
 				<source>Lactose</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe" resname="tx_bokunorecipe_domain_model_ingredientstorecipe">
 				<source>Ingredients To Recipe</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.description" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.description">
+				<source>Ingredients To Recipe</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.quantity" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.quantity">
+				<source>Quantity</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.quantity.description" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.quantity.description">
 				<source>Quantity</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.alternative_measurement" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.alternative_measurement">
 				<source>Alternative Measurement</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.alternative_measurement.description" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.alternative_measurement.description">
+				<source>Alternative Measurement</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.custom_group" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.custom_group">
+				<source>Custom Group</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.custom_group.description" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.custom_group.description">
 				<source>Custom Group</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient">
 				<source>Ingredient</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient.description" resname="tx_bokunorecipe_domain_model_ingredientstorecipe.ingredient.description">
+				<source>Ingredient</source>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_category" resname="tx_bokunorecipe_domain_model_category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_category.description" resname="tx_bokunorecipe_domain_model_category.description">
 				<source>Category</source>
 			</trans-unit>
 			<trans-unit id="sys_category.tx_extbase_type.Tx_Bokunorecipe_Category" resname="sys_category.tx_extbase_type.Tx_Bokunorecipe_Category">
@@ -79,6 +145,12 @@
 				<source>bokunorecipe</source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunorecipe.description" resname="tx_bokunorecipe_bokunorecipe.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunocookinghelper.name" resname="tx_bokunorecipe_bokunocookinghelper.name">
+				<source>bokunocookinghelper</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunocookinghelper.description" resname="tx_bokunorecipe_bokunocookinghelper.description">
 				<source></source>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.name" resname="tx_bokunorecipe_bokunoingredients.name">
