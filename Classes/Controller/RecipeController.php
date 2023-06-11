@@ -183,7 +183,7 @@ class RecipeController extends ActionController
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function helperAction(): ResponseInterface
+    public function helperAction(int $currentPage = 1): ResponseInterface
     {
         $withCategories =
             $this->request->hasArgument("category") &&
@@ -194,12 +194,20 @@ class RecipeController extends ActionController
         $recipes = [];
 
         if ($withCategories) {
-            $recipes = $this->recipeRepository->helpMe($withCategories);
+            $recipes = $this->recipeRepository->findRecipe("", $withCategories);
+            shuffle($recipes);
+            $recipes = array_slice($recipes, 0, 3);
         }
+
+        $arrayPaginator = new ArrayPaginator($recipes, $currentPage, 9);
+        $paging = new SimplePagination($arrayPaginator);
 
         $this->view->assignMultiple([
             "recipes" => $recipes,
             "categories" => $this->getCategories(),
+            "paginator" => $arrayPaginator,
+            "paging" => $paging,
+            "pages" => range(1, $paging->getLastPageNumber()),
             "withCategories" => $withCategories,
         ]);
         return $this->htmlResponse();
