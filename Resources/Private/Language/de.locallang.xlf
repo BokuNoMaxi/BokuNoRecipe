@@ -107,6 +107,10 @@
 				<source>handful</source>
 				<target>Handvol</target>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.search" resname="tx_bokunorecipe_bokunoingredients.search">
+				<source>Search</source>
+				<target>Suchen</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

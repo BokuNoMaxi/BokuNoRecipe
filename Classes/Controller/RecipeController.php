@@ -26,7 +26,6 @@ use TYPO3\CMS\Core\Pagination\SimplePagination;
  */
 class RecipeController extends ActionController
 {
-
     /**
      * recipeRepository
      *
@@ -52,8 +51,9 @@ class RecipeController extends ActionController
      *
      * @param \BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository $categoryRepository
      */
-    public function injectCategoryRepository(CategoryRepository $categoryRepository)
-    {
+    public function injectCategoryRepository(
+        CategoryRepository $categoryRepository
+    ) {
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -64,17 +64,36 @@ class RecipeController extends ActionController
      */
     public function listAction(int $currentPage = 1): ResponseInterface
     {
-        $recipes = $this->recipeRepository->findAll()->toArray();
+        $recipeCategoryUid = $this->settings["recipeCategoryUid"];
+        $sw =
+            $this->request->hasArgument("sw") &&
+            $this->request->getArgument("sw")
+                ? $this->request->getArgument("sw")
+                : false;
+        $selCategories =
+            $this->request->hasArgument("category") &&
+            $this->request->getArgument("category")
+                ? $this->request->getArgument("category")
+                : [];
+        if ($sw || $selCategories) {
+            $recipes = $this->recipeRepository->findRecipe($sw, $selCategories);
+        } else {
+            $recipes = $this->recipeRepository->findAll()->toArray();
+        }
+        $categories = $this->recipeRepository->getAllCategoriesFromPid(
+            $recipeCategoryUid
+        );
+
         $arrayPaginator = new ArrayPaginator($recipes, $currentPage, 9);
         $paging = new SimplePagination($arrayPaginator);
-        $this->view->assignMultiple(
-            [
-                'recipes' => $recipes,
-                'paginator' => $arrayPaginator,
-                'paging' => $paging,
-                'pages' => range(1, $paging->getLastPageNumber()),
-            ]
-        );
+        $this->view->assignMultiple([
+            "recipes" => $recipes,
+            "paginator" => $arrayPaginator,
+            "paging" => $paging,
+            "pages" => range(1, $paging->getLastPageNumber()),
+            "categories" => $categories,
+            "selCategories" => $selCategories,
+        ]);
         return $this->htmlResponse();
     }
 
@@ -86,7 +105,7 @@ class RecipeController extends ActionController
      */
     public function showAction(Recipe $recipe): ResponseInterface
     {
-        $this->view->assign('recipe', $recipe);
+        $this->view->assign("recipe", $recipe);
         return $this->htmlResponse();
     }
 
@@ -108,9 +127,13 @@ class RecipeController extends ActionController
      */
     public function createAction(Recipe $newRecipe)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
+        $this->addFlashMessage(
+            "The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
+            "",
+            AbstractMessage::WARNING
+        );
         $this->recipeRepository->add($newRecipe);
-        $this->redirect('list');
+        $this->redirect("list");
     }
 
     /**
@@ -122,7 +145,7 @@ class RecipeController extends ActionController
      */
     public function editAction(Recipe $recipe): ResponseInterface
     {
-        $this->view->assign('recipe', $recipe);
+        $this->view->assign("recipe", $recipe);
         return $this->htmlResponse();
     }
 
@@ -134,9 +157,13 @@ class RecipeController extends ActionController
      */
     public function updateAction(Recipe $recipe)
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
+        $this->addFlashMessage(
+            "The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
+            "",
+            AbstractMessage::WARNING
+        );
         $this->recipeRepository->update($recipe);
-        $this->redirect('list');
+        $this->redirect("list");
     }
 
     /**
@@ -147,8 +174,12 @@ class RecipeController extends ActionController
      */
     public function deleteAction(Recipe $recipe)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
+        $this->addFlashMessage(
+            "The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
+            "",
+            AbstractMessage::WARNING
+        );
         $this->recipeRepository->remove($recipe);
-        $this->redirect('list');
+        $this->redirect("list");
     }
 }

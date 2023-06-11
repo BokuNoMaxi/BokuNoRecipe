@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <div class="bokunorecipe__list__searchbar">
+        <f:form action="list" addQueryString="1" id="bkr-searchbar">
+            <div class="input-group">
+                <button type="button" id="recipe-reset" class="btn btn-outline-primary border-right-0">
+                    <f:translate key="tx_bokunorecipe_bokunoingredients.reset" />
+                </button>
+                <f:form.textfield
+                    id="recipe-sw"
+                    class="form-control border-left-0 border-right-0"
+                    type="text"
+                    name="sw"
+                />
+                <button type="submit" class="btn btn-outline-primary border-left-0">
+                    <f:translate key="tx_bokunorecipe_bokunoingredients.search" />
+                </button>
+            </div>
+            <div class="bkr-category-group">
+                <f:for each="{categories}" as="category" iteration="i">
+                    <div class="bkr-category-item">
+                        <f:variable name="checked"
+                            ><f:spaceless>
+                                <f:for each="{selCategories}" as="fcategory" iteration="i">
+                                    <f:if condition="{fcategory} == {category.uid}">checked</f:if>
+                                </f:for>
+                            </f:spaceless></f:variable
+                        >
+                        <f:form.checkbox
+                            class="btn-check"
+                            id="btn-{category.slug}"
+                            name="category[]"
+                            value="{category.uid}"
+                            additionalAttributes="{autocomplete:'off'}"
+                            checked="{checked}"
+                        />
+                        <label class="btn btn-primary" for="btn-{category.slug}">{category.title}</label>
+                    </div>
+                </f:for>
+            </div>
+        </f:form>
+    </div>
+</html>

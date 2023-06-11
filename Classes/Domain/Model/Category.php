@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Domain\Model;
 
-
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -19,4 +18,15 @@ namespace BokuNo\Bokunorecipe\Domain\Model;
  */
 class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
 {
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $slug;
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }

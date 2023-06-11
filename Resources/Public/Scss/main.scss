@@ -1,41 +1,42 @@
 $badge-margin-right: 0.25em;
 
 .bokunorecipe__detail {
-  .badge {
-    margin-right: $badge-margin-right;
-  }
-
-  .bokunorecipe__detail__carousel {
-    img {
-      height: auto;
-      width: 100%;
-      max-width: 20em;
+    .badge {
+        margin-right: $badge-margin-right;
     }
-  }
 
-  .bokunorecipe__detail__ingredients {
-    td {
-      &:nth-child(2n) {
-        border-left: solid 1px #dedede;
-      }
+    .bokunorecipe__detail__carousel {
+        img {
+            height: auto;
+            width: 100%;
+            max-width: 20em;
+        }
     }
-  }
+
+    .bokunorecipe__detail__ingredients {
+        td {
+            &:nth-child(2n) {
+                border-left: solid 1px #dedede;
+            }
+        }
+    }
 }
 .bokunorecipe__list {
-  .badge {
-    margin-right: $badge-margin-right;
-  }
-  .card {
-    width: 99%;
-    height: fit-content;
-    height: -moz-fit-content;
-    @media (min-width: 576px) {
-      width: 48%;
+    .badge {
+        margin-right: $badge-margin-right;
     }
-    @media (min-width: 768px) {
-      width: 32%;
+    .card {
+        width: 99%;
+        height: fit-content;
+        height: -moz-fit-content;
+        @media (min-width: 576px) {
+            width: 48%;
+        }
+        @media (min-width: 768px) {
+            width: 32%;
+        }
     }
-  }
 }
 
 @import "paginator";
+@import "filter";

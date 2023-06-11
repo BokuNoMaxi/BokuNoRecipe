@@ -1,23 +1,26 @@
+.pagination {
+    min-height: 30px;
+}
 .paging.paging-block {
-  list-style-type: none;
-  margin: 1em auto;
+    list-style-type: none;
+    margin: 1em auto;
 
-  li {
-    float: none;
-    display: inline-block;
-    margin: 0.2em;
-    color: #a1726c;
-    border: solid 1px #a1726c;
+    li {
+        float: none;
+        display: inline-block;
+        margin: 0.2em;
+        color: #a1726c;
+        border: solid 1px #a1726c;
 
-    &.current {
-      color: #e8d710;
-      border: solid 1px #e8d710;
+        &.current {
+            color: #e8d710;
+            border: solid 1px #e8d710;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            padding: 0.5em 0.5em;
+        }
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      padding: 0.5em 0.5em;
-    }
-  }
 }

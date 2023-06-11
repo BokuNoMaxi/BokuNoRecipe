@@ -13,6 +13,7 @@ plugin.tx_bokunorecipe_bokunorecipe {
     }
     settings{
         cropMaxCharacters = {$plugin.tx_bokunorecipe_bokunorecipe.cropMaxCharacters}
+        recipeCategoryUid = {$plugin.tx_bokunorecipe_bokunorecipe.recipeCategoryUid}
     }
     features {
         #skipDefaultArguments = 1
@@ -91,4 +92,10 @@ plugin.tx_bokunorecipe_bokunorecipe.persistence.classes {
 			tableName = sys_category
 		}
 	}
+}
+
+page {
+  includeJSFooter {
+    bokunorecipe = EXT:bokunorecipe/Resources/Public/JavaScript/main.js
+  }
 }

@@ -102,6 +102,12 @@
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.optional.unit" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.optional.unit">
 				<source>optional</source>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.search" resname="tx_bokunorecipe_bokunoingredients.search">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.reset" resname="tx_bokunorecipe_bokunoingredients.reset">
+				<source>Reset</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

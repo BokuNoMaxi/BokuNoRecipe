@@ -1,92 +1,80 @@
 <html
-  xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
-  data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    data-namespace-typo3-fluid="true"
 >
-  <div class="card m-1 p-0">
-    <f:link.action action="show" pageUid="10" title="{recipe.title}" arguments="{recipe:recipe}">
-      <f:if condition="{recipe.images.0.originalResource.type} == 2">
-        <f:variable name="mediaElement">{recipe.images.0}</f:variable>
-        <f:image
-          class="card-img-top"
-          image="{mediaElement}"
-          title="{mediaElement.originalResource.title}"
-          alt="{mediaElement.originalResource.alternative}"
-          loading="{settings.list.media.image.lazyLoading}"
-        />
-      </f:if>
-      <f:if condition="{images.0.originalResource.type} == 4">
-        <f:render partial="Detail/MediaVideo" arguments="{mediaElement: recipe.images.0}" />
-      </f:if>
-      <f:if condition="{recipe.images.0.originalResource.type} == 5">
-        <f:variable name="mediaElement">{recipe.images.0}</f:variable>
-        <f:image
-          class="card-img-top"
-          image="{mediaElement}"
-          title="{mediaElement.originalResource.title}"
-          alt="{mediaElement.originalResource.alternative}"
-          loading="{settings.list.media.image.lazyLoading}"
-        />
-      </f:if>
-    </f:link.action>
-    <div class="card-body">
-      <h3 class="card-title">
-        <f:link.action
-          action="show"
-          pageUid="10"
-          title="{recipe.title}"
-          arguments="{recipe:recipe}"
-        >
-          <span itemprop="headline">{recipe.title}</span>
+    <div class="card m-1 p-0">
+        <f:link.action action="show" pageUid="10" title="{recipe.title}" arguments="{recipe:recipe}">
+            <f:if condition="{recipe.images.0.originalResource.type} == 2">
+                <f:variable name="mediaElement">{recipe.images.0}</f:variable>
+                <f:image
+                    class="card-img-top"
+                    image="{mediaElement}"
+                    title="{mediaElement.originalResource.title}"
+                    alt="{mediaElement.originalResource.alternative}"
+                    loading="{settings.list.media.image.lazyLoading}"
+                />
+            </f:if>
+            <f:if condition="{images.0.originalResource.type} == 4">
+                <f:render partial="Detail/MediaVideo" arguments="{mediaElement: recipe.images.0}" />
+            </f:if>
+            <f:if condition="{recipe.images.0.originalResource.type} == 5">
+                <f:variable name="mediaElement">{recipe.images.0}</f:variable>
+                <f:image
+                    class="card-img-top"
+                    image="{mediaElement}"
+                    title="{mediaElement.originalResource.title}"
+                    alt="{mediaElement.originalResource.alternative}"
+                    loading="{settings.list.media.image.lazyLoading}"
+                />
+            </f:if>
         </f:link.action>
-      </h3>
-      <span class="card-body__publish-date">
-        <time
-          itemprop="datePublished"
-          datetime="{f:format.date(date:recipe.publishDate, format:'Y-m-d')}"
-        >
-          <f:format.date format="{f:translate(key:'dateFormat')}"
-            >{recipe.publishDate}</f:format.date
-          >
-        </time>
-      </span>
+        <div class="card-body">
+            <h3 class="card-title">
+                <f:link.action action="show" pageUid="10" title="{recipe.title}" arguments="{recipe:recipe}">
+                    <span itemprop="headline">{recipe.title}</span>
+                </f:link.action>
+            </h3>
+            <span class="card-body__publish-date">
+                <time itemprop="datePublished" datetime="{f:format.date(date:recipe.publishDate, format:'Y-m-d')}">
+                    <f:format.date format="{f:translate(key:'dateFormat')}">{recipe.publishDate}</f:format.date>
+                </time>
+            </span>
 
-      <p class="card-text">
-        <n:removeMediaTags>
-          <f:if condition="{recipe.teaser}">
-            <f:then>
-              <div itemprop="description">
-                {recipe.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
-                respectWordBoundaries:'1') -> f:format.html()}
-              </div>
-            </f:then>
-            <f:else>
-              <div itemprop="description">
-                {recipe.preparation -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
-                respectWordBoundaries:'1') -> f:format.html()}
-              </div>
-            </f:else>
-          </f:if>
-        </n:removeMediaTags>
-      </p>
-      <f:if condition="1=0">
-        <!-- first category -->
-        <p class="card-body__category">
-          <f:for each="{recipe.categories}" as="category" iteration="i">
-            <span class="badge">{category.title}</span>
-          </f:for>
-        </p>
-      </f:if>
+            <p class="card-text">
+                <f:if condition="{recipe.teaser}">
+                    <f:then>
+                        <div itemprop="description">
+                            {recipe.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
+                            respectWordBoundaries:'1') -> f:format.html()}
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div itemprop="description">
+                            {recipe.preparation -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
+                            respectWordBoundaries:'1') -> f:format.html()}
+                        </div>
+                    </f:else>
+                </f:if>
+            </p>
+            <f:if condition="1=0">
+                <!-- first category -->
+                <p class="card-body__category">
+                    <f:for each="{recipe.categories}" as="category" iteration="i">
+                        <span class="badge">{category.title}</span>
+                    </f:for>
+                </p>
+            </f:if>
 
-      <f:link.action
-        action="show"
-        pageUid="10"
-        class="more btn btn-primary col-12"
-        title="{recipe.title}"
-        arguments="{recipe:recipe}"
-      >
-        <f:translate key="more-link" />
-      </f:link.action>
+            <f:link.action
+                action="show"
+                pageUid="10"
+                class="more btn btn-primary col-12"
+                title="{recipe.title}"
+                arguments="{recipe:recipe}"
+            >
+                <f:translate key="more-link" />
+            </f:link.action>
+        </div>
     </div>
-  </div>
 </html>
