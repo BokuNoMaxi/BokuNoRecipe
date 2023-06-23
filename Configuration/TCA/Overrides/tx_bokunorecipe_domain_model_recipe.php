@@ -47,5 +47,7 @@ $GLOBALS["TCA"]["tx_bokunorecipe_domain_model_recipe"]["types"]["1"] = [
         $ll .
         "tx_bokunorecipe_domain_model_recipe.ingredients, ingredients,--div--;" .
         $ll .
-        "tx_bokunorecipe_domain_model_recipe.related, related, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime",
+        "tx_bokunorecipe_domain_model_recipe.related, related,--div--;" .
+        $ll .
+        "tx_bokunorecipe_domain_model_category, categories ,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime",
 ];

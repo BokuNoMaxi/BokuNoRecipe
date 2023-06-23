@@ -107,6 +107,10 @@
 				<source>Related</source>
 				<target>Verwandt</target>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_category" resname="tx_bokunorecipe_domain_model_category">
+				<source>Category</source>
+				<target>Kategorien</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
