@@ -8,7 +8,8 @@ CREATE TABLE tx_bokunorecipe_domain_model_recipe (
 	publish_date date DEFAULT NULL,
 	images int(11) unsigned NOT NULL DEFAULT '0',
 	slug varchar(255) NOT NULL DEFAULT '',
-	ingredients int(11) unsigned NOT NULL DEFAULT '0'
+	ingredients int(11) unsigned NOT NULL DEFAULT '0',
+	related text NOT NULL
 );
 
 CREATE TABLE tx_bokunorecipe_domain_model_ingredients (

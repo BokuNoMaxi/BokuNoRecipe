@@ -42,7 +42,7 @@ defined('TYPO3') || die();
                         }
                     }
                     bokunocookinghelper {
-                        iconIdentifier = bokunorecipe-plugin-bokunorecipe
+                        iconIdentifier = bokunorecipe-plugin-bokunocookinghelper
                         title = LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunocookinghelper.name
                         description = LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_bokunocookinghelper.description
                         tt_content_defValues {

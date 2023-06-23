@@ -20,7 +20,8 @@ $badge-margin-right: 0.25em;
         }
     }
 }
-.bokunorecipe__list {
+.bokunorecipe__list,
+.bokunorecipe__detail__related {
     .badge {
         margin-right: $badge-margin-right;
     }

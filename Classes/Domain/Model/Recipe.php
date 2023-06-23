@@ -7,6 +7,7 @@ namespace BokuNo\Bokunorecipe\Domain\Model;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -15,6 +16,7 @@ use TYPO3\CMS\Extbase\Domain\Model\FileReference;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
+
 /**
  * Recipe
  */
@@ -100,6 +102,14 @@ class Recipe extends AbstractValueObject
     protected $ingredients = null;
 
     /**
+     * related
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $related = null;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -120,8 +130,9 @@ class Recipe extends AbstractValueObject
      */
     public function initializeObject()
     {
-        $this->images = $this->images ?: new ObjectStorage();
-        $this->ingredients = $this->ingredients ?: new ObjectStorage();
+        $this->images = $this->images ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->ingredients = $this->ingredients ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->related = $this->related ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -448,5 +459,48 @@ class Recipe extends AbstractValueObject
     public function setPrepTime(string $prepTime)
     {
         $this->prepTime = $prepTime;
+    }
+
+    /**
+     * Adds a Recipe
+     *
+     * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $related
+     * @return void
+     */
+    public function addRelated(\BokuNo\Bokunorecipe\Domain\Model\Recipe $related)
+    {
+        $this->related->attach($related);
+    }
+
+    /**
+     * Removes a Recipe
+     *
+     * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $relatedToRemove The Recipe to be removed
+     * @return void
+     */
+    public function removeRelated(\BokuNo\Bokunorecipe\Domain\Model\Recipe $relatedToRemove)
+    {
+        $this->related->detach($relatedToRemove);
+    }
+
+    /**
+     * Returns the related
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe>
+     */
+    public function getRelated()
+    {
+        return $this->related;
+    }
+
+    /**
+     * Sets the related
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe> $related
+     * @return void
+     */
+    public function setRelated(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $related)
+    {
+        $this->related = $related;
     }
 }

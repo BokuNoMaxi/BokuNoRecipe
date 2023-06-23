@@ -21,6 +21,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
+
 /**
  * The repository for Recipes
  */
@@ -29,13 +30,13 @@ class RecipeRepository extends Repository
     const TABLE = "tx_bokunorecipe_domain_model_recipe";
     const TABLE_CATEGORY = "sys_category";
     const TABLE_CATEGORY_MAP = "sys_category_record_mm";
+
     /**
      * @var array
      */
     protected $defaultOrderings = [
         "sorting" => QueryInterface::ORDER_ASCENDING,
     ];
-
     private $dataMapper = null;
 
     /**
@@ -49,6 +50,10 @@ class RecipeRepository extends Repository
         $this->dataMapper = GeneralUtility::makeInstance(DataMapper::class);
     }
 
+    /**
+     * @param $sw
+     * @param $categories
+     */
     public function findRecipe($sw = "", $categories = [])
     {
         // Get database connection
@@ -68,7 +73,6 @@ class RecipeRepository extends Repository
                         $queryBuilder->createNamedParameter("%{$sw}%")
                     )
             );
-
         if (count($categories)) {
             $queryBuilder
                 ->join(
@@ -86,12 +90,14 @@ class RecipeRepository extends Repository
                     $queryBuilder->expr()->in("category.uid_local", $categories)
                 );
         }
-
         $result = $queryBuilder->executeQuery()->fetchAllAssociative();
         $recipes = $this->dataMapper->map(Recipe::class, $result);
         return $recipes;
     }
 
+    /**
+     * @param $categories
+     */
     public function helpMe($categories = [])
     {
         // Get database connection
@@ -133,12 +139,14 @@ class RecipeRepository extends Repository
         return $recipes;
     }
 
+    /**
+     * @param $pid
+     */
     public function getAllCategoriesFromPid($pid)
     {
         $connection = GeneralUtility::makeInstance(
             ConnectionPool::class
         )->getConnectionForTable($this::TABLE_CATEGORY);
-
         $queryBuilder = $connection->createQueryBuilder();
         $queryBuilder
             ->select("*")
@@ -149,12 +157,10 @@ class RecipeRepository extends Repository
                     ->eq("pid", $queryBuilder->createNamedParameter($pid))
             )
             ->andWhere($queryBuilder->expr()->gt("parent", 0));
-
         $categories = $this->dataMapper->map(
             Category::class,
             $queryBuilder->execute()->fetchAllAssociative()
         );
-
         return $categories;
     }
 }

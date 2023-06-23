@@ -21,7 +21,7 @@ return [
         'iconfile' => 'EXT:bokunorecipe/Resources/Public/Icons/tx_bokunorecipe_domain_model_recipe.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'title, portions, max_time, prep_time, teaser, preparation, publish_date, images, slug, ingredients, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'title, portions, max_time, prep_time, teaser, preparation, publish_date, images, slug, ingredients, related, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -279,6 +279,33 @@ return [
                     'showPossibleLocalizationRecords' => 1,
                     'useSortable' => 1,
                     'showAllLocalizationLink' => 1
+                ],
+            ],
+
+        ],
+        'related' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_recipe.related',
+            'description' => 'LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_recipe.related.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_bokunorecipe_domain_model_recipe',
+                'default' => 0,
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 9999,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
                 ],
             ],
 

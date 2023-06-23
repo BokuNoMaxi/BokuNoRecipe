@@ -321,4 +321,63 @@ class RecipeTest extends UnitTestCase
 
         $this->subject->removeIngredient($ingredient);
     }
+
+    /**
+     * @test
+     */
+    public function getRelatedReturnsInitialValueForRecipe(): void
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getRelated()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setRelatedForObjectStorageContainingRecipeSetsRelated(): void
+    {
+        $related = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
+        $objectStorageHoldingExactlyOneRelated = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneRelated->attach($related);
+        $this->subject->setRelated($objectStorageHoldingExactlyOneRelated);
+
+        self::assertEquals($objectStorageHoldingExactlyOneRelated, $this->subject->_get('related'));
+    }
+
+    /**
+     * @test
+     */
+    public function addRelatedToObjectStorageHoldingRelated(): void
+    {
+        $related = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
+        $relatedObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $relatedObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($related));
+        $this->subject->_set('related', $relatedObjectStorageMock);
+
+        $this->subject->addRelated($related);
+    }
+
+    /**
+     * @test
+     */
+    public function removeRelatedFromObjectStorageHoldingRelated(): void
+    {
+        $related = new \BokuNo\Bokunorecipe\Domain\Model\Recipe();
+        $relatedObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $relatedObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($related));
+        $this->subject->_set('related', $relatedObjectStorageMock);
+
+        $this->subject->removeRelated($related);
+    }
 }

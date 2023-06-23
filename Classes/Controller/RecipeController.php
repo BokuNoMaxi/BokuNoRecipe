@@ -21,6 +21,7 @@ use TYPO3\CMS\Core\Pagination\SimplePagination;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
+
 /**
  * RecipeController
  */
@@ -60,9 +61,10 @@ class RecipeController extends ActionController
     /**
      * action list
      *
+     * @param int $currentPage
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function listAction(int $currentPage = 1): ResponseInterface
+    public function listAction(int $currentPage = 1)
     {
         $sw =
             $this->request->hasArgument("sw") &&
@@ -98,7 +100,7 @@ class RecipeController extends ActionController
      * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function showAction(Recipe $recipe): ResponseInterface
+    public function showAction(Recipe $recipe)
     {
         $this->view->assign("recipe", $recipe);
         return $this->htmlResponse();
@@ -109,7 +111,7 @@ class RecipeController extends ActionController
      *
      * @return string|object|null|void
      */
-    public function newAction(): ResponseInterface
+    public function newAction()
     {
         return $this->htmlResponse();
     }
@@ -138,7 +140,7 @@ class RecipeController extends ActionController
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("recipe")
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function editAction(Recipe $recipe): ResponseInterface
+    public function editAction(Recipe $recipe)
     {
         $this->view->assign("recipe", $recipe);
         return $this->htmlResponse();
@@ -181,27 +183,24 @@ class RecipeController extends ActionController
     /**
      * action helper
      *
+     * @param int $currentPage
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function helperAction(int $currentPage = 1): ResponseInterface
+    public function helperAction(int $currentPage = 1)
     {
         $withCategories =
             $this->request->hasArgument("category") &&
             $this->request->getArgument("category")
                 ? $this->request->getArgument("category")
                 : [];
-
         $recipes = [];
-
         if ($withCategories) {
             $recipes = $this->recipeRepository->findRecipe("", $withCategories);
             shuffle($recipes);
             $recipes = array_slice($recipes, 0, 3);
         }
-
         $arrayPaginator = new ArrayPaginator($recipes, $currentPage, 9);
         $paging = new SimplePagination($arrayPaginator);
-
         $this->view->assignMultiple([
             "recipes" => $recipes,
             "categories" => $this->getCategories(),
@@ -212,7 +211,6 @@ class RecipeController extends ActionController
         ]);
         return $this->htmlResponse();
     }
-
     private function getCategories()
     {
         $recipeCategoryUid = $this->settings["recipeCategoryUid"];

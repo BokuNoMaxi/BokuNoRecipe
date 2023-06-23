@@ -12,34 +12,36 @@
         </p>
         <p class="bokunorecipe__detail__teaser"><f:format.html>{recipe.teaser}</f:format.html></p>
         <div class="row row align-items-center gap-3 justify-content-center">
-            <div class="bokunorecipe__detail__image col-sm-4">
-                <f:for each="{recipe.images}" as="mediaElement" iteration="i">
-                    <f:if condition="{mediaElement.originalResource.type} == 2">
-                        <f:image
-                            image="{mediaElement}"
-                            title="{mediaElement.originalResource.title}"
-                            alt="{mediaElement.originalResource.alternative}"
-                            loading="{settings.list.media.image.lazyLoading}"
-                            maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
-                            maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
-                        />
-                    </f:if>
-                    <f:if condition="{mediaElement.originalResource.type} == 4">
-                        <f:render partial="Detail/MediaVideo" arguments="{mediaElement: image}" />
-                    </f:if>
-                    <f:if condition="{mediaElement.originalResource.type} == 5">
-                        <f:image
-                            image="{mediaElement}"
-                            title="{mediaElement.originalResource.title}"
-                            alt="{mediaElement.originalResource.alternative}"
-                            loading="{settings.list.media.image.lazyLoading}"
-                            maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
-                            maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
-                        />
-                    </f:if>
-                </f:for>
-            </div>
-            <div class="bokunorecipe__detail__ingredients_group col-sm-7">
+            <f:if condition="{recipe.images}">
+                <div class="bokunorecipe__detail__image col-sm-4">
+                    <f:for each="{recipe.images}" as="mediaElement" iteration="i">
+                        <f:if condition="{mediaElement.originalResource.type} == 2">
+                            <f:image
+                                image="{mediaElement}"
+                                title="{mediaElement.originalResource.title}"
+                                alt="{mediaElement.originalResource.alternative}"
+                                loading="{settings.list.media.image.lazyLoading}"
+                                maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
+                                maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
+                            />
+                        </f:if>
+                        <f:if condition="{mediaElement.originalResource.type} == 4">
+                            <f:render partial="Detail/MediaVideo" arguments="{mediaElement: image}" />
+                        </f:if>
+                        <f:if condition="{mediaElement.originalResource.type} == 5">
+                            <f:image
+                                image="{mediaElement}"
+                                title="{mediaElement.originalResource.title}"
+                                alt="{mediaElement.originalResource.alternative}"
+                                loading="{settings.list.media.image.lazyLoading}"
+                                maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
+                                maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"
+                            />
+                        </f:if>
+                    </f:for>
+                </div>
+            </f:if>
+            <div class="bokunorecipe__detail__ingredients_group {f:if(condition: '{recipe.images}', then: 'col-sm-7')}">
                 <f:for each="{recipe.IngredientsInGroups}" as="ingredientGroup" key="group" iteration="i">
                     <f:if condition="{group} == 'no-group'">
                         <f:then>
@@ -108,5 +110,13 @@
             <h2>Zubereitung</h2>
             <f:format.html>{recipe.preparation}</f:format.html>
         </div>
+        <f:if condition="{recipe.related}">
+            <div class="bokunorecipe__detail__related row pt-3">
+                <h2>Verwandte Rezepte</h2>
+                <f:for each="{recipe.related}" as="related" iteration="i">
+                    <f:render partial="Item" arguments="{recipe:related,settings:settings}" />
+                </f:for>
+            </div>
+        </f:if>
     </div>
 </html>

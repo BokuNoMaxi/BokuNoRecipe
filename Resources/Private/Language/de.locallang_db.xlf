@@ -14,9 +14,11 @@
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.images" resname="tx_bokunorecipe_domain_model_recipe.images">
 				<source>Images</source>
+				<target>Bilder</target>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_recipe.ingredients" resname="tx_bokunorecipe_domain_model_recipe.ingredients">
 				<source>Ingredients</source>
+				<target>Zutaten</target>
 			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_domain_model_ingredients" resname="tx_bokunorecipe_domain_model_ingredients">
 				<source>Ingredients</source>
@@ -100,6 +102,10 @@
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.handful" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.handful">
 				<source>handful</source>
 				<target>Handvol</target>
+			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_domain_model_recipe.related" resname="tx_bokunorecipe_domain_model_recipe.related">
+				<source>Related</source>
+				<target>Verwandt</target>
 			</trans-unit>
 		</body>
 	</file>

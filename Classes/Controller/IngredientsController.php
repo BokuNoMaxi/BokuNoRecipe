@@ -9,6 +9,7 @@ use BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository;
 use Psr\Http\Message\ResponseInterface;
 use BokuNo\Bokunorecipe\Domain\Model\Ingredients;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
  *
@@ -17,6 +18,7 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
  *
  * (c) 2021 Markus Ketterer <ketterer.markus@gmx.at>
  */
+
 /**
  * IngredientsController
  */
@@ -43,7 +45,7 @@ class IngredientsController extends ActionController
      *
      * @return string|object|null|void
      */
-    public function listAction(): ResponseInterface
+    public function listAction()
     {
         $ingredients = $this->ingredientsRepository->findAll();
         $this->view->assign("ingredients", $ingredients);
@@ -56,7 +58,7 @@ class IngredientsController extends ActionController
      * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
      * @return string|object|null|void
      */
-    public function showAction(Ingredients $ingredients): ResponseInterface
+    public function showAction(Ingredients $ingredients)
     {
         $this->view->assign("ingredients", $ingredients);
         return $this->htmlResponse();
@@ -67,7 +69,7 @@ class IngredientsController extends ActionController
      *
      * @return string|object|null|void
      */
-    public function newAction(): ResponseInterface
+    public function newAction()
     {
         return $this->htmlResponse();
     }
@@ -96,7 +98,7 @@ class IngredientsController extends ActionController
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ingredients")
      * @return string|object|null|void
      */
-    public function editAction(Ingredients $ingredients): ResponseInterface
+    public function editAction(Ingredients $ingredients)
     {
         $this->view->assign("ingredients", $ingredients);
         return $this->htmlResponse();
