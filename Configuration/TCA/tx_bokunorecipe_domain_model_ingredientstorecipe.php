@@ -5,7 +5,6 @@ return [
         'label' => 'quantity',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
@@ -39,7 +38,7 @@ return [
                 'renderType' => 'selectSingle',
                 'default' => 0,
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
                 'foreign_table' => 'tx_bokunorecipe_domain_model_ingredientstorecipe',
                 'foreign_table_where' => 'AND {#tx_bokunorecipe_domain_model_ingredientstorecipe}.{#pid}=###CURRENT_PID### AND {#tx_bokunorecipe_domain_model_ingredientstorecipe}.{#sys_language_uid} IN (-1,0)',
@@ -58,7 +57,7 @@ return [
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
-                        0 => '',
+                        'label' => '',
                         1 => '',
                         'invertStateDisplay' => true
                     ]
@@ -102,8 +101,9 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required',
-                'default' => ''
+                'eval' => 'trim',
+                'default' => '',
+                'required' => true
             ],
         ],
         'alternative_measurement' => [
@@ -114,11 +114,11 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['-- Label --', 0],
+                    ['label' => '-- Label --', 'value' => 0],
                 ],
                 'size' => 1,
                 'maxitems' => 1,
-                'eval' => 'required'
+                'required' => true
             ],
         ],
         'custom_group' => [

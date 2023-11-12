@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
+use BokuNo\Bokunorecipe\Domain\Model\Category;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -16,7 +17,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class CategoryTest extends UnitTestCase
 {
     /**
-     * @var \BokuNo\Bokunorecipe\Domain\Model\Category|MockObject|AccessibleObjectInterface
+     * @var Category|MockObject|AccessibleObjectInterface
      */
     protected $subject;
 
@@ -25,7 +26,7 @@ class CategoryTest extends UnitTestCase
         parent::setUp();
 
         $this->subject = $this->getAccessibleMock(
-            \BokuNo\Bokunorecipe\Domain\Model\Category::class,
+            Category::class,
             ['dummy']
         );
     }

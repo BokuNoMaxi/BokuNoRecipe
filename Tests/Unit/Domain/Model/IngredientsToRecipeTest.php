@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Tests\Unit\Domain\Model;
 
+use BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe;
+use BokuNo\Bokunorecipe\Domain\Model\Ingredients;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -16,7 +18,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class IngredientsToRecipeTest extends UnitTestCase
 {
     /**
-     * @var \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe|MockObject|AccessibleObjectInterface
+     * @var IngredientsToRecipe|MockObject|AccessibleObjectInterface
      */
     protected $subject;
 
@@ -25,7 +27,7 @@ class IngredientsToRecipeTest extends UnitTestCase
         parent::setUp();
 
         $this->subject = $this->getAccessibleMock(
-            \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe::class,
+            IngredientsToRecipe::class,
             ['dummy']
         );
     }
@@ -114,7 +116,7 @@ class IngredientsToRecipeTest extends UnitTestCase
      */
     public function setIngredientForIngredientsSetsIngredient(): void
     {
-        $ingredientFixture = new \BokuNo\Bokunorecipe\Domain\Model\Ingredients();
+        $ingredientFixture = new Ingredients();
         $this->subject->setIngredient($ingredientFixture);
 
         self::assertEquals($ingredientFixture, $this->subject->_get('ingredient'));

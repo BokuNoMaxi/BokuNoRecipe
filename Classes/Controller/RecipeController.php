@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Controller;
 
+use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository;
 use BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository;
@@ -30,17 +31,17 @@ class RecipeController extends ActionController
     /**
      * recipeRepository
      *
-     * @var \BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository
+     * @var RecipeRepository
      */
     protected $recipeRepository = null;
 
     /**
-     * @var \BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository
+     * @var CategoryRepository
      */
     protected $categoryRepository = null;
 
     /**
-     * @param \BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository $recipeRepository
+     * @param RecipeRepository $recipeRepository
      */
     public function injectRecipeRepository(RecipeRepository $recipeRepository)
     {
@@ -50,7 +51,7 @@ class RecipeController extends ActionController
     /**
      * Inject a category repository to enable DI
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository $categoryRepository
+     * @param CategoryRepository $categoryRepository
      */
     public function injectCategoryRepository(
         CategoryRepository $categoryRepository
@@ -62,7 +63,7 @@ class RecipeController extends ActionController
      * action list
      *
      * @param int $currentPage
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
     public function listAction(int $currentPage = 1)
     {
@@ -97,8 +98,8 @@ class RecipeController extends ActionController
     /**
      * action show
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
-     * @return \Psr\Http\Message\ResponseInterface
+     * @param Recipe $recipe
+     * @return ResponseInterface
      */
     public function showAction(Recipe $recipe)
     {
@@ -119,8 +120,8 @@ class RecipeController extends ActionController
     /**
      * action create
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $newRecipe
-     * @return \Psr\Http\Message\ResponseInterface
+     * @param Recipe $newRecipe
+     * @return ResponseInterface
      */
     public function createAction(Recipe $newRecipe)
     {
@@ -136,10 +137,10 @@ class RecipeController extends ActionController
     /**
      * action edit
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
-     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("recipe")
-     * @return \Psr\Http\Message\ResponseInterface
+     * @param Recipe $recipe
+     * @return ResponseInterface
      */
+    #[IgnoreValidation(['value' => 'recipe'])]
     public function editAction(Recipe $recipe)
     {
         $this->view->assign("recipe", $recipe);
@@ -149,7 +150,7 @@ class RecipeController extends ActionController
     /**
      * action update
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
+     * @param Recipe $recipe
      * @return string|object|null|void
      */
     public function updateAction(Recipe $recipe)
@@ -166,7 +167,7 @@ class RecipeController extends ActionController
     /**
      * action delete
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $recipe
+     * @param Recipe $recipe
      * @return string|object|null|void
      */
     public function deleteAction(Recipe $recipe)
@@ -184,7 +185,7 @@ class RecipeController extends ActionController
      * action helper
      *
      * @param int $currentPage
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
     public function helperAction(int $currentPage = 1)
     {

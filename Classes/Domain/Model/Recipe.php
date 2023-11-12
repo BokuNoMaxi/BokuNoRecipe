@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\Validate;
+use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -24,7 +26,7 @@ class Recipe extends AbstractValueObject
 {
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Category>
+     * @var ObjectStorage<Category>
      */
     protected $categories = null;
 
@@ -32,8 +34,8 @@ class Recipe extends AbstractValueObject
      * title
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
+    #[Validate(['validator' => 'NotEmpty'])]
     protected $title = '';
 
     /**
@@ -81,9 +83,9 @@ class Recipe extends AbstractValueObject
     /**
      * images
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     * @var ObjectStorage<FileReference>
      */
+    #[Cascade(['value' => 'remove'])]
     protected $images = null;
 
     /**
@@ -96,17 +98,17 @@ class Recipe extends AbstractValueObject
     /**
      * ingredients
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     * @var ObjectStorage<IngredientsToRecipe>
      */
+    #[Cascade(['value' => 'remove'])]
     protected $ingredients = null;
 
     /**
      * related
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     * @var ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe>
      */
+    #[Cascade(['value' => 'remove'])]
     protected $related = null;
 
     /**
@@ -130,9 +132,9 @@ class Recipe extends AbstractValueObject
      */
     public function initializeObject()
     {
-        $this->images = $this->images ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->ingredients = $this->ingredients ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->related = $this->related ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->images = $this->images ?: new ObjectStorage();
+        $this->ingredients = $this->ingredients ?: new ObjectStorage();
+        $this->related = $this->related ?: new ObjectStorage();
     }
 
     /**
@@ -180,7 +182,7 @@ class Recipe extends AbstractValueObject
     /**
      * Adds a FileReference
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @param FileReference $image
      * @return void
      */
     public function addImage(FileReference $image)
@@ -191,7 +193,7 @@ class Recipe extends AbstractValueObject
     /**
      * Removes a FileReference
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
+     * @param FileReference $imageToRemove The FileReference to be removed
      * @return void
      */
     public function removeImage(FileReference $imageToRemove)
@@ -202,7 +204,7 @@ class Recipe extends AbstractValueObject
     /**
      * Returns the images
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
+     * @return ObjectStorage<FileReference> $images
      */
     public function getImages()
     {
@@ -212,7 +214,7 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the images
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
+     * @param ObjectStorage<FileReference> $images
      * @return void
      */
     public function setImages(ObjectStorage $images)
@@ -223,7 +225,7 @@ class Recipe extends AbstractValueObject
     /**
      * Adds a IngredientsToRecipe
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredient
+     * @param IngredientsToRecipe $ingredient
      * @return void
      */
     public function addIngredient(IngredientsToRecipe $ingredient)
@@ -234,7 +236,7 @@ class Recipe extends AbstractValueObject
     /**
      * Removes a IngredientsToRecipe
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe $ingredientToRemove The IngredientsToRecipe to be removed
+     * @param IngredientsToRecipe $ingredientToRemove The IngredientsToRecipe to be removed
      * @return void
      */
     public function removeIngredient(IngredientsToRecipe $ingredientToRemove)
@@ -245,7 +247,7 @@ class Recipe extends AbstractValueObject
     /**
      * Returns the ingredients
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
+     * @return ObjectStorage<IngredientsToRecipe> $ingredients
      */
     public function getIngredients()
     {
@@ -255,7 +257,7 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the ingredients
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\IngredientsToRecipe> $ingredients
+     * @param ObjectStorage<IngredientsToRecipe> $ingredients
      * @return void
      */
     public function setIngredients(ObjectStorage $ingredients)
@@ -329,7 +331,7 @@ class Recipe extends AbstractValueObject
     /**
      * Get categories
      *
-     * @return \BokuNo\Bokunorecipe\Domain\Model\Category[]
+     * @return Category[]
      */
     public function getCategories()
     {
@@ -355,7 +357,7 @@ class Recipe extends AbstractValueObject
     /**
      * Set categories
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories
+     * @param ObjectStorage $categories
      */
     public function setCategories($categories)
     {
@@ -486,7 +488,7 @@ class Recipe extends AbstractValueObject
     /**
      * Returns the related
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe>
+     * @return ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe>
      */
     public function getRelated()
     {
@@ -496,10 +498,10 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the related
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe> $related
+     * @param ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe> $related
      * @return void
      */
-    public function setRelated(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $related)
+    public function setRelated(ObjectStorage $related)
     {
         $this->related = $related;
     }

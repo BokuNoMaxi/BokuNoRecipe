@@ -73,13 +73,9 @@ class RecipeIndexer extends IndexerBase
             $items = $queryBuilder
                 ->select("*")
                 ->distinct()
-                ->from($table)
-                ->where(
-                    $queryBuilder
-                        ->expr()
-                        ->in("pid", $indexerConfig["sysfolder"])
-                )
-                ->execute();
+                ->from($table)->where($queryBuilder
+                ->expr()
+                ->in("pid", $indexerConfig["sysfolder"]))->executeQuery();
 
             // Loop through the records and write them to the index.
             $counter = 0;

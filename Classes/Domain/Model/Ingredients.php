@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /**
@@ -25,8 +26,8 @@ class Ingredients extends AbstractValueObject
      * title
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
+    #[Validate(['validator' => 'NotEmpty'])]
     protected $title = '';
 
     /**

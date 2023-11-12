@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Controller;
 
+use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository;
 use Psr\Http\Message\ResponseInterface;
@@ -27,12 +28,12 @@ class IngredientsController extends ActionController
     /**
      * ingredientsRepository
      *
-     * @var \BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository
+     * @var IngredientsRepository
      */
     protected $ingredientsRepository = null;
 
     /**
-     * @param \BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository $ingredientsRepository
+     * @param IngredientsRepository $ingredientsRepository
      */
     public function injectIngredientsRepository(
         IngredientsRepository $ingredientsRepository
@@ -55,7 +56,7 @@ class IngredientsController extends ActionController
     /**
      * action show
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
+     * @param Ingredients $ingredients
      * @return string|object|null|void
      */
     public function showAction(Ingredients $ingredients)
@@ -77,7 +78,7 @@ class IngredientsController extends ActionController
     /**
      * action create
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $newIngredients
+     * @param Ingredients $newIngredients
      * @return string|object|null|void
      */
     public function createAction(Ingredients $newIngredients)
@@ -94,10 +95,10 @@ class IngredientsController extends ActionController
     /**
      * action edit
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
-     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ingredients")
+     * @param Ingredients $ingredients
      * @return string|object|null|void
      */
+    #[IgnoreValidation(['value' => 'ingredients'])]
     public function editAction(Ingredients $ingredients)
     {
         $this->view->assign("ingredients", $ingredients);
@@ -107,7 +108,7 @@ class IngredientsController extends ActionController
     /**
      * action update
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
+     * @param Ingredients $ingredients
      * @return string|object|null|void
      */
     public function updateAction(Ingredients $ingredients)
@@ -124,7 +125,7 @@ class IngredientsController extends ActionController
     /**
      * action delete
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredients
+     * @param Ingredients $ingredients
      * @return string|object|null|void
      */
     public function deleteAction(Ingredients $ingredients)

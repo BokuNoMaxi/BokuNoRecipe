@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -25,16 +26,16 @@ class IngredientsToRecipe extends AbstractEntity
      * quantity
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
+    #[Validate(['validator' => 'NotEmpty'])]
     protected $quantity = '';
 
     /**
      * alternativeMeasurement
      *
      * @var int
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
+    #[Validate(['validator' => 'NotEmpty'])]
     protected $alternativeMeasurement = 0;
 
     /**
@@ -47,7 +48,7 @@ class IngredientsToRecipe extends AbstractEntity
     /**
      * ingredient
      *
-     * @var \BokuNo\Bokunorecipe\Domain\Model\Ingredients
+     * @var Ingredients
      */
     protected $ingredient = null;
 
@@ -96,7 +97,7 @@ class IngredientsToRecipe extends AbstractEntity
     /**
      * Returns the ingredient
      *
-     * @return \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredient
+     * @return Ingredients $ingredient
      */
     public function getIngredient()
     {
@@ -106,7 +107,7 @@ class IngredientsToRecipe extends AbstractEntity
     /**
      * Sets the ingredient
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Ingredients $ingredient
+     * @param Ingredients $ingredient
      * @return void
      */
     public function setIngredient(Ingredients $ingredient)
