@@ -3,32 +3,31 @@
     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
     data-namespace-typo3-fluid="true"
 >
-    <div class="card m-1 p-0">
-        <f:link.action action="show" pageUid="10" title="{recipe.title}" arguments="{recipe:recipe}">
-            <f:if condition="{recipe.images.0.originalResource.type} == 2">
-                <f:variable name="mediaElement">{recipe.images.0}</f:variable>
-                <f:image
-                    class="card-img-top"
-                    image="{mediaElement}"
-                    title="{mediaElement.originalResource.title}"
-                    alt="{mediaElement.originalResource.alternative}"
-                    loading="{settings.list.media.image.lazyLoading}"
-                />
-            </f:if>
-            <f:if condition="{images.0.originalResource.type} == 4">
-                <f:render partial="Detail/MediaVideo" arguments="{mediaElement: recipe.images.0}" />
-            </f:if>
-            <f:if condition="{recipe.images.0.originalResource.type} == 5">
-                <f:variable name="mediaElement">{recipe.images.0}</f:variable>
-                <f:image
-                    class="card-img-top"
-                    image="{mediaElement}"
-                    title="{mediaElement.originalResource.title}"
-                    alt="{mediaElement.originalResource.alternative}"
-                    loading="{settings.list.media.image.lazyLoading}"
-                />
-            </f:if>
-        </f:link.action>
+<div class="col">
+    <div class="card">
+        <f:if condition="{recipe.images.0.originalResource.type} == 2">
+            <f:variable name="mediaElement">{recipe.images.0}</f:variable>
+            <f:image
+                class="card-img-top img-thumbnail"
+                image="{mediaElement}"
+                title="{mediaElement.originalResource.title}"
+                alt="{mediaElement.originalResource.alternative}"
+                loading="{settings.list.media.image.lazyLoading}"
+            />
+        </f:if>
+        <f:if condition="{images.0.originalResource.type} == 4">
+            <f:render partial="Detail/MediaVideo" arguments="{mediaElement: recipe.images.0}" />
+        </f:if>
+        <f:if condition="{recipe.images.0.originalResource.type} == 5">
+            <f:variable name="mediaElement">{recipe.images.0}</f:variable>
+            <f:image
+                class="card-img-top img-thumbnail"
+                image="{mediaElement}"
+                title="{mediaElement.originalResource.title}"
+                alt="{mediaElement.originalResource.alternative}"
+                loading="{settings.list.media.image.lazyLoading}"
+            />
+        </f:if>
         <div class="card-body">
             <h3 class="card-title">
                 <f:link.action action="show" pageUid="10" title="{recipe.title}" arguments="{recipe:recipe}">
@@ -77,4 +76,5 @@
             </f:link.action>
         </div>
     </div>
+</div>
 </html>

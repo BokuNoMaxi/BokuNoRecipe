@@ -1,32 +1,29 @@
 <f:if condition="{paginator.numberOfPages} > 1">
-    <ul class="paging paging-block">
+  <nav>
+    <ul class="pagination">
         <f:if condition="{paging.previousPageNumber} && {paging.previousPageNumber} >= {paging.firstPageNumber}">
-            <li class="waves-effect">
-                <a
-                    href="{f:uri.action(action:actionName, arguments:{currentPage: paging.previousPageNumber})}"
-                    title="{f:translate(key:'paging.previous')}"
-                >
-                    <i class="material-icons"><</i>
-                </a>
-            </li>
+          <li class="page-item">
+            <a class="page-link"  href="{f:uri.action(action:actionName, arguments:{currentPage: paging.previousPageNumber})}"
+            title="{f:translate(key:'paging.previous')}">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
         </f:if>
-        <f:for each="{pages}" as="page">
-            <li
-                class="{f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active current', else:'waves-effect')}"
-            >
-                <a href="{f:uri.action(action:actionName, arguments:{currentPage: page})}">{page}</a>
-            </li>
-        </f:for>
 
-        <f:if condition="{paging.nextPageNumber} && {paging.nextPageNumber} <= {paging.lastPageNumber}">
-            <li class="waves-effect">
-                <a
-                    href="{f:uri.action(action:actionName, arguments:{currentPage: paging.nextPageNumber})}"
-                    title="{f:translate(key:'paging.next')}"
-                >
-                    <i class="material-icons">></i>
-                </a>
-            </li>
-        </f:if>
+      <f:for each="{pages}" as="page">
+        <li  class="page-item {f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active current')}">
+            <a class="page-link" href="{f:uri.action(action:actionName, arguments:{currentPage: page})}">{page}</a>
+        </li>
+      </f:for>
+
+      <f:if condition="{paging.nextPageNumber} && {paging.nextPageNumber} <= {paging.lastPageNumber}">
+        <li class="page-item">
+          <a class="page-link" href="{f:uri.action(action:actionName, arguments:{currentPage: paging.nextPageNumber})}"
+          title="{f:translate(key:'paging.next')}">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </f:if>
     </ul>
+  </nav>
 </f:if>
