@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Domain\Model;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
@@ -16,10 +17,22 @@ namespace BokuNo\Bokunorecipe\Domain\Model;
 /**
  * Category
  */
-class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
+class Category extends AbstractEntity
 {
+
     /**
      * title
+     *
+     * @var string
+     */
+    protected $title = "";
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * slug
      *
      * @var string
      */
@@ -28,4 +41,6 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     {
         return $this->slug;
     }
+
+
 }

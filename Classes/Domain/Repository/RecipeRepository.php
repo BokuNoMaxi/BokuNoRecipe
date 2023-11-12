@@ -12,6 +12,7 @@ use BokuNo\Bokunorecipe\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
@@ -37,18 +38,6 @@ class RecipeRepository extends Repository
     protected $defaultOrderings = [
         "sorting" => QueryInterface::ORDER_ASCENDING,
     ];
-    private $dataMapper = null;
-
-    /**
-     * Constructs a new Repository
-     *
-     * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
-     */
-    public function __construct(ObjectManagerInterface $objectManager)
-    {
-        parent::__construct($objectManager);
-        $this->dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-    }
 
     /**
      * @param $sw
@@ -91,7 +80,9 @@ class RecipeRepository extends Repository
                 );
         }
         $result = $queryBuilder->executeQuery()->fetchAllAssociative();
-        $recipes = $this->dataMapper->map(Recipe::class, $result);
+
+        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+        $recipes = $dataMapper->map(Recipe::class, $result);
         return $recipes;
     }
 
@@ -135,7 +126,9 @@ class RecipeRepository extends Repository
                 );
         }
         $result = $queryBuilder->executeQuery()->fetchAllAssociative();
-        $recipes = $this->dataMapper->map(Recipe::class, $result);
+
+        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+        $recipes = $dataMapper->map(Recipe::class, $result);
         return $recipes;
     }
 
@@ -157,7 +150,9 @@ class RecipeRepository extends Repository
                     ->eq("pid", $queryBuilder->createNamedParameter($pid))
             )
             ->andWhere($queryBuilder->expr()->gt("parent", 0));
-        $categories = $this->dataMapper->map(
+
+        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+        $categories = $dataMapper->map(
             Category::class,
             $queryBuilder->execute()->fetchAllAssociative()
         );

@@ -13,6 +13,7 @@ use BokuNo\Bokunorecipe\Domain\Model\Recipe;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
@@ -28,35 +29,11 @@ use TYPO3\CMS\Core\Pagination\SimplePagination;
  */
 class RecipeController extends ActionController
 {
-    /**
-     * recipeRepository
-     *
-     * @var RecipeRepository
-     */
-    protected $recipeRepository = null;
-
-    /**
-     * @var CategoryRepository
-     */
-    protected $categoryRepository = null;
-
-    /**
-     * @param RecipeRepository $recipeRepository
-     */
-    public function injectRecipeRepository(RecipeRepository $recipeRepository)
-    {
-        $this->recipeRepository = $recipeRepository;
-    }
-
-    /**
-     * Inject a category repository to enable DI
-     *
-     * @param CategoryRepository $categoryRepository
-     */
-    public function injectCategoryRepository(
-        CategoryRepository $categoryRepository
+    function __construct(
+      private readonly RecipeRepository $recipeRepository,
+      private readonly CategoryRepository $categoryRepository
     ) {
-        $this->categoryRepository = $categoryRepository;
+
     }
 
     /**

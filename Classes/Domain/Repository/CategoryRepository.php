@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BokuNo\Bokunorecipe\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
@@ -17,6 +18,6 @@ namespace BokuNo\Bokunorecipe\Domain\Repository;
 /**
  * The repository for Categories
  */
-class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
+class CategoryRepository extends Repository
 {
 }
