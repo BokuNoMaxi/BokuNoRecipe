@@ -2,10 +2,6 @@
 defined("TYPO3") || die();
 
 $ll = "LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:";
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
-    "bokunorecipe",
-    "tx_bokunorecipe_domain_model_recipe"
-);
 
 $GLOBALS["TCA"]["tx_bokunorecipe_domain_model_recipe"]["columns"]["slug"][
     "config"
