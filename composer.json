@@ -1,5 +1,5 @@
 {
-    "name": "boku-no/bokunorecipe",
+    "name": "bokuno/bokunorecipe",
     "type": "typo3-cms-extension",
     "description": "This extension is for storing recipes in Typo3",
     "authors": [
