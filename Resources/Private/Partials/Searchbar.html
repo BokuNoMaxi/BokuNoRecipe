@@ -1,19 +1,22 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-    <div class="bokunorecipe__list__searchbar">
-        <f:form action="list" addQueryString="1" id="bkr-searchbar">
-            <div class="input-group">
-                <button type="button" id="recipe-reset" class="btn btn-outline-primary border-right-0">
-                    <f:translate key="tx_bokunorecipe_bokunoingredients.reset" />
-                </button>
-                <f:form.textfield
-                    id="recipe-sw"
-                    class="form-control border-left-0 border-right-0"
-                    type="text"
-                    name="sw"
-                />
-                <button type="submit" class="btn btn-outline-primary border-left-0">
-                    <f:translate key="tx_bokunorecipe_bokunoingredients.search" />
-                </button>
+    <div class="bokunorecipe__list__searchbar mb-3">
+        <f:form action="list" addQueryString="1" id="bkr-searchbar" class="">
+            <div class="d-flex m-1">
+                <div class="input-group">
+                    <button type="button" id="recipe-reset" class="btn btn-primary">
+                        <f:translate key="tx_bokunorecipe_bokunoingredients.reset" />
+                    </button>
+                    <f:form.textfield
+                        id="recipe-sw"
+                        class="form-control"
+                        type="text"
+                        name="sw"
+                        placeholder="{f:translate(key: 'tx_bokunorecipe_bokunoingredients.search.placeholder')}"
+                    />
+                    <button type="submit" class="btn btn-primary">
+                        <f:translate key="tx_bokunorecipe_bokunoingredients.search" />
+                    </button>
+                </div>
             </div>
             <f:render partial="Filter/Categories" arguments="{_all}" />
         </f:form>

@@ -111,6 +111,10 @@
 				<source>Search</source>
 				<target>Suchen</target>
 			</trans-unit>
+			<trans-unit id="tx_bokunorecipe_bokunoingredients.search.placeholder" resname="tx_bokunorecipe_bokunoingredients.search.placeholder">
+				<source>Search recipes</source>
+				<target>Rezepte suchen</target>
+			</trans-unit>
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.helpme" resname="tx_bokunorecipe_bokunoingredients.helpme">
 				<target>Hilf mir!!</target>
 			</trans-unit>

@@ -3,7 +3,7 @@
     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
     data-namespace-typo3-fluid="true"
 >
-    <div class="bokunorecipe__detail container">
+    <div class="bokunorecipe__detail">
         <h1 class="pt-3">{recipe.title}</h1>
         <p class="bokunorecipe__detail__badges">
             <f:for each="{recipe.categories}" as="category" iteration="i">
@@ -13,10 +13,11 @@
         <p class="bokunorecipe__detail__teaser"><f:format.html>{recipe.teaser}</f:format.html></p>
         <div class="row align-items-center gap-3 justify-content-center">
             <f:if condition="{recipe.images}">
-                <div class="bokunorecipe__detail__image col-sm-4">
+                <div class="bokunorecipe__detail__image">
                     <f:for each="{recipe.images}" as="mediaElement" iteration="i">
                         <f:if condition="{mediaElement.originalResource.type} == 2">
                             <f:image
+                                class="img-fluid"
                                 image="{mediaElement}"
                                 title="{mediaElement.originalResource.title}"
                                 alt="{mediaElement.originalResource.alternative}"
@@ -41,7 +42,7 @@
                     </f:for>
                 </div>
             </f:if>
-            <div class="bokunorecipe__detail__ingredients_group {f:if(condition: '{recipe.images}', then: 'col-sm-7')}">
+            <div class="bokunorecipe__detail__ingredients_group">
                 <f:for each="{recipe.IngredientsInGroups}" as="ingredientGroup" key="group" iteration="i">
                     <f:if condition="{group} == 'no-group'">
                         <f:then>
@@ -111,8 +112,11 @@
             <f:format.html>{recipe.preparation}</f:format.html>
         </div>
         <f:if condition="{recipe.related}">
-            <div class="bokunorecipe__detail__related row pt-3">
-                <h2>Verwandte Rezepte</h2>
+            <h2>Verwandte Rezepte</h2>
+            <div
+                class="bokunorecipe__detail__related row row-cols-1 row-cols-sm-3 g-4 mb-3"
+                data-masonry='{"percentPosition": true }'
+            >
                 <f:for each="{recipe.related}" as="related" iteration="i">
                     <f:render partial="Item" arguments="{recipe:related,settings:settings}" />
                 </f:for>
