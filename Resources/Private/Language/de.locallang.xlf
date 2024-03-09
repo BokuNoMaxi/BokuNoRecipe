@@ -133,6 +133,10 @@
 				<source>Preparation</source>
 				<target>Zubereitung</target>
 			</trans-unit>
+			<trans-unit id="ingredients" resname="ingredients">
+				<source>Ingredients</source>
+				<target>Zutaten</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

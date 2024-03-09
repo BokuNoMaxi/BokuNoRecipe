@@ -198,6 +198,9 @@
 			<trans-unit id="preparation" resname="preparation">
 				<source>Preparation</source>
 			</trans-unit>
+			<trans-unit id="ingredients" resname="ingredients">
+				<source>Ingredients</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

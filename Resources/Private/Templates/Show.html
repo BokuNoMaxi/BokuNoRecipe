@@ -42,6 +42,7 @@
                     </f:for>
                 </div>
             </f:if>
+            <h2><f:translate key="ingredients" /></h2>
             <div class="bokunorecipe__detail__ingredients_group row">
                 <f:variable name="col">
                     <f:switch expression="{recipe.IngredientsInGroups -> f:count()}">
@@ -53,19 +54,25 @@
                 </f:variable>
                 <f:for each="{recipe.IngredientsInGroups}" as="ingredientGroup" key="group" iteration="i">
                     <div class="col-12 {col}">
-                        <f:if condition="{group} == 'no-group'">
-                            <f:then>
-                                <h2><f:translate key="others" />:</h2>
-                            </f:then>
-                            <f:else>
-                                <h2>{group}</h2>
-                            </f:else>
-                        </f:if>
                         <table class="bokunorecipe__detail__ingredients col-12 table">
+                            <tr>
+                                <th class="text-center" colspan="2">
+                                    <f:if condition="{group} == 'no-group'">
+                                        <f:then>
+                                            <f:translate key="others" />
+                                        </f:then>
+                                        <f:else> {group} </f:else>
+                                    </f:if>
+                                </th>
+                            </tr>
                             <f:for each="{ingredientGroup}" as="ingredient" iteration="i">
                                 <tr>
                                     <td class="col-3">
-                                        {ingredient.quantity}<f:if condition="{ingredient.alternativeMeasurement}">
+                                        <f:if
+                                            condition="{ingredient.alternativeMeasurement} != 5 && ingredient.alternativeMeasurement != 8"
+                                            >{ingredient.quantity}</f:if
+                                        >
+                                        <f:if condition="{ingredient.alternativeMeasurement}">
                                             <f:then>
                                                 <f:switch expression="{ingredient.alternativeMeasurement}">
                                                     <f:case value="1"
@@ -118,7 +125,7 @@
             </div>
         </div>
         <div class="bokunorecipe__detail__perparation pt-3">
-            <h2>Zubereitung</h2>
+            <h2><f:translate key="preparation" /></h2>
             <f:format.html>{recipe.preparation}</f:format.html>
         </div>
         <f:if condition="{recipe.related}">
