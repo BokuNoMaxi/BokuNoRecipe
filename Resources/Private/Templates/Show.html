@@ -42,68 +42,78 @@
                     </f:for>
                 </div>
             </f:if>
-            <div class="bokunorecipe__detail__ingredients_group">
+            <div class="bokunorecipe__detail__ingredients_group row">
+                <f:variable name="col">
+                    <f:switch expression="{recipe.IngredientsInGroups -> f:count()}">
+                        <f:case value="1">col-sm-6</f:case>
+                        <f:case value="2">col-sm-6</f:case>
+                        <f:case value="3">col-sm-6 col-md-4</f:case>
+                        <f:defaultCase>col-sm-6 col-md-3</f:defaultCase>
+                    </f:switch>
+                </f:variable>
                 <f:for each="{recipe.IngredientsInGroups}" as="ingredientGroup" key="group" iteration="i">
-                    <f:if condition="{group} == 'no-group'">
-                        <f:then>
-                            <h2>Zutaten:</h2>
-                        </f:then>
-                        <f:else>
-                            <h2>{group}</h2>
-                        </f:else>
-                    </f:if>
-                    <table class="bokunorecipe__detail__ingredients col-12 table">
-                        <f:for each="{ingredientGroup}" as="ingredient" iteration="i">
-                            <tr>
-                                <td class="col-3">
-                                    {ingredient.quantity}<f:if condition="{ingredient.alternativeMeasurement}">
-                                        <f:then>
-                                            <f:switch expression="{ingredient.alternativeMeasurement}">
-                                                <f:case value="1"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon.unit"
-                                                /></f:case>
-                                                <f:case value="2"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.tablespoon.unit"
-                                                /></f:case>
-                                                <f:case value="3"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint.unit"
-                                                /></f:case>
-                                                <f:case value="4"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.bunch.unit"
-                                                /></f:case>
-                                                <f:case value="5"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit"
-                                                /></f:case>
-                                                <f:case value="6"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch.unit"
-                                                /></f:case>
-                                                <f:case value="7"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.handful.unit"
-                                                /></f:case>
-                                                <f:case value="8"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.optional.unit"
-                                                /></f:case>
-                                                <f:case value="9"
-                                                    ><f:translate
-                                                        key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pack.unit"
-                                                /></f:case>
-                                            </f:switch>
-                                        </f:then>
-                                        <f:else> {ingredient.ingredient.unit} </f:else>
-                                    </f:if>
-                                </td>
-                                <td>{ingredient.ingredient.title}</td>
-                            </tr>
-                        </f:for>
-                    </table>
+                    <div class="col-12 {col}">
+                        <f:if condition="{group} == 'no-group'">
+                            <f:then>
+                                <h2><f:translate key="others" />:</h2>
+                            </f:then>
+                            <f:else>
+                                <h2>{group}</h2>
+                            </f:else>
+                        </f:if>
+                        <table class="bokunorecipe__detail__ingredients col-12 table">
+                            <f:for each="{ingredientGroup}" as="ingredient" iteration="i">
+                                <tr>
+                                    <td class="col-3">
+                                        {ingredient.quantity}<f:if condition="{ingredient.alternativeMeasurement}">
+                                            <f:then>
+                                                <f:switch expression="{ingredient.alternativeMeasurement}">
+                                                    <f:case value="1"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.teaspoon.unit"
+                                                    /></f:case>
+                                                    <f:case value="2"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.tablespoon.unit"
+                                                    /></f:case>
+                                                    <f:case value="3"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.knifepoint.unit"
+                                                    /></f:case>
+                                                    <f:case value="4"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.bunch.unit"
+                                                    /></f:case>
+                                                    <f:case value="5"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.need.unit"
+                                                    /></f:case>
+                                                    <f:case value="6"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pinch.unit"
+                                                    /></f:case>
+                                                    <f:case value="7"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.handful.unit"
+                                                    /></f:case>
+                                                    <f:case value="8"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.optional.unit"
+                                                    /></f:case>
+                                                    <f:case value="9"
+                                                        ><f:translate
+                                                            key="LLL:EXT:bokunorecipe/Resources/Private/Language/locallang.xlf:tx_bokunorecipe_bokunoingredients.alternativemessurement.pack.unit"
+                                                    /></f:case>
+                                                </f:switch>
+                                            </f:then>
+                                            <f:else> {ingredient.ingredient.unit} </f:else>
+                                        </f:if>
+                                    </td>
+                                    <td>{ingredient.ingredient.title}</td>
+                                </tr>
+                            </f:for>
+                        </table>
+                    </div>
                 </f:for>
             </div>
         </div>
@@ -112,7 +122,7 @@
             <f:format.html>{recipe.preparation}</f:format.html>
         </div>
         <f:if condition="{recipe.related}">
-            <h2>Verwandte Rezepte</h2>
+            <h2><f:translate key="related" /></h2>
             <div
                 class="bokunorecipe__detail__related row row-cols-1 row-cols-sm-3 g-4 mb-3"
                 data-masonry='{"percentPosition": true }'

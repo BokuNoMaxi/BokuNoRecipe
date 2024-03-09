@@ -189,6 +189,15 @@
 			<trans-unit id="dateFormat" resname="dateFormat">
 				<source>%m/%d/%Y</source>
 			</trans-unit>
+			<trans-unit id="others" resname="others">
+				<source>Other ingredients</source>
+			</trans-unit>
+			<trans-unit id="related" resname="related">
+				<source>Related recipes</source>
+			</trans-unit>
+			<trans-unit id="preparation" resname="preparation">
+				<source>Preparation</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

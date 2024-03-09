@@ -121,6 +121,18 @@
 			<trans-unit id="dateFormat" xml:space="preserve" approved="yes">
 				<source>%m/%d/%Y</source>
 			<target state="final">%d.%m.%Y</target></trans-unit>
+			<trans-unit id="others" resname="others">
+				<source>Other ingredients</source>
+				<target>Sonstige Zutaten</target>
+			</trans-unit>
+			<trans-unit id="related" resname="related">
+				<source>Related recipes</source>
+				<target>Verwandte Rezepte</target>
+			</trans-unit>
+			<trans-unit id="preparation" resname="preparation">
+				<source>Preparation</source>
+				<target>Zubereitung</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
