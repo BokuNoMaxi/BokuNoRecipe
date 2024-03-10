@@ -195,6 +195,22 @@
 			<trans-unit id="tx_bokunorecipe_bokunoingredients.alternativemessurement.optional" resname="tx_bokunorecipe_bokunoingredients.alternativemessurement.optional">
 				<source>optional</source>
 			</trans-unit>
+
+			<trans-unit id="detailPid">
+				<source>Detail PID</source>
+			</trans-unit>
+			<trans-unit id="listPid">
+				<source>List PID</source>
+			</trans-unit>
+			<trans-unit id="backPid">
+				<source>Back PID</source>
+			</trans-unit>
+			<trans-unit id="hidePagination">
+				<source>Hide pagination</source>
+			</trans-unit>
+			<trans-unit id="itemsPerPage">
+				<source>Items per page</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
