@@ -9,7 +9,6 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use BokuNo\Bokunorecipe\Domain\Repository\IngredientsRepository;
 use Psr\Http\Message\ResponseInterface;
 use BokuNo\Bokunorecipe\Domain\Model\Ingredients;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
 
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
@@ -77,11 +76,6 @@ class IngredientsController extends ActionController
      */
     public function createAction(Ingredients $newIngredients)
     {
-        $this->addFlashMessage(
-            "The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
-            "",
-            AbstractMessage::WARNING
-        );
         $this->ingredientsRepository->add($newIngredients);
         $this->redirect("list");
     }
@@ -105,11 +99,6 @@ class IngredientsController extends ActionController
      */
     public function updateAction(Ingredients $ingredients)
     {
-        $this->addFlashMessage(
-            "The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
-            "",
-            AbstractMessage::WARNING
-        );
         $this->ingredientsRepository->update($ingredients);
         $this->redirect("list");
     }
@@ -121,11 +110,6 @@ class IngredientsController extends ActionController
      */
     public function deleteAction(Ingredients $ingredients)
     {
-        $this->addFlashMessage(
-            "The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
-            "",
-            AbstractMessage::WARNING
-        );
         $this->ingredientsRepository->remove($ingredients);
         $this->redirect("list");
     }

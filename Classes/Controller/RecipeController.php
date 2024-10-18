@@ -10,7 +10,6 @@ use BokuNo\Bokunorecipe\Domain\Repository\RecipeRepository;
 use BokuNo\Bokunorecipe\Domain\Repository\CategoryRepository;
 use Psr\Http\Message\ResponseInterface;
 use BokuNo\Bokunorecipe\Domain\Model\Recipe;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 
@@ -95,11 +94,6 @@ class RecipeController extends ActionController
      */
     public function createAction(Recipe $newRecipe)
     {
-        $this->addFlashMessage(
-            "The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
-            "",
-            AbstractMessage::WARNING
-        );
         $this->recipeRepository->add($newRecipe);
         $this->redirect("list");
     }
@@ -121,11 +115,6 @@ class RecipeController extends ActionController
      */
     public function updateAction(Recipe $recipe)
     {
-        $this->addFlashMessage(
-            "The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
-            "",
-            AbstractMessage::WARNING
-        );
         $this->recipeRepository->update($recipe);
         $this->redirect("list");
     }
@@ -137,11 +126,6 @@ class RecipeController extends ActionController
      */
     public function deleteAction(Recipe $recipe)
     {
-        $this->addFlashMessage(
-            "The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html",
-            "",
-            AbstractMessage::WARNING
-        );
         $this->recipeRepository->remove($recipe);
         $this->redirect("list");
     }
