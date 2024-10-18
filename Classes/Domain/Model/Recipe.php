@@ -28,7 +28,7 @@ class Recipe extends AbstractValueObject
     /**
      * @var ObjectStorage<Category>
      */
-    protected $categories = null;
+    protected $categories;
 
     /**
      * title
@@ -78,7 +78,7 @@ class Recipe extends AbstractValueObject
      *
      * @var \DateTime
      */
-    protected $publishDate = null;
+    protected $publishDate;
 
     /**
      * images
@@ -86,7 +86,7 @@ class Recipe extends AbstractValueObject
      * @var ObjectStorage<FileReference>
      */
     #[Cascade(['value' => 'remove'])]
-    protected $images = null;
+    protected $images;
 
     /**
      * slug
@@ -101,7 +101,7 @@ class Recipe extends AbstractValueObject
      * @var ObjectStorage<IngredientsToRecipe>
      */
     #[Cascade(['value' => 'remove'])]
-    protected $ingredients = null;
+    protected $ingredients;
 
     /**
      * related
@@ -109,7 +109,7 @@ class Recipe extends AbstractValueObject
      * @var ObjectStorage<\BokuNo\Bokunorecipe\Domain\Model\Recipe>
      */
     #[Cascade(['value' => 'remove'])]
-    protected $related = null;
+    protected $related;
 
     /**
      * __construct
@@ -150,7 +150,6 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the title
      *
-     * @param string $title
      * @return void
      */
     public function setTitle(string $title)
@@ -171,7 +170,6 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the preparation
      *
-     * @param string $preparation
      * @return void
      */
     public function setPreparation(string $preparation)
@@ -225,7 +223,6 @@ class Recipe extends AbstractValueObject
     /**
      * Adds a IngredientsToRecipe
      *
-     * @param IngredientsToRecipe $ingredient
      * @return void
      */
     public function addIngredient(IngredientsToRecipe $ingredient)
@@ -278,7 +275,6 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the slug
      *
-     * @param string $slug
      * @return void
      */
     public function setSlug(string $slug)
@@ -299,7 +295,6 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the publishDate
      *
-     * @param \DateTime $publishDate
      * @return void
      */
     public function setPublishDate(\DateTime $publishDate)
@@ -320,7 +315,6 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the teaser
      *
-     * @param string $teaser
      * @return void
      */
     public function setTeaser(string $teaser)
@@ -366,8 +360,6 @@ class Recipe extends AbstractValueObject
 
     /**
      * Adds a category to this categories.
-     *
-     * @param Category $category
      */
     public function addCategory(Category $category)
     {
@@ -383,20 +375,23 @@ class Recipe extends AbstractValueObject
     {
         $ingredients = $this->getIngredients();
         $return = [];
-        foreach ($ingredients as $key => $ingredient) {
+        foreach ($ingredients as $ingredient) {
             $ingredientGroup = $ingredient->getCustomGroup();
             if ($ingredientGroup) {
                 if (!$return[$ingredientGroup]) {
                     $return[$ingredientGroup] = [];
                 }
-                array_push($return[$ingredientGroup], $ingredient);
+
+                $return[$ingredientGroup][] = $ingredient;
             } else {
                 if (!$return['no-group']) {
                     $return['no-group'] = [];
                 }
-                array_push($return['no-group'], $ingredient);
+
+                $return['no-group'][] = $ingredient;
             }
         }
+
         return $return;
     }
 
@@ -413,7 +408,6 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the portions
      *
-     * @param string $portions
      * @return void
      */
     public function setPortions(string $portions)
@@ -434,7 +428,6 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the maxTime
      *
-     * @param string $maxTime
      * @return void
      */
     public function setMaxTime(string $maxTime)
@@ -455,7 +448,6 @@ class Recipe extends AbstractValueObject
     /**
      * Sets the prepTime
      *
-     * @param string $prepTime
      * @return void
      */
     public function setPrepTime(string $prepTime)
@@ -466,7 +458,6 @@ class Recipe extends AbstractValueObject
     /**
      * Adds a Recipe
      *
-     * @param \BokuNo\Bokunorecipe\Domain\Model\Recipe $related
      * @return void
      */
     public function addRelated(\BokuNo\Bokunorecipe\Domain\Model\Recipe $related)

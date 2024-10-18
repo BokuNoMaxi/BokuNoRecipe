@@ -30,14 +30,10 @@ class IngredientsController extends ActionController
      *
      * @var IngredientsRepository
      */
-    protected $ingredientsRepository = null;
+    protected $ingredientsRepository;
 
-    /**
-     * @param IngredientsRepository $ingredientsRepository
-     */
-    public function injectIngredientsRepository(
-        IngredientsRepository $ingredientsRepository
-    ) {
+    public function __construct(IngredientsRepository $ingredientsRepository)
+    {
         $this->ingredientsRepository = $ingredientsRepository;
     }
 
@@ -46,7 +42,7 @@ class IngredientsController extends ActionController
      *
      * @return string|object|null|void
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $ingredients = $this->ingredientsRepository->findAll();
         $this->view->assign("ingredients", $ingredients);
@@ -56,10 +52,9 @@ class IngredientsController extends ActionController
     /**
      * action show
      *
-     * @param Ingredients $ingredients
      * @return string|object|null|void
      */
-    public function showAction(Ingredients $ingredients)
+    public function showAction(Ingredients $ingredients): ResponseInterface
     {
         $this->view->assign("ingredients", $ingredients);
         return $this->htmlResponse();
@@ -70,7 +65,7 @@ class IngredientsController extends ActionController
      *
      * @return string|object|null|void
      */
-    public function newAction()
+    public function newAction(): ResponseInterface
     {
         return $this->htmlResponse();
     }
@@ -78,7 +73,6 @@ class IngredientsController extends ActionController
     /**
      * action create
      *
-     * @param Ingredients $newIngredients
      * @return string|object|null|void
      */
     public function createAction(Ingredients $newIngredients)
@@ -95,11 +89,10 @@ class IngredientsController extends ActionController
     /**
      * action edit
      *
-     * @param Ingredients $ingredients
      * @return string|object|null|void
      */
     #[IgnoreValidation(['value' => 'ingredients'])]
-    public function editAction(Ingredients $ingredients)
+    public function editAction(Ingredients $ingredients): ResponseInterface
     {
         $this->view->assign("ingredients", $ingredients);
         return $this->htmlResponse();
@@ -108,7 +101,6 @@ class IngredientsController extends ActionController
     /**
      * action update
      *
-     * @param Ingredients $ingredients
      * @return string|object|null|void
      */
     public function updateAction(Ingredients $ingredients)
@@ -125,7 +117,6 @@ class IngredientsController extends ActionController
     /**
      * action delete
      *
-     * @param Ingredients $ingredients
      * @return string|object|null|void
      */
     public function deleteAction(Ingredients $ingredients)

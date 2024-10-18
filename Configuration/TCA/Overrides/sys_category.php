@@ -1,4 +1,6 @@
 <?php
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 defined('TYPO3') || die();
 
 if (!isset($GLOBALS['TCA']['sys_category']['ctrl']['type'])) {
@@ -20,10 +22,10 @@ if (!isset($GLOBALS['TCA']['sys_category']['ctrl']['type'])) {
             'maxitems' => 1,
         ]
     ];
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('sys_category', $tempColumnstx_bokunorecipe_sys_category);
+    ExtensionManagementUtility::addTCAcolumns('sys_category', $tempColumnstx_bokunorecipe_sys_category);
 }
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+ExtensionManagementUtility::addToAllTCAtypes(
     'sys_category',
     $GLOBALS['TCA']['sys_category']['ctrl']['type'],
     '',
@@ -40,6 +42,7 @@ if (isset($GLOBALS['TCA']['sys_category']['types']['1']['showitem'])) {
 } else {
     $GLOBALS['TCA']['sys_category']['types']['Tx_Bokunorecipe_Category']['showitem'] = '';
 }
+
 $GLOBALS['TCA']['sys_category']['types']['Tx_Bokunorecipe_Category']['showitem'] .= ',--div--;LLL:EXT:bokunorecipe/Resources/Private/Language/locallang_db.xlf:tx_bokunorecipe_domain_model_category,';
 $GLOBALS['TCA']['sys_category']['types']['Tx_Bokunorecipe_Category']['showitem'] .= '';
 

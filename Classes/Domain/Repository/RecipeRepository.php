@@ -11,8 +11,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use BokuNo\Bokunorecipe\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
@@ -29,7 +27,9 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 class RecipeRepository extends Repository
 {
     const TABLE = "tx_bokunorecipe_domain_model_recipe";
+
     const TABLE_CATEGORY = "sys_category";
+
     const TABLE_CATEGORY_MAP = "sys_category_record_mm";
 
     /**
@@ -59,10 +59,10 @@ class RecipeRepository extends Repository
                     ->expr()
                     ->like(
                         "recipe.title",
-                        $queryBuilder->createNamedParameter("%{$sw}%")
+                        $queryBuilder->createNamedParameter(sprintf('%%%s%%', $sw))
                     )
             );
-        if (count($categories)) {
+        if (count($categories) > 0) {
             $queryBuilder
                 ->join(
                     "recipe",
@@ -79,11 +79,11 @@ class RecipeRepository extends Repository
                     $queryBuilder->expr()->in("category.uid_local", $categories)
                 );
         }
+
         $result = $queryBuilder->executeQuery()->fetchAllAssociative();
 
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-        $recipes = $dataMapper->map(Recipe::class, $result);
-        return $recipes;
+        return $dataMapper->map(Recipe::class, $result);
     }
 
     /**
@@ -108,7 +108,7 @@ class RecipeRepository extends Repository
                         $queryBuilder->createNamedParameter("%curr%")
                     )
             );
-        if (count($categories)) {
+        if (count($categories) > 0) {
             $queryBuilder
                 ->join(
                     "recipe",
@@ -125,11 +125,11 @@ class RecipeRepository extends Repository
                     $queryBuilder->expr()->in("category.uid_local", $categories)
                 );
         }
+
         $result = $queryBuilder->executeQuery()->fetchAllAssociative();
 
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-        $recipes = $dataMapper->map(Recipe::class, $result);
-        return $recipes;
+        return $dataMapper->map(Recipe::class, $result);
     }
 
     /**
@@ -152,10 +152,9 @@ class RecipeRepository extends Repository
             ->andWhere($queryBuilder->expr()->gt("parent", 0));
 
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-        $categories = $dataMapper->map(
+        return $dataMapper->map(
             Category::class,
             $queryBuilder->execute()->fetchAllAssociative()
         );
-        return $categories;
     }
 }

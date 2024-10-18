@@ -64,7 +64,6 @@ class Ingredients extends AbstractValueObject
     /**
      * Sets the title
      *
-     * @param string $title
      * @return void
      */
     public function setTitle(string $title)
@@ -85,7 +84,6 @@ class Ingredients extends AbstractValueObject
     /**
      * Sets the unit
      *
-     * @param string $unit
      * @return void
      */
     public function setUnit(string $unit)
@@ -106,7 +104,6 @@ class Ingredients extends AbstractValueObject
     /**
      * Sets the gluten
      *
-     * @param bool $gluten
      * @return void
      */
     public function setGluten(bool $gluten)
@@ -137,7 +134,6 @@ class Ingredients extends AbstractValueObject
     /**
      * Sets the lactose
      *
-     * @param bool $lactose
      * @return void
      */
     public function setLactose(bool $lactose)

@@ -1,4 +1,6 @@
 <?php
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 defined('TYPO3') || die();
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('bokunorecipe', 'Configuration/TypoScript', 'BokuNoRecipe');
+ExtensionManagementUtility::addStaticFile('bokunorecipe', 'Configuration/TypoScript', 'BokuNoRecipe');

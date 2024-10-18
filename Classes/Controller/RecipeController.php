@@ -13,7 +13,6 @@ use BokuNo\Bokunorecipe\Domain\Model\Recipe;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "BokuNoRecipe" Extension for TYPO3 CMS.
@@ -29,7 +28,8 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  */
 class RecipeController extends ActionController
 {
-    function __construct(
+    public $settings;
+    public function __construct(
       private readonly RecipeRepository $recipeRepository,
       private readonly CategoryRepository $categoryRepository
     ) {
@@ -38,11 +38,8 @@ class RecipeController extends ActionController
 
     /**
      * action list
-     *
-     * @param int $currentPage
-     * @return ResponseInterface
      */
-    public function listAction(int $currentPage = 1)
+    public function listAction(int $currentPage = 1): ResponseInterface
     {
         $sw =
             $this->request->hasArgument("sw") &&
@@ -59,6 +56,7 @@ class RecipeController extends ActionController
         } else {
             $recipes = $this->recipeRepository->findAll()->toArray();
         }
+
         $arrayPaginator = new ArrayPaginator($recipes, $currentPage, 9);
         $paging = new SimplePagination($arrayPaginator);
         $this->view->assignMultiple([
@@ -74,11 +72,8 @@ class RecipeController extends ActionController
 
     /**
      * action show
-     *
-     * @param Recipe $recipe
-     * @return ResponseInterface
      */
-    public function showAction(Recipe $recipe)
+    public function showAction(Recipe $recipe): ResponseInterface
     {
         $this->view->assign("recipe", $recipe);
         return $this->htmlResponse();
@@ -89,7 +84,7 @@ class RecipeController extends ActionController
      *
      * @return string|object|null|void
      */
-    public function newAction()
+    public function newAction(): ResponseInterface
     {
         return $this->htmlResponse();
     }
@@ -97,7 +92,6 @@ class RecipeController extends ActionController
     /**
      * action create
      *
-     * @param Recipe $newRecipe
      * @return ResponseInterface
      */
     public function createAction(Recipe $newRecipe)
@@ -113,12 +107,9 @@ class RecipeController extends ActionController
 
     /**
      * action edit
-     *
-     * @param Recipe $recipe
-     * @return ResponseInterface
      */
     #[IgnoreValidation(['value' => 'recipe'])]
-    public function editAction(Recipe $recipe)
+    public function editAction(Recipe $recipe): ResponseInterface
     {
         $this->view->assign("recipe", $recipe);
         return $this->htmlResponse();
@@ -127,7 +118,6 @@ class RecipeController extends ActionController
     /**
      * action update
      *
-     * @param Recipe $recipe
      * @return string|object|null|void
      */
     public function updateAction(Recipe $recipe)
@@ -144,7 +134,6 @@ class RecipeController extends ActionController
     /**
      * action delete
      *
-     * @param Recipe $recipe
      * @return string|object|null|void
      */
     public function deleteAction(Recipe $recipe)
@@ -160,11 +149,8 @@ class RecipeController extends ActionController
 
     /**
      * action helper
-     *
-     * @param int $currentPage
-     * @return ResponseInterface
      */
-    public function helperAction(int $currentPage = 1)
+    public function helperAction(int $currentPage = 1): ResponseInterface
     {
         $withCategories =
             $this->request->hasArgument("category") &&
@@ -177,6 +163,7 @@ class RecipeController extends ActionController
             shuffle($recipes);
             $recipes = array_slice($recipes, 0, 3);
         }
+
         $arrayPaginator = new ArrayPaginator($recipes, $currentPage, 9);
         $paging = new SimplePagination($arrayPaginator);
         $this->view->assignMultiple([
@@ -189,6 +176,7 @@ class RecipeController extends ActionController
         ]);
         return $this->htmlResponse();
     }
+
     private function getCategories()
     {
         $recipeCategoryUid = $this->settings["recipeCategoryUid"];

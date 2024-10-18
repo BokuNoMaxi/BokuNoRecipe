@@ -50,7 +50,7 @@ class IngredientsToRecipe extends AbstractEntity
      *
      * @var Ingredients
      */
-    protected $ingredient = null;
+    protected $ingredient;
 
     /**
      * Returns the quantity
@@ -65,7 +65,6 @@ class IngredientsToRecipe extends AbstractEntity
     /**
      * Sets the quantity
      *
-     * @param string $quantity
      * @return void
      */
     public function setQuantity(string $quantity)
@@ -86,7 +85,6 @@ class IngredientsToRecipe extends AbstractEntity
     /**
      * Sets the alternativeMeasurement
      *
-     * @param int $alternativeMeasurement
      * @return void
      */
     public function setAlternativeMeasurement(int $alternativeMeasurement)
@@ -107,7 +105,6 @@ class IngredientsToRecipe extends AbstractEntity
     /**
      * Sets the ingredient
      *
-     * @param Ingredients $ingredient
      * @return void
      */
     public function setIngredient(Ingredients $ingredient)
@@ -128,7 +125,6 @@ class IngredientsToRecipe extends AbstractEntity
     /**
      * Sets the customGroup
      *
-     * @param string $customGroup
      * @return void
      */
     public function setCustomGroup(string $customGroup)

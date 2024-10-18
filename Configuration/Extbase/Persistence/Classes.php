@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use BokuNo\Bokunorecipe\Domain\Model\Category;
+
 return [
-    \BokuNo\Bokunorecipe\Domain\Model\Category::class => [
+    Category::class => [
         'tableName' => 'sys_category',
         'recordType' => 0
     ],

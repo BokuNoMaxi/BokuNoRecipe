@@ -26,6 +26,7 @@ class Category extends AbstractEntity
      * @var string
      */
     protected $title = "";
+
     public function getTitle()
     {
         return $this->title;
@@ -37,6 +38,7 @@ class Category extends AbstractEntity
      * @var string
      */
     protected $slug = "";
+
     public function getSlug()
     {
         return $this->slug;

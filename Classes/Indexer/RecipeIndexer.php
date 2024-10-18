@@ -10,7 +10,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 // Set you own class name.
 class RecipeIndexer extends IndexerBase
@@ -20,6 +19,7 @@ class RecipeIndexer extends IndexerBase
     // It is recommended (but no must) to use the name of the table you are going to index as a key because this
     // gives you the "original row" to work with in the result list template.
     const KEY = "tx_bokunorecipe_domain_model_recipe";
+
     const TABLE = "tx_bokunorecipe_domain_model_recipe";
 
     /**
@@ -118,8 +118,10 @@ class RecipeIndexer extends IndexerBase
                 );
                 $counter++;
             }
+
             return $counter . " Recipes have been indexed.";
         }
+
         return "";
     }
 }
