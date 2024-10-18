@@ -26,8 +26,6 @@ class RecipeTest extends UnitTestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->subject = $this->getAccessibleMock(
             Recipe::class,
             ['dummy']
@@ -36,7 +34,6 @@ class RecipeTest extends UnitTestCase
 
     protected function tearDown(): void
     {
-        parent::tearDown();
     }
 
     /**
@@ -207,6 +204,7 @@ class RecipeTest extends UnitTestCase
         $image = new FileReference();
         $objectStorageHoldingExactlyOneImages = new ObjectStorage();
         $objectStorageHoldingExactlyOneImages->attach($image);
+
         $this->subject->setImages($objectStorageHoldingExactlyOneImages);
 
         self::assertEquals($objectStorageHoldingExactlyOneImages, $this->subject->_get('images'));
@@ -287,6 +285,7 @@ class RecipeTest extends UnitTestCase
         $ingredient = new IngredientsToRecipe();
         $objectStorageHoldingExactlyOneIngredients = new ObjectStorage();
         $objectStorageHoldingExactlyOneIngredients->attach($ingredient);
+
         $this->subject->setIngredients($objectStorageHoldingExactlyOneIngredients);
 
         self::assertEquals($objectStorageHoldingExactlyOneIngredients, $this->subject->_get('ingredients'));
@@ -346,6 +345,7 @@ class RecipeTest extends UnitTestCase
         $related = new Recipe();
         $objectStorageHoldingExactlyOneRelated = new ObjectStorage();
         $objectStorageHoldingExactlyOneRelated->attach($related);
+
         $this->subject->setRelated($objectStorageHoldingExactlyOneRelated);
 
         self::assertEquals($objectStorageHoldingExactlyOneRelated, $this->subject->_get('related'));

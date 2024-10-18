@@ -28,7 +28,6 @@ use TYPO3\CMS\Core\Pagination\SimplePagination;
  */
 class RecipeController extends ActionController
 {
-    public $settings;
     public function __construct(
       private readonly RecipeRepository $recipeRepository,
       private readonly CategoryRepository $categoryRepository

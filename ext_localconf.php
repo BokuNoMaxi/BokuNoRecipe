@@ -1,34 +1,39 @@
 <?php
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use BokuNo\Bokunorecipe\Controller\RecipeController;
+use BokuNo\Bokunorecipe\Controller\IngredientsController;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 defined('TYPO3') || die();
 
 (static function() {
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Bokunorecipe',
         'Bokunorecipe',
         [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'list, show, new, create, edit, update'
+            RecipeController::class => 'list, show, new, create, edit, update'
         ],
         // non-cacheable actions
         [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'create, update, delete, ',
-            \BokuNo\Bokunorecipe\Controller\IngredientsController::class => 'create, update, delete'
+            RecipeController::class => 'create, update, delete, ',
+            IngredientsController::class => 'create, update, delete'
         ]
     );
 
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Bokunorecipe',
         'Bokunocookinghelper',
         [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'helper'
+            RecipeController::class => 'helper'
         ],
         // non-cacheable actions
         [
-            \BokuNo\Bokunorecipe\Controller\RecipeController::class => 'helper'
+            RecipeController::class => 'helper'
         ]
     );
 
     // wizards
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+    ExtensionManagementUtility::addPageTSConfig(
         'mod {
             wizards.newContentElement.wizardItems.plugins {
                 elements {
